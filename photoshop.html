@@ -319,11 +319,10 @@
 		 	
 		 </div>
 	<script>
-			
-		    var g = document.getElementById('result_img');
-		    var d = document.getElementById('bg_setter');
-		    var gv = document.getElementById('result_vid');
-		    var vid ;
+		var g = document.getElementById('result_img');
+		var d = document.getElementById('bg_setter');
+		var gv = document.getElementById('result_vid');
+		var vid ;
     		var i1 = document.getElementById('i1');	
     		var v1 = document.getElementById('v1');					
     		var g1 = 100 ,g11=100;
@@ -369,19 +368,21 @@
     		var g9 = 100;
     		var i_type, v_type;
 		function load(){
-			
-			setInterval (function(){
-				var c = document.getElementById("h"); 
-				c.innerHTML += '.' ;
-				if(c.innerHTML =='....')
-					c.innerHTML = '.';} ,1000);
-			setTimeout(s_kk_p_e ,9000);
-				
-			
+			 setInterval (function(){
+			 var c = document.getElementById("h"); 
+			 c.innerHTML += '.' ;
+			 if(c.innerHTML =='....')
+				c.innerHTML = '.';} ,1000);
+			 setTimeout(s_kk_p_e ,9000);
 		}
-
-
 		function s_kk_p_e(){
+			if(screen.availWidth < 1000){
+				document.getElementById('d2').style.display="none";
+				document.getElementById('d1').style.display="none";
+				alert("Incompatible device-error!Try in your laptop");
+				
+			document.write("<img src='images/oops.jpeg' style='width:100%;height:100%'><p style='font-weight:bold;text-align:center;position:fixed;top:0%;right:30%;color:red;width:200px;'>Your current device is not adjustable to deal with all equipments.<br>This is for laptop only<br>Use for laptop only</p>");}
+			else{
 			document.getElementById("d1").style.display="none";
 			document.getElementById("d2").style.display="block";
 			var elem = document.documentElement;
@@ -393,7 +394,7 @@
    				  elem.webkitRequestFullscreen();
             else if (elem.msRequestFullscreen) 
     			  elem.msRequestFullscreen();
-  }
+  }}
     
 		
   		function change_bg() {
