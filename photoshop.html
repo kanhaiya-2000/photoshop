@@ -13,13 +13,14 @@
 	<link rel="stylesheet" type="text/css" media="screen and (min-device-width: 1000px)" href="css/laptop.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 	<link id="favicon" type="image/jpg" rel="icon" href="images/photoshop.jpg" sizes="32x32">
 	<title>Photoshop:Create your dream</title>
 	<style type="text/css">
 		  body{
 			background-image:radial-gradient(black 10%,red 20%,blue 40%,green 80%);
 			animation: f 10s infinite alternate;
-			
+			overflow:hidden;
 		}
 		@keyframes f {
 			0%{background-image:radial-gradient(black 10%,red 20%,blue 40%,green 80%);}
@@ -40,7 +41,7 @@
 			text-align:center;
 			text-shadow:  10px 7px 4px rgba(250,1,90,0.9);
 			background-size: cover;
-			overflow:hidden;
+			
 		}
 		img{
 			box-shadow: 4px 4px 4px black;
@@ -48,7 +49,7 @@
 	</style>
 	<script type="text/javascript">
 		  function back(){
-		  	if(confirm('You are about to lose all saved changes!')){
+		  	if(confirm('You are about to lose all saved changes!\nSure to quit?')){
 		  	document.getElementById('modified_image').style.display="none";
 		  	document.getElementById('original_image').style.display="none";
 		  	document.getElementById('modified_video').style.display="none";
@@ -87,7 +88,7 @@
 </head>
 <body onload='load()' onbeforeunload="return 'Sure to leave?'">
 	<div id='d1' style='width:100%;height:100%;'>
-		<h1 id="h2" style="padding-top:20%;padding-bottom:40%;color:red;margin:auto;font-family:cursive">Welcome <br><span id="h" style='margin-top:-7px;'></span><br>#kk_photoshop</h1>
+		<h1 id="h2" class="w3-xxxlarge" style="padding-top:20%;font-size:2em;padding-bottom:40%;color:red;margin:auto;font-family:'Tangerine'">Welcome <br><span id="h" style='margin-top:2px;position:relative;'>Loading...</span><br>#kk_photoshop</h1>
 			
 	</div>
 	<div id="d2">
@@ -303,11 +304,12 @@
 		 		</div>
 		 	</div>
 		<div id="ask" style="z-index:1;width:100%;">
-		<div  id="img" style="cursor:pointer" onclick="T_img()"><img src="images/up_video.jpeg" style="border-radius: 50%;z-index:1" ><br><i style="background:white;">Upload video<br>Tap here to select a video to style it</i></div>
-		<div  id="vdo" style="cursor:pointer" onclick="T_vdo()"><img src="images/up_image.jpeg" style="border-radius: 50%" ><br><i style="background:white;">Upload Image<br>Tap here to select a photo to style it</i></div></div>
+		<div  id="img" style="cursor:pointer" onclick="T_img()"><img src="images/up_video.jpeg" style="border-radius: 50%;z-index:1" ><br><i style="background:white;"><span class="w3-xxlarge" style="font-family:'Tangerine';background:white;position:relative;">Upload video</span><br>Tap here to select a video to style it</i></div>
+		<div  id="vdo" style="cursor:pointer" onclick="T_vdo()"><img src="images/up_image.jpeg" style="border-radius: 50%" ><br><i style="background:white;"><span class="w3-xxlarge w3-center" style="font-family:'Tangerine';background:white;position:relative;">Upload Image</span><br>Tap here to select a photo to style it</i></div></div>
 		<div id="original_image">
-			<input type="file" name="picField" id="picField"  onchange="preview()" alt="" style="width:100%;background:green;color:white;position:absolute;top:-1%;z-index:1;padding: 12px 1px;cursor:pointer;left:0%;"/>
-			<img style="width:100%;height:100%;z-index:1" id="outImage" src="images/pic.png"></div>
+			
+			<img style="width:100%;height:100%;z-index:1" id="outImage" src="images/pic.png">
+			<input type="file" name="picField" id="picField"  onchange="preview()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;z-index:1;padding: 12px 1px;cursor:pointer;left:0%;"/></div>
 		<div id="modified_video"><video id="result_vid" style="width:100%;position:absolute;" autoplay loop controls><source src="images/pic.mp4"></video></div>
 		<div id="original_video"><video id="outVideo" style="width:100%;z-index:1;" loop controls><source src="images/pic2.mp4"></video><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
 			
@@ -368,8 +370,10 @@
     		var g9 = 100;
     		var i_type, v_type;
 		function load(){
+			 document.body.style.overflow = "hidden";
+			 var c = document.getElementById("h");
+			 c.innerHTML = "";
 			 setInterval (function(){
-			 var c = document.getElementById("h"); 
 			 c.innerHTML += '.' ;
 			 if(c.innerHTML =='....')
 				c.innerHTML = '.';} ,1000);
@@ -379,9 +383,9 @@
 			if(screen.availWidth < 1000){
 				document.getElementById('d2').style.display="none";
 				document.getElementById('d1').style.display="none";
-				alert("Incompatible device-error!Try in your laptop");
+				alert("Incompatible device-error!\nTry in your laptop");
 				
-			document.write("<img src='images/oops.jpeg' style='width:100%;height:100%'><p style='font-weight:bold;text-align:center;position:fixed;top:0%;right:30%;color:red;width:200px;'>Your current device is not adjustable to deal with all equipments.<br>This is for laptop only<br>Use for laptop only</p>");}
+			document.write("<img src='images/oops.jpeg' style='width:100%;height:100%'><p style='font-weight:bold;text-align:center;position:fixed;top:0%;right:30%;color:red;width:200px;'>Your current device is not adjustable to deal with all equipments.<br>This is for laptop only<br>Use it in laptop only</p>");}
 			else{
 			document.getElementById("d1").style.display="none";
 			document.getElementById("d2").style.display="block";
@@ -431,16 +435,17 @@
   	}
   }
 		function T_img(){
-			
-			    s_kk_p_e();
+			alert("Tap the browse button to select a video from your device");
 			document.getElementById('c1').style.display="block";
 			document.getElementById("ask").style.display="none";
+			s_kk_p_e();
 			document.body.style.overflow = "auto";
 			document.getElementById("original_video").style.display="flex";
 			document.getElementById("modified_video").style.display="flex";
 			
 		}
 		function T_vdo(){
+			alert("Tap the browse button to select a photo from your device");
 			document.getElementById("ask").style.display="none";
 			document.getElementById('c1').style.display="block";
 			s_kk_p_e();
@@ -681,6 +686,7 @@
     	
     }
      function Dwnload(){
+     	alert("currently! Downloading is not supported!\nstay tuned for update!\nFor image,you can also take screenshot.\nPress win+shift+s in window\nPress shift+prtsc in linux(ubuntu)\nPress command+shift+4 in mac ");
      	var c = document.getElementById('c');
      	c.style.display="block";
      	var img1 = document.getElementById('modified_image');
@@ -699,8 +705,10 @@
      	}
      }
  }
-
-     </script>
+  function Dwnload2(){
+     alert("currently! Downloading is not supported!\nstay tuned for update!");
+  }
+  </script>
 </body>
 </html>
 <!-- Remaining work://
