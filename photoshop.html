@@ -88,6 +88,9 @@
 </head>
 <body onload='load()' onbeforeunload="return 'Sure to leave?'">
 	<div id='d1' style='width:100%;height:100%;'>
+		<audio id="aud" style="visibility:hidden;">
+			<source src="https://kanhaiya-2000.github.io/Guessenger/gameover.mp3">
+			</audio>
 		<h1 id="h2" class="w3-xxxlarge" style="padding-top:20%;font-size:2em;padding-bottom:40%;color:red;margin:auto;font-family:'Tangerine'">Welcome <br><span id="h" style='margin-top:2px;position:relative;'>Loading...</span><br>#kk_photoshop</h1>
 			
 	</div>
@@ -384,7 +387,7 @@
 				document.getElementById('d2').style.display="none";
 				document.getElementById('d1').style.display="none";
 				alert("Incompatible device-error!\nTry in your laptop");
-				
+				document.getElementById('aud').play();
 			document.write("<img src='images/oops.jpeg' style='width:100%;height:100%'><p style='font-weight:bold;text-align:center;position:fixed;top:0%;right:30%;color:red;width:200px;'>Your current device is not adjustable to deal with all equipments.<br>This is for laptop only<br>Use it in laptop only</p>");}
 			else{
 			document.getElementById("d1").style.display="none";
