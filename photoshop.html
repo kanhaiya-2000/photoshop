@@ -46,6 +46,15 @@
 		img{
 			box-shadow: 4px 4px 4px black;
 		}
+		#text1,#text2,#text11,#text21{
+			z-index:10;
+			color:black;
+			text-align:center;
+			cursor:pointer;
+			display:none;
+			margin:auto;
+			padding:15px;
+		}
 	</style>
 	<script type="text/javascript">
 		  function back(){
@@ -69,10 +78,17 @@
 		  	document.getElementById('modified_video').style.background="none";
 		  	document.getElementById('modified_image').style.background="none";
 		  	document.getElementById('result_img').style.filter ="none";
+		  	document.getElementById('result_img').style.mixBlendMode ="normal";
 		  	document.getElementById('result_img').style.borderRadius ="0";
 		  	document.getElementById('result_vid').style.filter ="none";
 		  	document.getElementById('result_vid').style.mixBlendMode ="normal";
-		  	document.getElementById('result_img').style.transform = "scale(1,1)";
+		  	document.getElementById('result_img').style.transform = "none";
+		  	document.getElementById('ti').checked= false;
+		  	document.getElementById('ti2').checked= false;
+		  	document.getElementById('text2').style.display="none";
+		  	document.getElementById('text21').style.display="none";
+		  	document.getElementById('text1').style.display="none";
+		  	document.getElementById('text11').style.display="none";
 		  	document.getElementById('result_img').style.width ="100%";
 		  	document.getElementById('result_vid').style.height ="100%";
 		  	document.getElementById('result_img').style.top ="0";
@@ -81,6 +97,7 @@
 		  	document.getElementById('result_vid').style.width ="100%";
 		  	document.getElementById('modified_image').style.backgroundSize = "100% 100%";
 			document.getElementById('modified_image').style.backgroundRepeat = "no-repeat";
+
 		    }
 		  }
 	</script>
@@ -141,19 +158,46 @@
 		 	<i id="mb" class="fa fa-download" title="Download image" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload()"></i>
 		 	
 		 </div>
-		 	<div id="adv" style="display:none;" class="w3-panel w3-center">
+		 	<div id="adv" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center" style="overflow:auto;">
 		 		<span onclick="this.parentElement.style.display='none'" class="w3-large w3-right w3-red" style="position:absolute;right:0%;cursor:pointer">X</span>
 		 		
 		 			<div style="overflow-y:auto;">
-		 				<div class="w3-container w3-text-red w3-center">Important visual effect<br>1. Opacity:&nbsp;&nbsp;&nbsp;2.Image-width:&nbsp;&nbsp;3.Image-height:<br><span id="s9" class="w3-left" ></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s10" class="w3-center"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s11" class="w3-right"></span><br><input type="range" id="i9" onchange="f9()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;<input type="range" id="i10" onchange="f10()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="i11" onchange="f11()" value="100" max="100" min="2" step="2"><br>
+		 				<div class="w3-container w3-center">Important visual effect<br>1. Opacity:&nbsp;&nbsp;&nbsp;2.Image-width:&nbsp;&nbsp;3.Image-height:<br><span id="s9" class="w3-left" ></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s10" class="w3-center"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s11" class="w3-right"></span><br><input type="range" id="i9" onchange="f9()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;<input type="range" id="i10" onchange="f10()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="i11" onchange="f11()" value="100" max="100" min="2" step="2"><br><br>you can also drag to change position<br>
 		 			4.Image-position-top:&nbsp;&nbsp;&nbsp;5.Image-position:left<br><span id="s12"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s13" ></span><br><input type="range" id="i12" onchange="f12()" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" id="i13" onchange="f13()" value="0" max="200" min="0" step="2"><br>
 		 			Invert image:&nbsp;&nbsp;Horizon&nbsp;<input type="checkbox" id="i14" onclick="f14()"> &nbsp;&nbsp;Verti&nbsp;<input type="checkbox" id="i15" onclick="f14()"><br>
+		 			Rotate image:<br><br>
+		 			<span id="s17"></span><br>
+		 			<input type="range" id="i19" onchange="f16()" value="0" max="360" min="0" step="2"><br>
 		 			Zoom :<br> horizon &nbsp;&nbsp;&nbsp;&nbsp;Vertic&nbsp;&nbsp;&nbsp;&nbsp;Rounded<br>
 		 			<input type="range" id="i16" onchange="f14()" value="1" max="3" min="0.1" step="0.1">&nbsp;&nbsp;<input type="range" id="i17" onchange="f14()" value="1" max="3" min="0.1" step="0.1">&nbsp;&nbsp;<input type="range" id="i18" onchange="f15()" value="1" max="90" min="0" step="1">&nbsp;&nbsp;<br>
 		 			<span id="s14"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s15"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s16"></span>
 		 			
 		 		</div>
-		 			<div class="w3-panel w3-center w3-text-red" style="font-weight:bold" >Change Background</div>
+		 			<div class="w3-container  w3-center" style="font-weight:bold;">Important Readymade effect<br>
+		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='normal'">
+		 				<img src="images/blend.jpeg" title="Multiply" class="w3-border-red" style="mix-blend-mode: multiply;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='multiply'">
+		 				<img src="images/blend.jpeg" title="darken" class="w3-border-red" style="mix-blend-mode: darken;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='darken'">
+		 				<img src="images/blend.jpeg" title="overlay" class="w3-border-red" style="mix-blend-mode: overlay;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='overlay'">
+		 				<img src="images/blend.jpeg" title="screen" class="w3-border-red" style="mix-blend-mode: screen;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='screen'">
+		 				<img src="images/blend.jpeg" title="lighten" class="w3-border-red" style="mix-blend-mode: lighten;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='lighten'">
+		 				<img src="images/blend.jpeg" title="color-dodge" class="w3-border-red" style="mix-blend-mode: color-dodge;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='color-dodge'">
+		 				<img src="images/blend.jpeg" title="color-burn" class="w3-border-red" style="mix-blend-mode: color-burn;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='color-burn'">
+		 				<img src="images/blend.jpeg" title="difference" class="w3-border-red" style="mix-blend-mode: difference;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='difference'">
+		 				<img src="images/blend.jpeg" title="exclusion" class="w3-border-red" style="mix-blend-mode: exclusion;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='exclusion'">
+		 				<img src="images/blend.jpeg" title="hue" class="w3-border-red" style="mix-blend-mode: hue;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='hue'">
+		 				<img src="images/blend.jpeg" title="saturation" class="w3-border-red" style="mix-blend-mode: saturation;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='saturation'">
+		 				<img src="images/blend.jpeg" title="color" class="w3-border-red" style="mix-blend-mode: color;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='color'">
+		 				<img src="images/blend.jpeg" title="luminosity" class="w3-border-red" style="mix-blend-mode: luminosity;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='luminosity'"><br>Background-color:
+		 				<div style="display:flex;flex-wrap:nowrap;" class="w3-center">
+		 				<button class="w3-button w3-circle w3-transparent " onclick="document.getElementById('modified_image').style.backgroundColor='transparent'" title="no-color">T</button>
+		 				<button class="w3-button w3-circle w3-red" onclick="document.getElementById('modified_image').style.backgroundColor='red'" title="Red">R</button>
+		 				<button class="w3-button w3-circle w3-blue" onclick="document.getElementById('modified_image').style.backgroundColor='blue'" title="blue">B</button>
+		 				<button class="w3-button w3-circle w3-green" onclick="document.getElementById('modified_image').style.backgroundColor='green'" title="green">G</button>
+		 				<button class="w3-button w3-circle w3-black" onclick="document.getElementById('modified_image').style.backgroundColor='black'" title="black">B</button>
+		 				<button class="w3-button w3-circle w3-white" onclick="document.getElementById('modified_image').style.backgroundColor='white'" title="white">W</button>
+		 				<button class="w3-button w3-circle w3-pink " onclick="document.getElementById('modified_image').style.backgroundColor='pink'" title="pink">P</button>
+		 				<button class="w3-button w3-circle w3-purple " onclick="document.getElementById('modified_image').style.backgroundColor='purple'" title="purple">P</button></div><br></div>
+		 			<div class="w3-panel w3-center " style="font-weight:bold" >Change Background</div>
 		 			<img src="images/b1.jpeg" class="l1" onclick="document.getElementById('modified_image').style.backgroundImage='url(images/b1.jpeg)'">
 		 			<img src="images/b2.jpeg" class="l1" onclick="document.getElementById('modified_image').style.backgroundImage='url(images/b2.jpeg)'">
 		 			<img src="images/b3.jpeg" class="l1" onclick="document.getElementById('modified_image').style.backgroundImage='url(images/b3.jpeg)'">
@@ -227,21 +271,63 @@
 		 			<img src='images/v22.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v22.gif)'">
 		 			<img src='images/v23.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v23.gif)'">
 		 			<img src='images/v24.gif' class="l2" onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v24.gif)'">
-		 			<img src='images/v24.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v24.gif)'">
+		 			<img src='images/v4.webp' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v4.webp)'">
 		 			<img src='images/v25.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v25.gif)'">
 		 			<img src='images/v26.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v26.gif)'">
 		 			<img src='images/v27.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v27.gif)'">
 		 			<img src='images/v28.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v28.gif)'">
 		 			<img src='images/v29.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v29.gif)'">
-		 			<img src='images/v30.gif' class="l2" onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v30.gif)'"><br>
+		 			<img src='images/v30.gif' class="l2" onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v30.gif)'">
+		 			<img src='images/ex1.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex1.gif)'">
+		 			<img src='images/ex2.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex2.gif)'">
+		 			<img src='images/ex3.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex3.gif)'">
+		 			<img src='images/ex4.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex4.gif)'">
+		 			<img src='images/ex5.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex5.gif)'">
+		 			<img src='images/ex6.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex6.gif)'">
+		 			<img src='images/ex7.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex7.gif)'">
+		 			<img src='images/ex8.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex8.gif)'">
+		 			<img src='images/ex9.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex9.gif)'">
+		 			<img src='images/ex10.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex10.gif)'">
+		 			<img src='images/ex11.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex11.gif)'">
+		 			<img src='images/ex12.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex12.gif)'">
+		 			<img src='images/ex13.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex13.gif)'">
+		 			<img src='images/ex14.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex14.gif)'">
+		 			<img src='images/ex15.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex15.gif)'">
+		 			<img src='images/ex16.webp' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex16.webp)'"><br>
 		 			<input type="file" class="w3-button w3-circle w3-green w3-text-red w3-display-top" title="Upload your own background" id="u1" onchange="change_bg()"><button class="w3-button w3-circle w3-green w3-text-red w3-display-top" title="Remove background" onclick="document.getElementById('modified_image').style.backgroundImage='none'">X</button>
-		 		
+		 			<div style="position:absolute;" class="w3-center w3-text-xlarge">
+		 				::Tick here to Add text ::&nbsp;&nbsp;
+		 				<input type="checkbox" style="font-size:2em;" onclick="T_i()" id="ti" autocheck="false">
+		 				<div id="text-tool" style="display:none;">
+		 					<b>Click/Tap on the text-label appeared on photo to edit text<br><i style="color:red">Drag</i> the label to adjust its position </b><br>
+		 					1.1 text-color:<br>
+		 					<input type="color" id="text-color" onchange="updateText()"><br><br>
+                            1.2 background-color:<br>
+		 					<input type="color" id="text-color-b" onchange="updateText()"><br><br>
+		 					1.3:Transparent-bg:<br>
+		 					<input type="checkbox" style="font-size:2em;" onclick="change_b(this)" title="Recheck if it doesn't work">
+		 					<br>Remove-border:&nbsp;
+		 					<input type="checkbox" style="font-size:2em;" onclick="if(this.checked){document.getElementById('text1').style.border='none';document.getElementById('text2').style.border='none';}
+		 					else{document.getElementById('text1').style.border='1px dotted red';document.getElementById('text2').style.border='1px dotted red';}" title="Recheck if it doesn't work"><br><br>
+		 					2.text-size:<br>
+		 					<input type="range" id="text-size" onchange="updateText()" min="0.1" max="3.5" step="0.1">	<br><br>
+		 					3.text-font:<br><select onchange="updateText()" id="myS">
+		 						<option value="none">Normal</option>
+		 						<option value="Arial, Helvetica, sans-serif">cool</option>
+		 						<option value="Tangerine">cursive</option>
+		 						<option value="GulimChe">bold</option>
+		 						<option value="Angsana New">small</option></select><br><br>
+		 					4.text-position:<br>
+		 					<i style="font-family:Tangerine;font-size:2em;">Drag on the text-label to adjust its position<br>Scroll to the top of right image to find text-label.	</i>
+		 					<br><br><br>
+		 				</div>
+		 		   </div>
 		 	</div>
 		 </div>
 		     
-		 	<div id="adv2" style="display:none;" class="w3-panel w3-center">
-		 		<span onclick="this.parentElement.style.display='none'" class="w3-large w3-right w3-red" style="position:absolute;right:0%;cursor:pointer">X</span>
-		 			<div class="w3-container w3-text-purple w3-center" style="font-weight:bold;">Important video effect<br>
+		 	<div id="adv2" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center" style="overflow:auto;">
+		 		<span onclick="this.parentElement.style.display='none'" class="w3-xlarge w3-right w3-red" style="position:absolute;right:0%;cursor:pointer">X</span>
+		 			<div class="w3-container  w3-center" style="font-weight:bold;background:teal;">Important video effect<br>
 		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='normal'">
 		 				<img src="images/blend.jpeg" title="Multiply" class="w3-border-red" style="mix-blend-mode: multiply;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='multiply'">
 		 				<img src="images/blend.jpeg" title="darken" class="w3-border-red" style="mix-blend-mode: darken;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='darken'">
@@ -257,14 +343,14 @@
 		 				<img src="images/blend.jpeg" title="color" class="w3-border-red" style="mix-blend-mode: color;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='color'">
 		 				<img src="images/blend.jpeg" title="luminosity" class="w3-border-red" style="mix-blend-mode: luminosity;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='luminosity'"><br>Background-color:
 		 				<div style="display:flex;flex-wrap:nowrap;" class="w3-center">
-		 				<button class="w3-button w3-circle w3-transparent " onclick="document.getElementById('modified_video').style.backgroundColor='transparent'">T</button>
-		 				<button class="w3-button w3-circle w3-red" onclick="document.getElementById('modified_video').style.backgroundColor='red'">R</button>
-		 				<button class="w3-button w3-circle w3-blue" onclick="document.getElementById('modified_video').style.backgroundColor='blue'">B</button>
-		 				<button class="w3-button w3-circle w3-green" onclick="document.getElementById('modified_video').style.backgroundColor='green'">G</button>
-		 				<button class="w3-button w3-circle w3-black" onclick="document.getElementById('modified_video').style.backgroundColor='black'">B</button>
-		 				<button class="w3-button w3-circle w3-white" onclick="document.getElementById('modified_video').style.backgroundColor='white'">W</button>
-		 				<button class="w3-button w3-circle w3-pink " onclick="document.getElementById('modified_video').style.backgroundColor='pink'">P</button>
-		 				<button class="w3-button w3-circle w3-purple " onclick="document.getElementById('modified_video').style.backgroundColor='purple'">P</button></div><br>
+		 				<button class="w3-button w3-circle w3-transparent " onclick="document.getElementById('modified_video').style.backgroundColor='transparent'" title="no-color">T</button>
+		 				<button class="w3-button w3-circle w3-red" onclick="document.getElementById('modified_video').style.backgroundColor='red'" title="red">R</button>
+		 				<button class="w3-button w3-circle w3-blue" onclick="document.getElementById('modified_video').style.backgroundColor='blue'" title="blue">B</button>
+		 				<button class="w3-button w3-circle w3-green" onclick="document.getElementById('modified_video').style.backgroundColor='green'" title="green">G</button>
+		 				<button class="w3-button w3-circle w3-black" onclick="document.getElementById('modified_video').style.backgroundColor='black'" title="black">B</button>
+		 				<button class="w3-button w3-circle w3-white" onclick="document.getElementById('modified_video').style.backgroundColor='white'" title="white">W</button>
+		 				<button class="w3-button w3-circle w3-pink " onclick="document.getElementById('modified_video').style.backgroundColor='pink'" title="pink">P</button>
+		 				<button class="w3-button w3-circle w3-purple " onclick="document.getElementById('modified_video').style.backgroundColor='purple'" title="purple">P</button></div><br>
 		 				Cool Effects
 		 				<br>1. Opacity:&nbsp;&nbsp;&nbsp;2.video-width:&nbsp;&nbsp;3.video-height:<br><span id="sv9" class="w3-left" ></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv10" class="w3-center"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv11" class="w3-right"></span><br><input type="range" id="v9" onchange="x9()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v10" onchange="x10()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v11" onchange="x11()" value="100" max="100" min="2" step="2"><br><br>
 		 			4.video-position-top:&nbsp;&nbsp;&nbsp;5.video-position:left<br><span id="sv12"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv13" ></span><br><input type="range" id="v12" onchange="x12()" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v13" onchange="x13()" value="0" max="200" min="0" step="2"><br><br>Background-fold<br>
@@ -294,18 +380,61 @@
 		 			<img src='images/v21.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v21.gif)'">
 		 			<img src='images/v22.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v22.gif)'">
 		 			<img src='images/v23.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v23.gif)'">
-		 			<img src='images/v24.gif' class="l2" onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v24.gif)'">
+		 			<img src='images/v4.webp' alt="Not supported:X" class="l2" onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v4.webp)'">
 		 			<img src='images/v24.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v24.gif)'">
 		 			<img src='images/v25.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v25.gif)'">
 		 			<img src='images/v26.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v26.gif)'">
 		 			<img src='images/v27.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v27.gif)'">
 		 			<img src='images/v28.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v28.gif)'">
 		 			<img src='images/v29.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v29.gif)'">
-		 			<img src='images/v30.gif' class="l2" onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v30.gif)'"><br>
-		 			<input type="file" class="w3-button w3-green w3-text-red w3-display-top" title="Upload your own background" id="u2" onchange="change_bg2()"><button class="w3-button w3-circle w3-green w3-text-red w3-display-top" title="Remove background" onclick="document.getElementById('modified_video').style.backgroundImage='none'">X</button>
-		 			
+		 			<img src='images/v30.gif' class="l2" onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v30.gif)'">
+		 			<img src='images/ex1.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex1.gif)'">
+		 			<img src='images/ex2.gif' class="l2" onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex2.gif)'">
+		 			<img src='images/ex3.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex3.gif)'">
+		 			<img src='images/ex4.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex4.gif)'">
+		 			<img src='images/ex5.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex5.gif)'">
+		 			<img src='images/ex6.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex6.gif)'">
+		 			<img src='images/ex7.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex7.gif)'">
+		 			<img src='images/ex8.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex8.gif)'">
+		 			<img src='images/ex9.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex9.gif)'">
+		 			<img src='images/ex10.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex10.gif)'">
+		 			<img src='images/ex11.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex11.gif)'">
+		 			<img src='images/ex12.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex12.gif)'">
+		 			<img src='images/ex13.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex13.gif)'">
+		 			<img src='images/ex14.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex14.gif)'">
+		 			<img src='images/ex15.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex15.gif)'">
+		 			<img src='images/ex16.webp' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex16.webp)'"><br>
+		 			<input type="file" class="w3-button w3-green w3-text-red w3-display-top" title="Upload your own background" id="u2" onchange="change_bg2()"><button class="w3-button w3-circle w3-green  w3-display-top" title="Remove background" onclick="document.getElementById('modified_video').style.backgroundImage='none'">X</button>
+		 			<div style="position:absolute;text-align:center;" class="w3-center">
+		 				::Tick here to Add text ::&nbsp;&nbsp;
+		 				<input type="checkbox" style="font-size:2em;" onclick="T_i2()" id="ti2" >
+		 				<div id="text-tool2" style="display:none;">
+		 					<b>Click/Tap on the text-label appeared on photo to edit text<br><i style="color:red">Drag</i> the label to adjust its position </b><br><br>
+		 					1.1--text-color:<br>
+		 					<input type="color" id="text-color2" onchange="updateText2()"><br><br>
+		 					1.2--Background-color:<br>
+		 					<input type="color" id="text-color-b2" onchange="updateText2()"><br><br>
+		 					1.3:Transparent-bg:<br>
+		 					<input type="checkbox" style="font-size:2em;" onclick="change_b(this)" title="Recheck if it doesn't work"><br>Remove-border:&nbsp;
+		 					<input type="checkbox" style="font-size:2em;" onclick="if(this.checked){document.getElementById('text11').style.border='none';document.getElementById('text21').style.border='none';}
+		 					else{document.getElementById('text11').style.border='1px dotted red';document.getElementById('text21').style.border='1px dotted red';}" title="Recheck if it doesn't work"><br><br>
+		 					2.text-size:<br>
+		 					<input type="range" id="text-size2" onchange="updateText2()" min="0.1" max="3.5" step="0.1">	<br><br>
+		 					3.text-font:<br><select onchange="updateText2()" id="myS2">
+		 						<option value="none">Normal</option>
+		 						<option value="Arial, Helvetica, sans-serif">cool</option>
+		 						<option value="Tangerine">cursive</option>
+		 						<option value="GulimChe">bold</option>
+		 						<option value="Angsana New">small</option>
+		 						</select><br><br>
+		 					4.text-position:<br>
+		 					<i style="color:red;font-family:Tangerine;font-size:2em;">Drag on the text-label to adjust its position	<br>Scroll to the top of right image to find text-label</i>
+		 					<br><br><br>
+		 				</div>
+		 			</div>
+		 			</div>
 		 		</div>
-		 	</div>
+		 	
 		<div id="ask" style="z-index:1;width:100%;">
 		<div  id="img" style="cursor:pointer" onclick="T_img()"><img src="images/up_video.jpeg" style="border-radius: 50%;z-index:1" ><br><i style="background:white;"><span class="w3-xxlarge" style="font-family:'Tangerine';background:white;position:relative;">Upload video</span><br>Tap here to select a video to style it</i></div>
 		<div  id="vdo" style="cursor:pointer" onclick="T_vdo()"><img src="images/up_image.jpeg" style="border-radius: 50%" ><br><i style="background:white;"><span class="w3-xxlarge w3-center" style="font-family:'Tangerine';background:white;position:relative;">Upload Image</span><br>Tap here to select a photo to style it</i></div></div>
@@ -313,21 +442,25 @@
 			
 			<img style="width:100%;height:100%;z-index:1" id="outImage" src="images/pic.png">
 			<input type="file" name="picField" id="picField"  onchange="preview()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;z-index:1;padding: 12px 1px;cursor:pointer;left:0%;"/></div>
-		<div id="modified_video"><video id="result_vid" style="width:100%;position:absolute;" autoplay loop controls><source src="images/pic.mp4"></video></div>
+		<div id="modified_video"><span id='text11' title="click to change text" style="position:absolute;top:6%;border:1px dotted red; text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-1</span><span id='text21' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><video id="result_vid" style="width:100%;position:absolute;" autoplay loop controls><source src="images/pic.mp4"></video></div>
 		<div id="original_video"><video id="outVideo" style="width:100%;z-index:1;" loop controls><source src="images/pic2.mp4"></video><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
 			
-			<div id="modified_image" style="background-repeat:no-repeat;background-size: 100% 100%"><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;"></div>
+			<div id="modified_image" style="background-repeat:no-repeat;background-size: 100% 100%">
+				<span id='text1' title="click to change text" style="position:absolute;top:6%;text-align:center;border:1px dotted red;" onclick="var l = prompt('Write something...'); if(l)this.innerHTML = l;">Text-1</span><span id='text2' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;"></div>
 		</div>
 		<div id="advanced_vid_tools" style="position:fixed;display:none;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
 		 	<button class="w3-btn w3-circle w3-red w3-text-black w3-large" title="Advanced feature" onclick="document.getElementById('adv2').style.display='flex';s_kk_p_e();" style="z-index:1">+</button>
 		 	<i id="mb1" class="fa fa-download" title="Download video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload2()"></i>
 		 	
 		 </div>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
 		var g = document.getElementById('result_img');
 		var d = document.getElementById('bg_setter');
 		var gv = document.getElementById('result_vid');
 		var vid ;
+		alert("Never block dialogue else you will miss instruction guide on how to use it");
     		var i1 = document.getElementById('i1');	
     		var v1 = document.getElementById('v1');					
     		var g1 = 100 ,g11=100;
@@ -360,6 +493,7 @@
     		var i16 = document.getElementById('i16');
     		var i17 = document.getElementById('i17');
     		var i18 = document.getElementById('i18');
+    		var i19 = document.getElementById('i19');
     		var v8 = document.getElementById('v8');
     		var v9 = document.getElementById('v9');
     		var v10 = document.getElementById('v10');
@@ -369,9 +503,23 @@
     		var v14 = document.getElementById('v14');
     		var v15 = document.getElementById('v15');
     		var g19 = 100;
+    		document.getElementById('ti').checked= false;
+		  	document.getElementById('ti2').checked= false;
+    		document.getElementById('result_img').style.transform="none";
     		var g8 = 0 ,g18 = 0;
     		var g9 = 100;
     		var i_type, v_type;
+    		  $( function() {
+    			$( "#text1" ).draggable();
+    			$( "#text21" ).draggable();
+    			$( "#text11" ).draggable();
+    			$( "#text2" ).draggable();
+    			$( "#result_img" ).draggable();
+    			$( "#result_vid" ).draggable();
+
+ 				 } );
+
+  
 		function load(){
 			 document.body.style.overflow = "hidden";
 			 var c = document.getElementById("h");
@@ -380,7 +528,7 @@
 			 c.innerHTML += '.' ;
 			 if(c.innerHTML =='....')
 				c.innerHTML = '.';} ,1000);
-			 setTimeout(s_kk_p_e ,9000);
+			 setTimeout(s_kk_p_e ,1000);
 		}
 		function s_kk_p_e(){
 			if(screen.availWidth < 1000){
@@ -412,7 +560,7 @@
 			   let s = (e.target.result.split(';')[0]).split('/');
 				let ext = s[s.length-1].toLowerCase();
 				
-				if(ext=='jpg"'||ext=='jpeg'||ext=='png'||ext=='gif')
+				if(ext=='jpg'||ext=='jpeg'||ext=='png'||ext=='gif')
 					document.getElementById('modified_image').style.backgroundImage ="url("+fReader.result+")";
 				
   		       else
@@ -428,7 +576,7 @@
 			   let s = (e2.target.result.split(';')[0]).split('/');
 				let ext = s[s.length-1].toLowerCase();
 				
-				if(ext=='jpg"'||ext=='jpeg'||ext=='png'||ext=='gif')
+				if(ext=='jpg'||ext=='jpeg'||ext=='png'||ext=='gif')
 					document.getElementById('modified_video').style.backgroundImage ="url("+fReader.result+")";
 					
 
@@ -465,7 +613,7 @@
 			   let s = (event.target.result.split(';')[0]).split('/');
 				let ext = s[s.length-1].toLowerCase();
 				i_type = ext;
-				if(ext=='jpg"'||ext=='jpeg'||ext=='png'||ext=='gif'){
+				if(ext=='jpg'||ext=='jpeg'||ext=='png'||ext=='gif'){
   					var img1 = document.getElementById("outImage");
     				img1.src = event.target.result;
     				document.getElementById("result_img").src = img1.src;
@@ -584,15 +732,21 @@
     	document.getElementById('s13').innerHTML = i13.value+"%";
     }
     function f14(){
-    	var f =(i14.checked)?-1:1 ;
-    	var f1 =(i15.checked)?-1:1 ;
-    	document.getElementById('result_img').style.transform =  'scale('+f*i16.value+','+f1*i17.value+')';
+    	let f =(i14.checked)?-1:1 ;
+    	let f1 =(i15.checked)?-1:1 ;
+    	document.getElementById('result_img').style.transform =  'scale('+f*i16.value+','+f1*i17.value+') rotate('+i19.value+'deg)';
     	document.getElementById('s14').innerHTML = i16.value;
     	document.getElementById('s15').innerHTML = i17.value;
     }
     function f15(){
     	document.getElementById('result_img').style.borderRadius = i18.value+"%";
     	document.getElementById('s16').innerHTML = i18.value;
+    }
+    function f16(){
+    	let f =(i14.checked)?-1:1 ;
+    	let f1 =(i15.checked)?-1:1 ;
+    	document.getElementById('result_img').style.transform =  'scale('+f*i16.value+','+f1*i17.value+') rotate('+i19.value+'deg)';
+    	document.getElementById('s17').innerHTML = parseInt((i19.value)/3.6)+"%";
     }
     function modify_bg(){
 	s_kk_p_e();
@@ -688,6 +842,65 @@
     	gv.style.filter = "brightness("+g11+"%) contrast("+g12+"%) saturate("+g13+"%) grayscale("+g14+"%) blur("+g15+"px) hue-rotate("+g16+"deg) invert("+g17+"%) sepia("+g18+"%) opacity("+g19+"%)" ;
     	
     }
+    function T_i(){
+	if(document.getElementById('ti').checked){
+    	document.getElementById('text-tool').style.display="block";
+	document.getElementById('text1').style.display="block";
+	document.getElementById('text2').style.display="block";
+}
+	else{
+	document.getElementById('text-tool').style.display="none";
+	document.getElementById('text1').style.display="none";
+	document.getElementById('text2').style.display="none";
+}
+    	
+    }
+    function T_i2(){
+	if(document.getElementById('ti2').checked){
+    	document.getElementById('text-tool2').style.display="block";
+	document.getElementById('text11').style.display="block";
+	document.getElementById('text21').style.display="block";
+}
+	else{
+	document.getElementById('text-tool2').style.display="none";
+	document.getElementById('text11').style.display="none";
+	document.getElementById('text21').style.display="none";
+}
+    	
+    }
+    function updateText(){
+    	document.getElementById('text1').style.fontFamily = document.getElementById('myS').value ;
+    	document.getElementById('text1').style.fontSize = document.getElementById('text-size').value+"em";
+    	document.getElementById('text1').style.color = document.getElementById('text-color').value;
+    	document.getElementById('text1').style.backgroundColor = document.getElementById('text-color-b').value;
+    	document.getElementById('text2').style.fontFamily = document.getElementById('myS').value ;
+    	document.getElementById('text2').style.fontSize = document.getElementById('text-size').value+"em";
+    	document.getElementById('text2').style.color = document.getElementById('text-color').value;
+    	document.getElementById('text2').style.backgroundColor = document.getElementById('text-color-b').value;
+    }
+    function updateText2(){
+    	document.getElementById('text11').style.fontFamily = document.getElementById('myS2').value ;
+    	document.getElementById('text11').style.fontSize = document.getElementById('text-size2').value+"em";
+    	document.getElementById('text11').style.color = document.getElementById('text-color2').value;
+    	document.getElementById('text11').style.backgroundColor = document.getElementById('text-color-b2').value;
+    	document.getElementById('text21').style.fontFamily = document.getElementById('myS2').value ;
+    	document.getElementById('text21').style.fontSize = document.getElementById('text-size2').value+"em";
+    	document.getElementById('text21').style.color = document.getElementById('text-color2').value;
+    	document.getElementById('text21').style.backgroundColor = document.getElementById('text-color-b2').value;
+    }
+
+  function change_b(e){
+    if(e.checked){
+    	document.getElementById("text1").style.backgroundColor="transparent";
+    	document.getElementById("text2").style.backgroundColor="transparent";
+    	document.getElementById("text21").style.backgroundColor="transparent";
+    	document.getElementById("text11").style.backgroundColor="transparent";
+    }
+    else{
+    	updateText();
+    	updateText2();
+    }
+  }
      function Dwnload(){
      	alert("currently! Downloading is not supported!\nstay tuned for update!\nFor image,you can also take screenshot.\nPress win+shift+s in window\nPress shift+prtsc in linux(ubuntu)\nPress command+shift+4 in mac ");
      	var c = document.getElementById('c');
@@ -716,10 +929,8 @@
 </html>
 <!-- Remaining work://
 	1.Making download button to work
-	2.Adding additional feature to video
-	3.Adding background modification and multiple image collapsing as well as selected multiple video collapsing feature
-	4.Adding additional feature to video can be mostly acheived by combining 2 videos in a better way.
 	5.Allowing user to perform another action when initial action has been downloaded
 	6.Creating css files for mobile and tablet
-
+    7.Adding cropping feature
+    8.Adding brush modification feature
 -->
