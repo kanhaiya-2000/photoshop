@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="description" content="Photoshop is a simple web application designed to create beautiful photos and videos by editing and make your photos look excellent.Here, with a variety of tools ,i will help you to create attractive and nice-looking photos and videos.No need to install any application...">
+	<meta name="og:image" content="https://kanhaiya-2000.github.io/photoshop/images/ex12.gif">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<meta name="keywords" content="design,beautiful creation,attractive web-design image creation ,with love by kk">
 	<meta name="twitter:site" content="@kk_photoshop">
-	<meta property="og:image" content="https://kanhaiya-2000.github.io/photoshop/images/ex12.gif">
-	<meta name="twitter:image" content="https://kanhaiya-2000.github.io/photoshop/images/ex12.gif">
+	
 	<link rel="stylesheet" type="text/css" media="screen and (min-device-width: 250px) and (max-device-width: 500px)" href="css/mobile.css">
 	
 	<link rel="stylesheet" type="text/css" media="screen and (min-device-width: 500px) and (max-device-width: 1000px)" href="css/tablet.css">
@@ -174,7 +174,7 @@
 		 			<span id="s14"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s15"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s16"></span>
 		 			
 		 		</div>
-		 			<div class="w3-container  w3-center" style="font-weight:bold;">Important Readymade effect<br>
+		 			<div class="w3-container  w3-center w3-green" style="font-weight:bold;">Important Readymade effect<br>
 		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='normal'">
 		 				<img src="images/blend.jpeg" title="Multiply" class="w3-border-red" style="mix-blend-mode: multiply;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='multiply'">
 		 				<img src="images/blend.jpeg" title="darken" class="w3-border-red" style="mix-blend-mode: darken;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='darken'">
@@ -189,7 +189,7 @@
 		 				<img src="images/blend.jpeg" title="saturation" class="w3-border-red" style="mix-blend-mode: saturation;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='saturation'">
 		 				<img src="images/blend.jpeg" title="color" class="w3-border-red" style="mix-blend-mode: color;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='color'">
 		 				<img src="images/blend.jpeg" title="luminosity" class="w3-border-red" style="mix-blend-mode: luminosity;background:blue;" onclick="document.getElementById('result_img').style.mixBlendMode ='luminosity'"><br>Background-color:
-		 				<div style="display:flex;flex-wrap:nowrap;" class="w3-center">
+		 				<div style="display:flex;flex-wrap:nowrap;" class="w3-center w3-black">
 		 				<button class="w3-button w3-circle w3-transparent " onclick="document.getElementById('modified_image').style.backgroundColor='transparent'" title="no-color">T</button>
 		 				<button class="w3-button w3-circle w3-red" onclick="document.getElementById('modified_image').style.backgroundColor='red'" title="Red">R</button>
 		 				<button class="w3-button w3-circle w3-blue" onclick="document.getElementById('modified_image').style.backgroundColor='blue'" title="blue">B</button>
@@ -295,7 +295,34 @@
 		 			<img src='images/ex14.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex14.gif)'">
 		 			<img src='images/ex15.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex15.gif)'">
 		 			<img src='images/ex16.webp' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex16.webp)'"><br>
-		 			<input type="file" class="w3-button w3-circle w3-green w3-text-red w3-display-top" title="Upload your own background" id="u1" onchange="change_bg()"><button class="w3-button w3-circle w3-green w3-text-red w3-display-top" title="Remove background" onclick="document.getElementById('modified_image').style.backgroundImage='none'">X</button>
+		 			<input type="file" class="w3-button w3-circle w3-green w3-text-red w3-display-top" title="Upload your own background" id="u1" onchange="change_bg()"><button class="w3-button w3-circle w3-green w3-text-red w3-display-top" title="Remove background" onclick="document.getElementById('modified_image').style.backgroundImage='none'">X</button><br>
+		 			<div class="w3-container w3-indigo w3-center" style="font-weight:bold;">Background-style:<br>Try these effects in background<br>This effect has total 2 steps...Use both<br>Step-1:select theme:<br>
+		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='normal';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="Multiply" class="w3-border-red" style="mix-blend-mode: multiply;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='multiply';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="darken" class="w3-border-red" style="mix-blend-mode: darken;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='darken';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="overlay" class="w3-border-red" style="mix-blend-mode: overlay;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='overlay';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="screen" class="w3-border-red" style="mix-blend-mode: screen;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='screen';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="lighten" class="w3-border-red" style="mix-blend-mode: lighten;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='lighten';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="color-dodge" class="w3-border-red" style="mix-blend-mode: color-dodge;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='color-dodge';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="color-burn" class="w3-border-red" style="mix-blend-mode: color-burn;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='color-burn';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="difference" class="w3-border-red" style="mix-blend-mode: difference;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='difference';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="exclusion" class="w3-border-red" style="mix-blend-mode: exclusion;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='exclusion';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="hue" class="w3-border-red" style="mix-blend-mode: hue;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='hue';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="saturation" class="w3-border-red" style="mix-blend-mode: saturation;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='saturation';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="color" class="w3-border-red" style="mix-blend-mode: color;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='color';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="luminosity" class="w3-border-red" style="mix-blend-mode: luminosity;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='luminosity';document.getElementById('modified_image').style.backgroundColor='#3db6b8';"><br><br>Step-2:select color:<br>
+		 					<button class="w3-button w3-circle w3-darkcyan " onclick="document.getElementById('modified_image').style.backgroundColor='darkcyan'" title="darkcyan">D</button>
+		 				<button class="w3-button w3-circle w3-red" onclick="document.getElementById('modified_image').style.backgroundColor='red'" title="red">R</button>
+		 				<button class="w3-button w3-circle w3-blue" onclick="document.getElementById('modified_image').style.backgroundColor='blue'" title="blue">B</button>
+		 				<button class="w3-button w3-circle w3-green" onclick="document.getElementById('modified_image').style.backgroundColor='green'" title="green">G</button>
+		 				<button class="w3-button w3-circle w3-black" onclick="document.getElementById('modified_image').style.backgroundColor='#3db6b8'" title="original">P</button>
+		 				<button class="w3-button w3-circle w3-white" onclick="document.getElementById('modified_image').style.backgroundColor='white'" title="white">W</button>
+		 				<button class="w3-button w3-circle w3-violet " onclick="document.getElementById('modified_image').style.backgroundColor='violet'" title="violet">P</button>
+		 				<button class="w3-button w3-circle w3-purple " onclick="document.getElementById('modified_image').style.backgroundColor='purple'" title="purple">P</button>
+		 				<button class="w3-button w3-circle w3-yellow " onclick="document.getElementById('modified_image').style.backgroundColor='yellow'" title="yellow">Y</button>
+		 			    <button class="w3-button w3-circle" style="background:#1ddbbf;" onclick="document.getElementById('modified_image').style.backgroundColor='#1ddbbf'" title="sky-blue">S</button><br>Not satisfied with the above color?!<br>select yours own::<br>
+		 			    <input type="color" onchange="document.getElementById('modified_image').style.backgroundColor=this.value">
+		 			</div>
 		 			<div style="position:absolute;" class="w3-center w3-text-xlarge">
 		 				::Tick here to Add text ::&nbsp;&nbsp;
 		 				<input type="checkbox" style="font-size:2em;" onclick="T_i()" id="ti" autocheck="false">
@@ -343,7 +370,7 @@
 		 				<img src="images/blend.jpeg" title="saturation" class="w3-border-red" style="mix-blend-mode: saturation;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='saturation'">
 		 				<img src="images/blend.jpeg" title="color" class="w3-border-red" style="mix-blend-mode: color;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='color'">
 		 				<img src="images/blend.jpeg" title="luminosity" class="w3-border-red" style="mix-blend-mode: luminosity;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='luminosity'"><br>Background-color:
-		 				<div style="display:flex;flex-wrap:nowrap;" class="w3-center">
+		 				<div style="display:flex;flex-wrap:nowrap;" class="w3-center w3-sand">
 		 				<button class="w3-button w3-circle w3-transparent " onclick="document.getElementById('modified_video').style.backgroundColor='transparent'" title="no-color">T</button>
 		 				<button class="w3-button w3-circle w3-red" onclick="document.getElementById('modified_video').style.backgroundColor='red'" title="red">R</button>
 		 				<button class="w3-button w3-circle w3-blue" onclick="document.getElementById('modified_video').style.backgroundColor='blue'" title="blue">B</button>
@@ -351,7 +378,9 @@
 		 				<button class="w3-button w3-circle w3-black" onclick="document.getElementById('modified_video').style.backgroundColor='black'" title="black">B</button>
 		 				<button class="w3-button w3-circle w3-white" onclick="document.getElementById('modified_video').style.backgroundColor='white'" title="white">W</button>
 		 				<button class="w3-button w3-circle w3-pink " onclick="document.getElementById('modified_video').style.backgroundColor='pink'" title="pink">P</button>
-		 				<button class="w3-button w3-circle w3-purple " onclick="document.getElementById('modified_video').style.backgroundColor='purple'" title="purple">P</button></div><br>
+		 				<button class="w3-button w3-circle w3-purple " onclick="document.getElementById('modified_video').style.backgroundColor='purple'" title="purple">P</button>
+		 			    <button class="w3-button w3-circle w3-yellow " onclick="document.getElementById('modified_video').style.backgroundColor='yellow'" title="yellow">Y</button>
+		 			    <button class="w3-button w3-circle" style="background:#1ddbbf;" onclick="document.getElementById('modified_video').style.backgroundColor='#1ddbbf'" title="sky-blue">S</button></div><br>
 		 				Cool Effects
 		 				<br>1. Opacity:&nbsp;&nbsp;&nbsp;2.video-width:&nbsp;&nbsp;3.video-height:<br><span id="sv9" class="w3-left" ></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv10" class="w3-center"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv11" class="w3-right"></span><br><input type="range" id="v9" onchange="x9()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v10" onchange="x10()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v11" onchange="x11()" value="100" max="100" min="2" step="2"><br><br>
 		 			4.video-position-top:&nbsp;&nbsp;&nbsp;5.video-position:left<br><span id="sv12"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv13" ></span><br><input type="range" id="v12" onchange="x12()" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v13" onchange="x13()" value="0" max="200" min="0" step="2"><br><br>Background-fold<br>
@@ -405,7 +434,35 @@
 		 			<img src='images/ex14.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex14.gif)'">
 		 			<img src='images/ex15.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex15.gif)'">
 		 			<img src='images/ex16.webp' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex16.webp)'"><br>
-		 			<input type="file" class="w3-button w3-green w3-text-red w3-display-top" title="Upload your own background" id="u2" onchange="change_bg2()"><button class="w3-button w3-circle w3-green  w3-display-top" title="Remove background" onclick="document.getElementById('modified_video').style.backgroundImage='none'">X</button>
+		 			<input type="file" class="w3-button w3-green w3-text-red w3-display-top" title="Upload your own background" id="u2" onchange="change_bg2()"><button class="w3-button w3-circle w3-green  w3-display-top" title="Remove background" onclick="document.getElementById('modified_video').style.backgroundImage='none'">X</button><br>
+		 			<div class="w3-container w3-indigo w3-center" style="font-weight:bold;">Background-style:<br>Try these effects in background<br>This effect has total 2 steps...Use both<br>Step-1:select theme:<br>
+		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='normal';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="Multiply" class="w3-border-red" style="mix-blend-mode: multiply;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='multiply';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="darken" class="w3-border-red" style="mix-blend-mode: darken;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='darken';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="overlay" class="w3-border-red" style="mix-blend-mode: overlay;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='overlay';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="screen" class="w3-border-red" style="mix-blend-mode: screen;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='screen';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="lighten" class="w3-border-red" style="mix-blend-mode: lighten;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='lighten';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="color-dodge" class="w3-border-red" style="mix-blend-mode: color-dodge;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='color-dodge';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="color-burn" class="w3-border-red" style="mix-blend-mode: color-burn;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='color-burn';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="difference" class="w3-border-red" style="mix-blend-mode: difference;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='difference';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="exclusion" class="w3-border-red" style="mix-blend-mode: exclusion;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='exclusion';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="hue" class="w3-border-red" style="mix-blend-mode: hue;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='hue';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="saturation" class="w3-border-red" style="mix-blend-mode: saturation;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='saturation';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="color" class="w3-border-red" style="mix-blend-mode: color;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='color';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
+		 				<img src="images/blend.jpeg" title="luminosity" class="w3-border-red" style="mix-blend-mode: luminosity;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='luminosity';document.getElementById('modified_video').style.backgroundColor='#3db6b8';"><br><br>Step-2:select color:<br>
+		 					<button class="w3-button w3-circle w3-darkcyan " onclick="document.getElementById('modified_video').style.backgroundColor='darkcyan'" title="darkcyan">D</button>
+		 				<button class="w3-button w3-circle w3-red" onclick="document.getElementById('modified_video').style.backgroundColor='red'" title="red">R</button>
+		 				<button class="w3-button w3-circle w3-blue" onclick="document.getElementById('modified_video').style.backgroundColor='blue'" title="blue">B</button>
+		 				<button class="w3-button w3-circle w3-green" onclick="document.getElementById('modified_video').style.backgroundColor='green'" title="green">G</button>
+		 				<button class="w3-button w3-circle w3-black" onclick="document.getElementById('modified_video').style.backgroundColor='#3db6b8'" title="original">P</button>
+		 				<button class="w3-button w3-circle w3-white" onclick="document.getElementById('modified_video').style.backgroundColor='white'" title="white">W</button>
+		 				<button class="w3-button w3-circle w3-violet " onclick="document.getElementById('modified_video').style.backgroundColor='violet'" title="violet">P</button>
+		 				<button class="w3-button w3-circle w3-purple " onclick="document.getElementById('modified_video').style.backgroundColor='purple'" title="purple">P</button>
+		 				<button class="w3-button w3-circle w3-yellow " onclick="document.getElementById('modified_video').style.backgroundColor='yellow'" title="yellow">Y</button>
+		 			    <button class="w3-button w3-circle" style="background:#1ddbbf;" onclick="document.getElementById('modified_video').style.backgroundColor='#1ddbbf'" title="sky-blue">S</button><br>Not satisfied with the above color?!<br>select yours own::<br>
+		 			    <input type="color" onchange="document.getElementById('modified_video').style.backgroundColor=this.value">
+
+		 			</div>
 		 			<div style="position:absolute;text-align:center;" class="w3-center">
 		 				::Tick here to Add text ::&nbsp;&nbsp;
 		 				<input type="checkbox" style="font-size:2em;" onclick="T_i2()" id="ti2" >
@@ -443,10 +500,10 @@
 			
 			<img style="width:100%;height:100%;z-index:1" id="outImage" src="images/pic.png">
 			<input type="file" name="picField" id="picField"  onchange="preview()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;z-index:1;padding: 12px 1px;cursor:pointer;left:0%;"/></div>
-		<div id="modified_video"><span id='text11' title="click to change text" style="position:absolute;top:6%;border:1px dotted red; text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-1</span><span id='text21' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><video id="result_vid" style="width:100%;position:absolute;" autoplay loop controls><source src="images/pic.mp4"></video></div>
-		<div id="original_video"><video id="outVideo" style="width:100%;z-index:1;" loop controls><source src="images/pic2.mp4"></video><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
+		<div id="modified_video" style="position:fixed;"><span id='text11' title="click to change text" style="position:absolute;top:6%;border:1px dotted red; text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-1</span><span id='text21' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><video id="result_vid" style="width:100%;position:absolute;" autoplay loop controls><source src="images/pic.mp4"></video></div>
+		<div id="original_video" ><video id="outVideo" style="width:100%;z-index:1;" loop controls><source src="images/pic2.mp4"></video><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
 			
-			<div id="modified_image" style="background-repeat:no-repeat;background-size: 100% 100%">
+			<div id="modified_image" style="background-repeat:no-repeat;background-size: 100% 100%;position:fixed;">
 				<span id='text1' title="click to change text" style="position:absolute;top:6%;text-align:center;border:1px dotted red;" onclick="var l = prompt('Write something...'); if(l)this.innerHTML = l;">Text-1</span><span id='text2' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;"></div>
 		</div>
 		<div id="advanced_vid_tools" style="position:fixed;display:none;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
@@ -932,6 +989,7 @@
 	1.Making download button to work
 	5.Allowing user to perform another action when initial action has been downloaded
 	6.Creating css files for mobile and tablet
-    7.Adding cropping feature
-    8.Adding brush modification feature
+        7.Adding cropping feature
+        8.Adding brush modification feature
+    	9.Next update will be after i read graphics (SVG tutorial)
 -->
