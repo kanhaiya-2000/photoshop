@@ -58,12 +58,15 @@
 		}
 	</style>
 	<script type="text/javascript">
+		  var g = document.getElementById('result_img');
 		  function back(){
 		  	if(confirm('You are about to lose all saved changes!\nSure to quit?')){
 		  	document.getElementById('modified_image').style.display="none";
 		  	document.getElementById('original_image').style.display="none";
 		  	document.getElementById('modified_video').style.display="none";
+		  	document.getElementById('result_img').style.clipPath = "polygon(0px 0px,"+g.width+"px 0px,"+g.width+"px "+g.height+"px, 0px "+g.height+"px)";
 		  	document.getElementById('original_video').style.display="none";
+		  	document.getElementById('ins_crop').style.display="none";
 		  	document.getElementById('img_tools').style.display="none";
 		  	document.getElementById('vid_tools').style.display="none";
 		  	document.getElementById('c1').style.display="none";
@@ -98,7 +101,8 @@
 		  	document.getElementById('result_vid').style.width ="100%";
 		  	document.getElementById('modified_image').style.backgroundSize = "100% 100%";
 			document.getElementById('modified_image').style.backgroundRepeat = "no-repeat";
-
+			document.getElementById("ho-gelo").style.display="none";
+			document.getElementById("ho-gelo2").style.display="none";
 		    }
 		  }
 	</script>
@@ -114,7 +118,7 @@
 	</div>
 	<div id="d2">
 		<button class="w3-btn w3-large w3-circle w3-red w3-text-black" id="c1" title="Back" onclick="back();" style="position:fixed;top:0;right:50%;z-index:2"><-</button>
-		<div id="vid_tools" >
+		<div id="vid_tools"  >
 			 <img src="images/brightness.jpeg" style="border-radius: 50%" title="Brightness(100)"  class="im" id="iv1"><span id="sv1" style='background: rgba(0,0,1,0.5);color:red;'></span>
 			<input type="range" min="10" max="200" id="v1" value="100" onchange="x1()">
 			<img src="images/contrast.jpeg" style="border-radius: 50%;" title="contrast(100)"  class="im" id="iv2"><span id="sv2" style='background: rgba(0,0,1,0.5);color:red;'></span>
@@ -135,7 +139,7 @@
 
 
 		</div>
-		<div id="img_tools" >
+		<div id="img_tools" class="non-crop" >
 			<img src="images/brightness.jpeg" style="border-radius: 50%" title="Brightness(100)"  class="im" id="ii1"><span id="s1" style='background: rgba(0,0,1,0.5);color:red;'></span>
 			<input type="range" min="10" max="200" id="i1" value="100" onchange="f1()">
 			<img src="images/contrast.jpeg" style="border-radius: 50%;" title="contrast(100)"  class="im" id="ii2"><span id="s2" style='background: rgba(0,0,1,0.5);color:red;'></span>
@@ -154,12 +158,13 @@
 			<input type="range" min="0" max="100" id="i8" value="0" onchange="f8()">
 
 		</div>
-		 <div id="advanced_img_tools" style="position:fixed;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
+		 <div class="non-crop" id="advanced_img_tools" style="position:fixed;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
 		 	<button class="w3-btn w3-circle w3-red w3-text-black w3-large" title="Advanced feature" onclick="modify_bg()" style="z-index:1">+</button> 
+		 	<i class="fa fa-crop" title="clip the image" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="clip()" ></i>
 		 	<i id="mb" class="fa fa-download" title="Download image" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload()"></i>
 		 	
 		 </div>
-		 	<div id="adv" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center" style="overflow:auto;">
+		 	<div id="adv" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop" style="overflow:auto;">
 		 		<span onclick="this.parentElement.style.display='none'" class="w3-large w3-right w3-red" style="position:absolute;right:0%;cursor:pointer">X</span>
 		 		
 		 			<div style="overflow-y:auto;">
@@ -333,7 +338,7 @@
                             1.2 background-color:<br>
 		 					<input type="color" id="text-color-b" onchange="updateText()"><br><br>
 		 					1.3:Transparent-bg:<br>
-		 					<input type="checkbox" style="font-size:2em;" onclick="change_b(this)" title="Recheck if it doesn't work">
+		 					<input type="checkbox" id="cb" style="font-size:2em;" onclick="change_b(this)" title="Recheck if it doesn't work">
 		 					<br>Remove-border:&nbsp;
 		 					<input type="checkbox" style="font-size:2em;" onclick="if(this.checked){document.getElementById('text1').style.border='none';document.getElementById('text2').style.border='none';}
 		 					else{document.getElementById('text1').style.border='1px dotted red';document.getElementById('text2').style.border='1px dotted red';}" title="Recheck if it doesn't work"><br><br>
@@ -353,7 +358,7 @@
 		 	</div>
 		 </div>
 		     
-		 	<div id="adv2" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center" style="overflow:auto;">
+		 	<div id="adv2" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center " style="overflow:auto;">
 		 		<span onclick="this.parentElement.style.display='none'" class="w3-xlarge w3-right w3-red" style="position:absolute;right:0%;cursor:pointer">X</span>
 		 			<div class="w3-container  w3-center" style="font-weight:bold;background:teal;">Important video effect<br>
 		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='normal'">
@@ -473,7 +478,7 @@
 		 					1.2--Background-color:<br>
 		 					<input type="color" id="text-color-b2" onchange="updateText2()"><br><br>
 		 					1.3:Transparent-bg:<br>
-		 					<input type="checkbox" style="font-size:2em;" onclick="change_b(this)" title="Recheck if it doesn't work"><br>Remove-border:&nbsp;
+		 					<input type="checkbox" id="cb2" style="font-size:2em;" onclick="change_b(this)" title="Recheck if it doesn't work"><br>Remove-border:&nbsp;
 		 					<input type="checkbox" style="font-size:2em;" onclick="if(this.checked){document.getElementById('text11').style.border='none';document.getElementById('text21').style.border='none';}
 		 					else{document.getElementById('text11').style.border='1px dotted red';document.getElementById('text21').style.border='1px dotted red';}" title="Recheck if it doesn't work"><br><br>
 		 					2.text-size:<br>
@@ -496,7 +501,7 @@
 		<div id="ask" style="z-index:1;width:100%;">
 		<div  id="img" style="cursor:pointer" onclick="T_img()"><img src="images/up_video.jpeg" style="border-radius: 50%;z-index:1" ><br><i style="background:white;"><span class="w3-xxlarge" style="font-family:'Tangerine';background:white;position:relative;">Upload video</span><br>Tap here to select a video to style it</i></div>
 		<div  id="vdo" style="cursor:pointer" onclick="T_vdo()"><img src="images/up_image.jpeg" style="border-radius: 50%" ><br><i style="background:white;"><span class="w3-xxlarge w3-center" style="font-family:'Tangerine';background:white;position:relative;">Upload Image</span><br>Tap here to select a photo to style it</i></div></div>
-		<div id="original_image">
+		<div id="original_image" class="non-crop">
 			
 			<img style="width:100%;height:100%;z-index:1" id="outImage" src="images/pic.png">
 			<input type="file" name="picField" id="picField"  onchange="preview()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;z-index:1;padding: 12px 1px;cursor:pointer;left:0%;"/></div>
@@ -504,19 +509,32 @@
 		<div id="original_video" ><video id="outVideo" style="width:100%;z-index:1;" loop controls><source src="images/pic2.mp4"></video><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
 			
 			<div id="modified_image" style="background-repeat:no-repeat;background-size: 100% 100%;position:fixed;">
-				<span id='text1' title="click to change text" style="position:absolute;top:6%;text-align:center;border:1px dotted red;" onclick="var l = prompt('Write something...'); if(l)this.innerHTML = l;">Text-1</span><span id='text2' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;"></div>
+				<span id='text1' title="click to change text" style="position:absolute;top:6%;text-align:center;border:1px dotted red;" onclick="var l = prompt('Write something...'); if(l)this.innerHTML = l;">Text-1</span><span id='text2' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;"><button id="ho-gelo">Done</button><br><button id="ho-gelo2">Reset</button></div>
 		</div>
 		<div id="advanced_vid_tools" style="position:fixed;display:none;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
 		 	<button class="w3-btn w3-circle w3-red w3-text-black w3-large" title="Advanced feature" onclick="document.getElementById('adv2').style.display='flex';s_kk_p_e();" style="z-index:1">+</button>
 		 	<i id="mb1" class="fa fa-download" title="Download video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload2()"></i>
 		 	
 		 </div>
+		 <div id="ins_crop" class="w3-panel w3-center w3-left w3-text-red">
+		 	<p class="w3-xx-large w3-text-yellow" style="font-weight: bold;text-decoration:underline;">Instruction for cropping</p>
+		 	<i class="w3-text-green w3-large">1.Using this cropper ,you can crop your image even into zig-zag shape</i><br><br>
+		 	<i class="w3-text-green w3-large">2.To use this cropping feature,move your mouse to the image and start drawing the map of dots over your image of whatever area you want to crop-out by clicking.These dots are meant for the boundary of the part of image that will be finally cropped out ,so be careful in putting dots.</i><br><br>
+		 	<i class="w3-text-green w3-large">3.on each clicking ,a small dot will appear at the clicked position,continue on drawing your map</i><br><br>
+		 	<i class="w3-text-red w3-large" style="font-weight: bold;color:green;text-decoration:underline;">onclicking the "Done" button,the part of the image entrapped between the dots will be cropped off.</i><br><br>
+		 	<i class="w3-text-green w3-large">4.After finishing your map,click the button "Done".<br>If you think you have commited some mistake in previous step,click reset button,this will clear-out one dot.</i><br><br>
+		 	<i class="w3-text-yellow w3-large">5.You can readjust your cropped-image even after finishing.<br>To do this ,you need to click cropping button again<br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></i><br><br>
+		 	<i class="w3-text-green w3-large">🙂️That's all for using this feature!!🙂️</i><br><br>
+		 During cropping ,dragging image is not allowed<br>However,you can adjust this using the following tools<br>
+		 1.Image-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.Image-position:left<br><input type="range"  onchange="document.getElementById('result_img').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_img').style.left = (this.value-50)+'%';" value="0" max="200" min="0" step="2"><br><br><br><div class="w3-container w3-text-red " style="font-weight:bold;">What you can do<br>*Removing unwanted background from your photo..and then Setting attractive background<br>*Useful in preparing 3d canvas images by background-removal<br>These are just few ideas ..the next depends on how well you use it</div>
+		 			</div>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
 		var g = document.getElementById('result_img');
 		var d = document.getElementById('bg_setter');
 		var gv = document.getElementById('result_vid');
+		var m = document.getElementById("modified_image");
 		var vid ;
 		alert("Never block dialogue else you will miss instruction guide on how to use it");
     		var i1 = document.getElementById('i1');	
@@ -581,12 +599,88 @@
 		function load(){
 			 document.body.style.overflow = "hidden";
 			 var c = document.getElementById("h");
+
 			 c.innerHTML = "";
 			 setInterval (function(){
 			 c.innerHTML += '.' ;
 			 if(c.innerHTML =='....')
 				c.innerHTML = '.';} ,1000);
 			 setTimeout(s_kk_p_e ,10000);
+		}
+		function clip(){
+			let c = document.getElementsByClassName("non-crop");
+			let btn = document.getElementById("ho-gelo");
+			let btn2 = document.getElementById("ho-gelo2");
+			document.getElementById("result_img").style.transform="scale(1,1)";
+			s_kk_p_e();
+			g.draggable = "false";
+			btn.style.display ="block";
+			btn2.style.display ="block";
+			let clip_str ="";
+			let l_x,l_y;
+			g.style.clipPath = "polygon(0px 0px,"+g.width+"px 0px,"+g.width+"px "+g.height+"px, 0px "+g.height+"px)";
+			for(x of c)
+				x.style.display = "none";
+			g.style.cursor="cell";
+			
+			$(document).ready(function() {
+			$("#ins_crop").show();
+			$( "#result_img" ).draggable( "disable" );
+			$("#result_img").click(function (ev) {
+          		mouseX = ev.pageX;
+          		mouseY = ev.pageY
+          		var color = 'rgba(0,0,255,0.6)';
+          		var size = '3.6px';
+          		$("body").append(
+          		$('<div class="dots"></div>')
+              		.css('position', 'absolute')
+              		.css('top', mouseY + 'px')
+              		.css('left', mouseX + 'px')
+              		.css('width', size)
+              		.css('height', size)
+              		.css('background-color', color));
+      });
+			$('#result_img').click(function(e) {
+    		var offset = $(this).offset();
+    		l_x = (e.pageX - offset.left);
+    		l_y = (e.pageY - offset.top);
+    		clip_str += ""+(e.pageX - offset.left)+"px "+(e.pageY - offset.top)+"px,";
+    		
+  		});
+		});
+			btn.onclick = function(){
+				this.style.display ="none";
+				btn2.style.display="none";
+				$( function() {
+    			$( "#result_img" ).draggable();
+    			$("#ins_crop").hide();
+    			$(".dots").hide();
+    		});
+				for(x of c)
+				x.style.display = "initial";
+			$("#adv").hide();
+			g.style.clipPath = "polygon("+clip_str.substr(0,clip_str.length-1)+")";
+			g.onclick= function(){}
+			$( "#result_img" ).draggable( "enable" );
+			g.style.cursor = "grab";
+			document.getElementById("advanced_img_tools").style.display="flex";
+
+			}
+			btn2.onclick = function(){
+				$(".dots").last().css({display:"none"});
+				let v = $(".dots:visible");
+				let k = $(".dots");
+				if(v.length>3){
+				document.body.removeChild(k[k.length-1]);
+				let s =clip_str.split(',');
+				clip_str="";
+				for(let i =0;i<s.length-2;i++)
+					clip_str += s[i]+",";
+				
+
+			}
+				
+			}
 		}
 		function s_kk_p_e(){
 			if(screen.availWidth < 1000){
@@ -647,6 +741,8 @@
 			alert("Tap the browse button to select a video from your device");
 			document.getElementById('c1').style.display="block";
 			document.getElementById("ask").style.display="none";
+			document.getElementById("ho-gelo").style.display="none";
+			document.getElementById("ho-gelo2").style.display="none";
 			s_kk_p_e();
 			document.body.style.overflow = "auto";
 			document.getElementById("original_video").style.display="flex";
@@ -930,21 +1026,27 @@
     	document.getElementById('text1').style.fontFamily = document.getElementById('myS').value ;
     	document.getElementById('text1').style.fontSize = document.getElementById('text-size').value+"em";
     	document.getElementById('text1').style.color = document.getElementById('text-color').value;
+    	var cb = document.getElementById("cb");
+    	if(!cb.checked){
     	document.getElementById('text1').style.backgroundColor = document.getElementById('text-color-b').value;
+        document.getElementById('text2').style.backgroundColor = document.getElementById('text-color-b').value;}
     	document.getElementById('text2').style.fontFamily = document.getElementById('myS').value ;
     	document.getElementById('text2').style.fontSize = document.getElementById('text-size').value+"em";
     	document.getElementById('text2').style.color = document.getElementById('text-color').value;
-    	document.getElementById('text2').style.backgroundColor = document.getElementById('text-color-b').value;
+    	
     }
     function updateText2(){
     	document.getElementById('text11').style.fontFamily = document.getElementById('myS2').value ;
     	document.getElementById('text11').style.fontSize = document.getElementById('text-size2').value+"em";
     	document.getElementById('text11').style.color = document.getElementById('text-color2').value;
+    	var cb2 = document.getElementById("cb2");
+    	if(!cb2.checked){
     	document.getElementById('text11').style.backgroundColor = document.getElementById('text-color-b2').value;
+        document.getElementById('text21').style.backgroundColor = document.getElementById('text-color-b2').value;}
     	document.getElementById('text21').style.fontFamily = document.getElementById('myS2').value ;
     	document.getElementById('text21').style.fontSize = document.getElementById('text-size2').value+"em";
     	document.getElementById('text21').style.color = document.getElementById('text-color2').value;
-    	document.getElementById('text21').style.backgroundColor = document.getElementById('text-color-b2').value;
+    	
     }
 
   function change_b(e){
@@ -988,8 +1090,7 @@
 <!-- Remaining work://
 	1.Making download button to work
 	5.Allowing user to perform another action when initial action has been downloaded
-	6.Creating css files for mobile and tablet
-        7.Adding cropping feature
-        8.Adding brush modification feature
-    	9.Next update will be after i read graphics (SVG tutorial)
+	
+        
+    	
 -->
