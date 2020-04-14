@@ -523,7 +523,7 @@
 		 	<i class="w3-text-green " style="font-size:1em;">3.on each clicking ,a small dot will appear at the clicked position,continue on drawing your map</i><br><br>
 		 	<i class="w3-text-red " style="font-weight: bold;color:green;text-decoration:underline;font-size:1em;">onclicking the "Done" button,the part of the image entrapped between the dots will be cropped off.</i><br><br>
 		 	<i class="w3-text-green " style="font-size:1em;">4.After finishing your map,click the button "Done".<br>If you think you have commited some mistake in previous step,click reset button,this will clear-out one dot.</i><br><br>
-		 	<i class="w3-text-yellow " style="font-size:1em;">5.You can readjust your cropped-image even after finishing.<br>To do this ,you need to click cropping button again<br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></i><br><br>
+		 	<p class="w3-text-yellow " style="font-size:1em;">5.You can readjust your cropped-image even after finishing.<br>To do this ,you need to click cropping button again<br><i class="w3-red w3-center" style="text-decoration:underline;">Press the crop button in full screen mode only,otherwise image will not be loaded completely.</i><br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></p><br><br>
 		 	<i class="w3-text-green " style="font-size:1em;">🙂️That's all for using this feature!!🙂️</i><br><br>
 		 During cropping ,dragging image is not allowed<br>However,you can adjust this using the following tools<br>
 		 1.Image-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.Image-position:left<br><input type="range"  onchange="document.getElementById('result_img').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_img').style.left = (this.value-50)+'%';" value="0" max="200" min="0" step="2">
@@ -607,12 +607,13 @@
 				c.innerHTML = '.';} ,1000);
 			 setTimeout(s_kk_p_e ,10000);
 		}
+		var factor = 1;
 		function clip(){
 			let c = document.getElementsByClassName("non-crop");
 			let btn = document.getElementById("ho-gelo");
 			let btn2 = document.getElementById("ho-gelo2");
 			document.getElementById("result_img").style.transform="scale(1,1)";
-			s_kk_p_e();
+			let interval = setInterval(s_kk_p_e ,1);
 			g.draggable = "false";
 			btn.style.display ="block";
 			btn2.style.display ="block";
@@ -651,10 +652,13 @@
 			btn.onclick = function(){
 				this.style.display ="none";
 				btn2.style.display="none";
+				factor++ ;
+				clearInterval(interval);
 				$( function() {
     			$( "#result_img" ).draggable();
     			$("#ins_crop").hide();
     			$(".dots").hide();
+    			$(".dots").remove();
     		});
 				for(x of c)
 				x.style.display = "initial";
@@ -667,11 +671,12 @@
 
 			}
 			btn2.onclick = function(){
-				$(".dots").last().css({display:"none"});
-				let v = $(".dots:visible");
+				
+				let v = $(".dots:hidden");
 				let k = $(".dots");
-				if(v.length>3){
-				document.body.removeChild(k[k.length-1]);
+				if(k.length/factor>3){
+					for(let i =0;i<factor;i++)
+						$(".dots:last").remove();
 				let s =clip_str.split(',');
 				clip_str="";
 				for(let i =0;i<s.length-2;i++)
@@ -1090,8 +1095,6 @@
 <!-- Remaining work://
 	1.Making download button to work
 	5.Allowing user to perform another action when initial action has been downloaded
-	6.Creating css files for mobile and tablet
-        7.Adding cropping feature
-        8.Adding brush modification feature
+	8.dynamic video editing
     	
 -->
