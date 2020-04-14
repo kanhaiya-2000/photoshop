@@ -517,16 +517,16 @@
 		 	
 		 </div>
 		 <div id="ins_crop" class="w3-panel w3-center w3-left w3-text-red">
-		 	<p class="w3-xx-large w3-text-yellow" style="font-weight: bold;text-decoration:underline;">Instruction for cropping</p>
-		 	<i class="w3-text-green w3-large">1.Using this cropper ,you can crop your image even into zig-zag shape</i><br><br>
-		 	<i class="w3-text-green w3-large">2.To use this cropping feature,move your mouse to the image and start drawing the map of dots over your image of whatever area you want to crop-out by clicking.These dots are meant for the boundary of the part of image that will be finally cropped out ,so be careful in putting dots.</i><br><br>
-		 	<i class="w3-text-green w3-large">3.on each clicking ,a small dot will appear at the clicked position,continue on drawing your map</i><br><br>
-		 	<i class="w3-text-red w3-large" style="font-weight: bold;color:green;text-decoration:underline;">onclicking the "Done" button,the part of the image entrapped between the dots will be cropped off.</i><br><br>
-		 	<i class="w3-text-green w3-large">4.After finishing your map,click the button "Done".<br>If you think you have commited some mistake in previous step,click reset button,this will clear-out one dot.</i><br><br>
-		 	<i class="w3-text-yellow w3-large">5.You can readjust your cropped-image even after finishing.<br>To do this ,you need to click cropping button again<br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></i><br><br>
-		 	<i class="w3-text-green w3-large">🙂️That's all for using this feature!!🙂️</i><br><br>
+		 	<p class=" w3-text-yellow" style="font-weight: bold;text-decoration:underline;font-size:1.5em;">Instruction for cropping</p>
+		 	<i class="w3-text-green " style="font-size:1em;">1.Using this cropper ,you can crop your image even into zig-zag shape</i><br><br>
+		 	<i class="w3-text-green " style="font-size:1em;">2.To use this cropping feature,move your mouse to the image and start drawing the map of dots over your image of whatever area you want to crop-out by clicking.These dots are meant for the boundary of the part of image that will be finally cropped out ,so be careful in putting dots.</i><br><br>
+		 	<i class="w3-text-green " style="font-size:1em;">3.on each clicking ,a small dot will appear at the clicked position,continue on drawing your map</i><br><br>
+		 	<i class="w3-text-red " style="font-weight: bold;color:green;text-decoration:underline;font-size:1em;">onclicking the "Done" button,the part of the image entrapped between the dots will be cropped off.</i><br><br>
+		 	<i class="w3-text-green " style="font-size:1em;">4.After finishing your map,click the button "Done".<br>If you think you have commited some mistake in previous step,click reset button,this will clear-out one dot.</i><br><br>
+		 	<i class="w3-text-yellow " style="font-size:1em;">5.You can readjust your cropped-image even after finishing.<br>To do this ,you need to click cropping button again<br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></i><br><br>
+		 	<i class="w3-text-green " style="font-size:1em;">🙂️That's all for using this feature!!🙂️</i><br><br>
 		 During cropping ,dragging image is not allowed<br>However,you can adjust this using the following tools<br>
-		 1.Image-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.Image-position:left<br><input type="range"  onchange="document.getElementById('result_img').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_img').style.left = (this.value-50)+'%';" value="0" max="200" min="0" step="2"><br><br><br><div class="w3-container w3-text-red " style="font-weight:bold;">What you can do<br>*Removing unwanted background from your photo..and then Setting attractive background<br>*Useful in preparing 3d canvas images by background-removal<br>These are just few ideas ..the next depends on how well you use it</div>
+		 1.Image-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.Image-position:left<br><input type="range"  onchange="document.getElementById('result_img').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_img').style.left = (this.value-50)+'%';" value="0" max="200" min="0" step="2">
 		 			</div>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -633,9 +633,9 @@
           		var size = '3.6px';
           		$("body").append(
           		$('<div class="dots"></div>')
-              		.css('position', 'absolute')
-              		.css('top', mouseY + 'px')
-              		.css('left', mouseX + 'px')
+              		.css('position', 'fixed')
+              		.css('top', ev.clientY + 'px')
+              		.css('left', ev.clientX + 'px')
               		.css('width', size)
               		.css('height', size)
               		.css('background-color', color));
@@ -1090,7 +1090,8 @@
 <!-- Remaining work://
 	1.Making download button to work
 	5.Allowing user to perform another action when initial action has been downloaded
-	
-        
+	6.Creating css files for mobile and tablet
+        7.Adding cropping feature
+        8.Adding brush modification feature
     	
 -->
