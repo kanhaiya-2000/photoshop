@@ -49,6 +49,27 @@
 	margin-right:0;
 	background-blend-mode: normal;
 }
+#ho-gelo2{
+	position:fixed;
+	display:none;
+	bottom:10px;
+	right:290px;
+	width:220px;
+	z-index:200;
+	padding:3px;
+}
+#ho-gelo{
+	position:fixed;
+	display:none;
+	bottom:10px;
+	right:50px;
+	z-index:200;
+	width:220px;
+	padding:3px;
+}
+.dots{
+	z-index:500;
+}
 #original_video,#modified_video{
 	align-items: center;
 	margin-top:40px;
@@ -59,6 +80,13 @@
 	
 	height:90%;
 	
+}
+#ins_crop{
+	display:none;
+	width:700px;
+	position: absolute;
+	top:20px;
+	background:rgb(0,0,0,0.8);
 }
 img{
 	width:350px;
@@ -227,9 +255,7 @@ span{
 	height:600px;
 	display:none;
 }
-#modified_image{
-	padding-top:40px;
-}
+
 #adv,#adv2{
 	width:480px;
 	background:rgba(0,0,0,0.9);
