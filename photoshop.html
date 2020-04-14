@@ -57,55 +57,6 @@
 			padding:15px;
 		}
 	</style>
-	<script type="text/javascript">
-		  var g = document.getElementById('result_img');
-		  function back(){
-		  	if(confirm('You are about to lose all saved changes!\nSure to quit?')){
-		  	document.getElementById('modified_image').style.display="none";
-		  	document.getElementById('original_image').style.display="none";
-		  	document.getElementById('modified_video').style.display="none";
-		  	document.getElementById('result_img').style.clipPath = "polygon(0px 0px,"+g.width+"px 0px,"+g.width+"px "+g.height+"px, 0px "+g.height+"px)";
-		  	document.getElementById('original_video').style.display="none";
-		  	document.getElementById('ins_crop').style.display="none";
-		  	document.getElementById('img_tools').style.display="none";
-		  	document.getElementById('vid_tools').style.display="none";
-		  	document.getElementById('c1').style.display="none";
-		  	document.getElementById('advanced_img_tools').style.display="none";
-		  	document.getElementById('advanced_vid_tools').style.display="none";
-		  	document.getElementById('adv').style.display="none";
-		  	document.getElementById('adv2').style.display="none";
-		  	document.getElementById('ask').style.display="block";
-		  	document.getElementById('result_vid').setAttribute('src','images/pic.mp4');
-		  	document.getElementById('outVideo').setAttribute('src','images/pic2.mp4');
-		  	document.getElementById('outImage').src = "images/pic.png";
-		  	document.getElementById('result_img').src = "images/pic.gif";
-		  	document.getElementById('modified_video').style.background="none";
-		  	document.getElementById('modified_image').style.background="none";
-		  	document.getElementById('result_img').style.filter ="none";
-		  	document.getElementById('result_img').style.mixBlendMode ="normal";
-		  	document.getElementById('result_img').style.borderRadius ="0";
-		  	document.getElementById('result_vid').style.filter ="none";
-		  	document.getElementById('result_vid').style.mixBlendMode ="normal";
-		  	document.getElementById('result_img').style.transform = "none";
-		  	document.getElementById('ti').checked= false;
-		  	document.getElementById('ti2').checked= false;
-		  	document.getElementById('text2').style.display="none";
-		  	document.getElementById('text21').style.display="none";
-		  	document.getElementById('text1').style.display="none";
-		  	document.getElementById('text11').style.display="none";
-		  	document.getElementById('result_img').style.width ="100%";
-		  	document.getElementById('result_vid').style.height ="100%";
-		  	document.getElementById('result_img').style.top ="0";
-		  	document.getElementById('result_img').style.left ="0";
-		  	document.getElementById('result_img').style.height ="100%";
-		  	document.getElementById('result_vid').style.width ="100%";
-		  	document.getElementById('modified_image').style.backgroundSize = "100% 100%";
-			document.getElementById('modified_image').style.backgroundRepeat = "no-repeat";
-			document.getElementById("ho-gelo").style.display="none";
-			document.getElementById("ho-gelo2").style.display="none";
-		    }
-		  }
-	</script>
 
 </head>
 <body onload='load()' onbeforeunload="return 'Sure to leave?'">
@@ -117,8 +68,8 @@
 			
 	</div>
 	<div id="d2">
-		<button class="w3-btn w3-large w3-circle w3-red w3-text-black" id="c1" title="Back" onclick="back();" style="position:fixed;top:0;right:50%;z-index:2"><-</button>
-		<div id="vid_tools"  >
+		<button class="w3-btn w3-large w3-circle w3-red w3-text-black" id="c1" title="Back" onclick="back();" style="position:fixed;top:0;right:50%;z-index:2"><--</button>
+		<div id="vid_tools" class="non-crop-v" >
 			 <img src="images/brightness.jpeg" style="border-radius: 50%" title="Brightness(100)"  class="im" id="iv1"><span id="sv1" style='background: rgba(0,0,1,0.5);color:red;'></span>
 			<input type="range" min="10" max="200" id="v1" value="100" onchange="x1()">
 			<img src="images/contrast.jpeg" style="border-radius: 50%;" title="contrast(100)"  class="im" id="iv2"><span id="sv2" style='background: rgba(0,0,1,0.5);color:red;'></span>
@@ -358,7 +309,7 @@
 		 	</div>
 		 </div>
 		     
-		 	<div id="adv2" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center " style="overflow:auto;">
+		 	<div id="adv2" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop-v " style="overflow:auto;">
 		 		<span onclick="this.parentElement.style.display='none'" class="w3-xlarge w3-right w3-red" style="position:absolute;right:0%;cursor:pointer">X</span>
 		 			<div class="w3-container  w3-center" style="font-weight:bold;background:teal;">Important video effect<br>
 		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='normal'">
@@ -387,7 +338,7 @@
 		 			    <button class="w3-button w3-circle w3-yellow " onclick="document.getElementById('modified_video').style.backgroundColor='yellow'" title="yellow">Y</button>
 		 			    <button class="w3-button w3-circle" style="background:#1ddbbf;" onclick="document.getElementById('modified_video').style.backgroundColor='#1ddbbf'" title="sky-blue">S</button></div><br>
 		 				Cool Effects
-		 				<br>1. Opacity:&nbsp;&nbsp;&nbsp;2.video-width:&nbsp;&nbsp;3.video-height:<br><span id="sv9" class="w3-left" ></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv10" class="w3-center"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv11" class="w3-right"></span><br><input type="range" id="v9" onchange="x9()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v10" onchange="x10()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v11" onchange="x11()" value="100" max="100" min="2" step="2"><br><br>
+		 				<br>1. Opacity:&nbsp;&nbsp;&nbsp;2.video-width:&nbsp;&nbsp;3.video-height:<br><span id="sv9" class="w3-left" ></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv10" class="w3-center"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv11" class="w3-right"></span><br><input type="range" id="v9" onchange="x9()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v10" onchange="x10()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v11" onchange="x11()" value="100" max="100" min="2" step="2"><br><br>You can also drag video to adjust its position<br>
 		 			4.video-position-top:&nbsp;&nbsp;&nbsp;5.video-position:left<br><span id="sv12"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv13" ></span><br><input type="range" id="v12" onchange="x12()" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v13" onchange="x13()" value="0" max="200" min="0" step="2"><br><br>Background-fold<br>
 		 			Along -x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Along-y<br>
 		 			<input type="range" id="v14" onchange="x14()" value="1" max="4" min="1" step="1">&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v15" onchange="x14()" value="1" max="4" min="1" step="1"><br>
@@ -505,35 +456,47 @@
 			
 			<img style="width:100%;height:100%;z-index:1" id="outImage" src="images/pic.png">
 			<input type="file" name="picField" id="picField"  onchange="preview()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;z-index:1;padding: 12px 1px;cursor:pointer;left:0%;"/></div>
-		<div id="modified_video" style="position:fixed;"><span id='text11' title="click to change text" style="position:absolute;top:6%;border:1px dotted red; text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-1</span><span id='text21' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><video id="result_vid" style="width:100%;position:absolute;" autoplay loop controls><source src="images/pic.mp4"></video></div>
-		<div id="original_video" ><video id="outVideo" style="width:100%;z-index:1;" loop controls><source src="images/pic2.mp4"></video><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
+		<div id="modified_video" style="position:fixed;"><span id='text11' title="click to change text" style="position:absolute;top:6%;border:1px dotted red; text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-1</span><span id='text21' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><video id="result_vid" style="width:100%;position:absolute;" autoplay loop ><source src="images/pic.mp4"></video><button id="ho-gelo-v">Done</button><br><button id="ho-gelo2-v">Reset</button></div>
+		<div id="original_video" class="non-crop-v"><video id="outVideo" style="width:100%;z-index:1;" loop controls><source src="images/pic2.mp4"></video><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
 			
 			<div id="modified_image" style="background-repeat:no-repeat;background-size: 100% 100%;position:fixed;">
 				<span id='text1' title="click to change text" style="position:absolute;top:6%;text-align:center;border:1px dotted red;" onclick="var l = prompt('Write something...'); if(l)this.innerHTML = l;">Text-1</span><span id='text2' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;"><button id="ho-gelo">Done</button><br><button id="ho-gelo2">Reset</button></div>
 		</div>
-		<div id="advanced_vid_tools" style="position:fixed;display:none;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
+		<div id="advanced_vid_tools" class="non-crop-v" style="position:fixed;display:none;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
 		 	<button class="w3-btn w3-circle w3-red w3-text-black w3-large" title="Advanced feature" onclick="document.getElementById('adv2').style.display='flex';s_kk_p_e();" style="z-index:1">+</button>
+		 	<i class="fa fa-pause" id="play" title="play/pause the video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="if(document.getElementById('result_vid').paused){document.getElementById('result_vid').play();this.className='fa fa-pause';}else {document.getElementById('result_vid').pause();this.className ='fa fa-play';}" ></i>
+		 	<i class="fa fa-crop" title="clip the video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="clip2()" ></i>
 		 	<i id="mb1" class="fa fa-download" title="Download video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload2()"></i>
 		 	
 		 </div>
 		 <div id="ins_crop" class="w3-panel w3-center w3-left w3-text-red">
 		 	<p class=" w3-text-yellow" style="font-weight: bold;text-decoration:underline;font-size:1.5em;">Instruction for cropping</p>
-		 	<i class="w3-text-green " style="font-size:1em;">1.Using this cropper ,you can crop your image even into zig-zag shape</i><br><br>
-		 	<i class="w3-text-green " style="font-size:1em;">2.To use this cropping feature,move your mouse to the image and start drawing the map of dots over your image of whatever area you want to crop-out by clicking.These dots are meant for the boundary of the part of image that will be finally cropped out ,so be careful in putting dots.</i><br><br>
+		 	<i class="w3-text-green " style="font-size:1em;">1.Using this cropper ,you can crop your image/video even into zig-zag shape</i><br><br>
+		 	<i class="w3-text-green " style="font-size:1em;">2.To use this cropping feature,move your mouse to the image/video and start drawing the map of dots over your image/video of whatever area you want to crop-out by clicking.These dots are meant for the boundary of the part of image/video that will be finally cropped out ,so be careful in putting dots.</i><br><br>
 		 	<i class="w3-text-green " style="font-size:1em;">3.on each clicking ,a small dot will appear at the clicked position,continue on drawing your map</i><br><br>
-		 	<i class="w3-text-red " style="font-weight: bold;color:green;text-decoration:underline;font-size:1em;">onclicking the "Done" button,the part of the image entrapped between the dots will be cropped off.</i><br><br>
-		 	<i class="w3-text-green " style="font-size:1em;">4.After finishing your map,click the button "Done".<br>If you think you have commited some mistake in previous step,click reset button,this will clear-out one dot.</i><br><br>
-		 	<p class="w3-text-yellow " style="font-size:1em;">5.You can readjust your cropped-image even after finishing.<br>To do this ,you need to click cropping button again<br><i class="w3-red w3-center" style="text-decoration:underline;">Press the crop button in full screen mode only,otherwise image will not be loaded completely.</i><br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></p><br><br>
+		 	<i class="w3-text-red " style="font-weight: bold;color:green;text-decoration:underline;font-size:1em;">onclicking the "Done" button,the part of the image/video entrapped between the dots will be cropped off.</i><br><br>
+		 	<i class="w3-text-green " style="font-size:1em;">4.After finishing your map,click the button "Done".<br>If you think you have commited some mistake in previous step,click reset button,this will clear-out one dot.<br>The minimum number of dots is always 3</i><br><br>
+		 	<p class="w3-text-yellow " style="font-size:1em;">5.You can readjust your cropped-image(or video) even after finishing.<br>To do this ,you need to click cropping button again<br><i class="w3-red w3-center" style="text-decoration:underline;">Press the crop button in full screen mode only,otherwise image/video may not be loaded completely.</i><br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></p><br><br>
 		 	<i class="w3-text-green " style="font-size:1em;">🙂️That's all for using this feature!!🙂️</i><br><br>
 		 During cropping ,dragging image is not allowed<br>However,you can adjust this using the following tools<br>
 		 1.Image-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.Image-position:left<br><input type="range"  onchange="document.getElementById('result_img').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_img').style.left = (this.value-50)+'%';" value="0" max="200" min="0" step="2">
 		 			</div>
+		 			<div id="ins_crop-v" class="w3-panel w3-center w3-left w3-text-red">
+		 	<p class=" w3-text-yellow" style="font-weight: bold;text-decoration:underline;font-size:1.5em;">Instruction for cropping</p>
+		 	<i class="w3-text-green " style="font-size:1em;">1.Using this cropper ,you can crop your image/video even into zig-zag shape</i><br><br>
+		 	<i class="w3-text-green " style="font-size:1em;">2.To use this cropping feature,move your mouse to the image/video and start drawing the map of dots over your image/video of whatever area you want to crop-out by clicking.These dots are meant for the boundary of the part of image/video that will be finally cropped out ,so be careful in putting dots.</i><br><br>
+		 	<i class="w3-text-green " style="font-size:1em;">3.on each clicking ,a small dot will appear at the clicked position,continue on drawing your map</i><br><br>
+		 	<i class="w3-text-red " style="font-weight: bold;color:green;text-decoration:underline;font-size:1em;">onclicking the "Done" button,the part of the image/video entrapped between the dots will be cropped off.</i><br><br>
+		 	<i class="w3-text-green " style="font-size:1em;">4.After finishing your map,click the button "Done".<br>If you think you have commited some mistake in previous step,click reset button,this will clear-out one dot.<br>The minimum number of dots is always 3</i><br><br>
+		 	<p class="w3-text-yellow " style="font-size:1em;">5.You can readjust your cropped-image(or video) even after finishing.<br>To do this ,you need to click cropping button again<br><i class="w3-red w3-center" style="text-decoration:underline;">Press the crop button in full screen mode only,otherwise image/video may not be loaded completely.</i><br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></p><br><br>
+		 	<i class="w3-text-green " style="font-size:1em;">🙂️That's all for using this feature!!🙂️</i><br><br>
+		 During cropping ,dragging image/video is not allowed<br>However,you can adjust this using the following tools<br>
+		 1.video-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.video-position:left<br><input type="range"  onchange="document.getElementById('result_vid').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_vid').style.left = (this.value-100)+'%';" value="0" max="200" min="0" step="2">
+		 			</div>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
-		var g = document.getElementById('result_img');
 		var d = document.getElementById('bg_setter');
-		var gv = document.getElementById('result_vid');
 		var m = document.getElementById("modified_image");
 		var vid ;
 		alert("Never block dialogue else you will miss instruction guide on how to use it");
@@ -585,6 +548,64 @@
     		var g8 = 0 ,g18 = 0;
     		var g9 = 100;
     		var i_type, v_type;
+    		var g = document.getElementById('result_img');
+		  var gv = document.getElementById('result_vid');
+		  function back(){
+		  	if(confirm('You are about to lose all saved changes!\nSure to quit?')){
+		  	document.getElementById('modified_image').style.display="none";
+		  	document.getElementById('original_image').style.display="none";
+		  	document.getElementById('modified_video').style.display="none";
+		  	document.getElementById('result_img').style.clipPath = "polygon(0px 0px,480px 0px,480px 600px, 0px 600px)";
+		  	document.getElementById('result_vid').style.clipPath = "polygon(0px 0px,480px 0px,480px 600px, 0px 600px)";
+		  	document.getElementById('original_video').style.display="none";
+		  	document.getElementById('ins_crop').style.display="none";
+		  	document.getElementById('ins_crop-v').style.display="none";
+		  	document.getElementById('img_tools').style.display="none";
+		  	document.getElementById('vid_tools').style.display="none";
+		  	document.getElementById('c1').style.display="none";
+		  	document.getElementById('advanced_img_tools').style.display="none";
+		  	document.getElementById('advanced_vid_tools').style.display="none";
+		  	document.getElementById('adv').style.display="none";
+		  	document.getElementById('adv2').style.display="none";
+		  	document.getElementById('ask').style.display="block";
+		  	document.getElementById('result_vid').setAttribute('src','images/pic.mp4');
+		  	document.getElementById('outVideo').setAttribute('src','images/pic2.mp4');
+		  	document.getElementById('outImage').src = "images/pic.png";
+		  	document.getElementById('result_img').src = "images/pic.gif";
+		  	document.getElementById('modified_video').style.background="none";
+		  	document.getElementById('modified_image').style.background="none";
+		  	document.getElementById('result_img').style.filter ="none";
+		  	document.getElementById('result_img').style.mixBlendMode ="normal";
+		  	document.getElementById('result_img').style.borderRadius ="0";
+		  	document.getElementById('result_vid').style.filter ="none";
+		  	document.getElementById('result_vid').style.mixBlendMode ="normal";
+		  	document.getElementById('result_img').style.transform = "none";
+		  	document.getElementById('ti').checked= false;
+		  	document.getElementById('ti2').checked= false;
+		  	document.getElementById('text2').style.display="none";
+		  	document.getElementById('text21').style.display="none";
+		  	document.getElementById('text1').style.display="none";
+		  	document.getElementById('text11').style.display="none";
+		  	document.getElementById('result_img').style.width ="100%";
+		  	document.getElementById('result_vid').style.height ="100%";
+		  	document.getElementById('result_img').style.top ="0";
+		  	document.getElementById('result_img').style.left ="0";
+		  	document.getElementById('result_vid').style.top ="30px";
+		  	document.getElementById('result_vid').style.right ="10px";
+		  	document.getElementById('result_img').style.height ="100%";
+		  	document.getElementById('result_vid').style.width ="100%";
+		  	document.getElementById('modified_image').style.backgroundSize = "100% 100%";
+			document.getElementById('modified_image').style.backgroundRepeat = "no-repeat";
+			document.getElementById("ho-gelo").style.display="none";
+			document.getElementById("ho-gelo2").style.display="none";
+			document.getElementById("ho-gelo-v").style.display="none";
+			document.getElementById("ho-gelo2-v").style.display="none";
+			$(".dots").remove();
+			
+			factor = 1;
+			factor2 = 1;
+		    }
+		  }
     		  $( function() {
     			$( "#text1" ).draggable();
     			$( "#text21" ).draggable();
@@ -598,14 +619,14 @@
   
 		function load(){
 			 document.body.style.overflow = "hidden";
-			 var c = document.getElementById("h");
+			 let c = document.getElementById("h");
 
 			 c.innerHTML = "";
 			 setInterval (function(){
 			 c.innerHTML += '.' ;
 			 if(c.innerHTML =='....')
 				c.innerHTML = '.';} ,1000);
-			 setTimeout(s_kk_p_e ,10000);
+			 setTimeout(s_kk_p_e ,1000);
 		}
 		var factor = 1;
 		function clip(){
@@ -613,7 +634,7 @@
 			let btn = document.getElementById("ho-gelo");
 			let btn2 = document.getElementById("ho-gelo2");
 			document.getElementById("result_img").style.transform="scale(1,1)";
-			let interval = setInterval(s_kk_p_e ,1);
+			$(".dots").remove();
 			g.draggable = "false";
 			btn.style.display ="block";
 			btn2.style.display ="block";
@@ -628,10 +649,9 @@
 			$("#ins_crop").show();
 			$( "#result_img" ).draggable( "disable" );
 			$("#result_img").click(function (ev) {
-          		mouseX = ev.pageX;
-          		mouseY = ev.pageY
-          		var color = 'rgba(0,0,255,0.6)';
-          		var size = '3.6px';
+          		
+          		let color = 'rgba(0,0,255,0.6)';
+          		let size = '3.6px';
           		$("body").append(
           		$('<div class="dots"></div>')
               		.css('position', 'fixed')
@@ -642,7 +662,7 @@
               		.css('background-color', color));
       });
 			$('#result_img').click(function(e) {
-    		var offset = $(this).offset();
+    		let offset = $(this).offset();
     		l_x = (e.pageX - offset.left);
     		l_y = (e.pageY - offset.top);
     		clip_str += ""+(e.pageX - offset.left)+"px "+(e.pageY - offset.top)+"px,";
@@ -653,7 +673,7 @@
 				this.style.display ="none";
 				btn2.style.display="none";
 				factor++ ;
-				clearInterval(interval);
+				
 				$( function() {
     			$( "#result_img" ).draggable();
     			$("#ins_crop").hide();
@@ -671,8 +691,6 @@
 
 			}
 			btn2.onclick = function(){
-				
-				let v = $(".dots:hidden");
 				let k = $(".dots");
 				if(k.length/factor>3){
 					for(let i =0;i<factor;i++)
@@ -681,6 +699,83 @@
 				clip_str="";
 				for(let i =0;i<s.length-2;i++)
 					clip_str += s[i]+",";
+				
+
+			}
+				
+			}
+		}
+		 var factor2 = 1;
+		function clip2(){
+			let d = document.getElementsByClassName("non-crop-v");
+			let Btn = document.getElementById("ho-gelo-v");
+			let Btn2 = document.getElementById("ho-gelo2-v");
+			$(".dots").remove();
+			//document.getElementById("result_vid").style.transform="scale(1,1)";
+			$( "#result_vid" ).draggable("disable");
+			Btn.style.display ="block";
+			Btn2.style.display ="block";
+			let clip_str2 ="";
+			let l_xv,l_yv;
+			gv.style.clipPath = "polygon(0px 0px,480px 0px,480px 500px, 0px 500px)";
+			for(x of d)
+				x.style.display = "none";
+			gv.style.cursor="cell";
+			gv.onclick = function(){}
+			//$( "#result_vid" ).draggable( "disable" );
+			$(document).ready(function() {
+			$("#ins_crop-v").show();
+			$("#result_vid").click(function (ev) {
+          		
+          		let color = 'rgba(255,255,0,0.6)';
+          		let size = '3.6px';
+          		$("body").append(
+          		$('<div class="dots"></div>')
+              		.css('position', 'fixed')
+              		.css('top', ev.clientY + 'px')
+              		.css('left', ev.clientX + 'px')
+              		.css('width', size)
+              		.css('height', size)
+              		.css('background-color', color));
+      });
+			$('#result_vid').click(function(e) {
+    		let offset = $(this).offset();
+    		l_xv = (e.pageX - offset.left);
+    		l_yv = (e.pageY - offset.top);
+    		clip_str2 += ""+(e.pageX - offset.left)+"px "+(e.pageY - offset.top)+"px,";
+    		
+  		});
+		});
+			Btn.onclick = function(){
+				this.style.display ="none";
+				Btn2.style.display="none";
+				factor2++ ;
+				$( "#result_vid" ).draggable("enable");
+				
+				$( function() {
+    			
+    			$("#ins_crop-v").hide();
+    			$(".dots").hide();
+    			$(".dots").remove();
+    		});
+				for(x of d)
+				x.style.display = "initial";
+			$("#adv2").hide();
+			gv.style.clipPath = "polygon("+clip_str2.substr(0,clip_str2.length-1)+")";
+			//$( "#result_vid" ).draggable( "enable" );
+			gv.style.cursor = "grab";
+			document.getElementById("advanced_vid_tools").style.display="flex";
+
+			}
+			Btn2.onclick = function(){
+				let k = $(".dots");
+				if(k.length/factor2>3){
+					for(let i =0;i<factor2;i++)
+						$(".dots:last").remove();
+				let s =clip_str2.split(',');
+				clip_str2="";
+				for(let i =0;i<s.length-2;i++)
+					clip_str2 += s[i]+",";
 				
 
 			}
@@ -697,15 +792,18 @@
 			else{
 			document.getElementById("d1").style.display="none";
 			document.getElementById("d2").style.display="block";
-			var elem = document.documentElement;
-			if (elem.requestFullscreen) 
+			let elem = document.documentElement;
+			try{if (elem.requestFullscreen) 
   				  elem.requestFullscreen();
   		    else if (elem.mozRequestFullScreen)  
     			  elem.mozRequestFullScreen();
    			else if (elem.webkitRequestFullscreen) 
    				  elem.webkitRequestFullscreen();
             else if (elem.msRequestFullscreen) 
-    			  elem.msRequestFullscreen();
+    			  elem.msRequestFullscreen();}
+    			catch(e){
+    				//No-problem dude!!
+    			};
   }}
     
 		
@@ -746,6 +844,8 @@
 			alert("Tap the browse button to select a video from your device");
 			document.getElementById('c1').style.display="block";
 			document.getElementById("ask").style.display="none";
+			document.getElementById("ho-gelo-v").style.display="none";
+			document.getElementById("ho-gelo2-v").style.display="none";
 			document.getElementById("ho-gelo").style.display="none";
 			document.getElementById("ho-gelo2").style.display="none";
 			s_kk_p_e();
@@ -758,6 +858,10 @@
 			alert("Tap the browse button to select a photo from your device");
 			document.getElementById("ask").style.display="none";
 			document.getElementById('c1').style.display="block";
+			document.getElementById("ho-gelo").style.display="none";
+			document.getElementById("ho-gelo2").style.display="none";
+			document.getElementById("ho-gelo").style.display="none";
+			document.getElementById("ho-gelo2").style.display="none";
 			s_kk_p_e();
 			document.body.style.overflow = "auto";
 			document.getElementById("original_image").style.display="block";
@@ -784,13 +888,13 @@
 		
     }}
     function preview_2() {
-    		var input2 = document.getElementById("picField2");
-			var fReader2 = new FileReader();
+    		let input2 = document.getElementById("picField2");
+			let fReader2 = new FileReader();
 			fReader2.readAsDataURL(input2.files[0]);
 			fReader2.onloadend = function(event2){
 				
-				var s2 = (event2.target.result.split(';')[0]).split('/');
-				var ext2 = s2[s2.length-1].toLowerCase();
+				let s2 = (event2.target.result.split(';')[0]).split('/');
+				let ext2 = s2[s2.length-1].toLowerCase();
 				v_type = ext2;
 				if(ext2=='mp4'||ext2=='m4v'||ext2=='avi'||ext2=='mpg'){
   			 vid = document.getElementById("outVideo");
@@ -1068,23 +1172,7 @@
   }
      function Dwnload(){
      	alert("currently! Downloading is not supported!\nstay tuned for update!\nFor image,you can also take screenshot.\nPress win+shift+s in window\nPress shift+prtsc in linux(ubuntu)\nPress command+shift+4 in mac ");
-     	var c = document.getElementById('c');
-     	c.style.display="block";
-     	var img1 = document.getElementById('modified_image');
-     	var img2 = document.createElement('img');
-     	img2.src = img1.src ;
-     	img2.style.filter = img1.style.filter ;
-     	var ctx = c.getContext('2d');
      	
-     	img2.onload = function(){
-     		ctx.drawImage(img2,0,0,img.width,img.height);
-     		var d = c.toDataURL("image/"+i_type);
-     		img1.style.display = "none";
-     	if(!window.open(d)){
-     		document.location.href= d;
-     		
-     	}
-     }
  }
   function Dwnload2(){
      alert("currently! Downloading is not supported!\nstay tuned for update!");
@@ -1095,6 +1183,6 @@
 <!-- Remaining work://
 	1.Making download button to work
 	5.Allowing user to perform another action when initial action has been downloaded
-	8.dynamic video editing
+	6.Dynamic video editing
     	
 -->
