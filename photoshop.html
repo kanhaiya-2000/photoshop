@@ -56,20 +56,42 @@
 			margin:auto;
 			padding:15px;
 		}
+		.clip_button1{
+			
+			position:absolute;
+			text-overflow:ellipsis;
+			
+			left:50px;
+			width:200px;
+			z-index:200;
+			padding:3px;
+			
+		}
+		.clip_button2{
+			
+			position:absolute;
+			text-overflow:ellipsis;
+			
+			right:50px;
+			width:200px;
+			z-index:200;
+			padding:3px;
+			
+		}
 	</style>
 
 </head>
 <body onload='load()' onbeforeunload="return 'Sure to leave?'">
-	<div id='d1' style='width:100%;height:100%;'>
+	<div id='d1' style='width:100%;height:100%;' class="w3-animate-zoom">
 		<audio id="aud" style="visibility:hidden;">
 			<source src="https://kanhaiya-2000.github.io/Guessenger/gameover.mp3">
 			</audio>
-		<h1 id="h2" class="w3-xxxlarge" style="padding-top:20%;font-size:2em;padding-bottom:40%;color:red;margin:auto;font-family:'Tangerine'">Welcome <br><span id="h" style='margin-top:2px;position:relative;'>Loading...</span><br>#kk_photoshop</h1>
+		<h1 id="h2" class="w3-xxxlarge" style="padding-top:20%;font-size:2em;padding-bottom:40%;color:red;margin:auto;font-family:'Tangerine'">Welcome <br><span id="h" style='margin-top:2px;position:relative;'>Loading...</span><br>#kk_photoshop<br><i id='msg' style="width:300px;text-align:center;background:black;position:absolute;color:green;font-size:0.7em;font-weight:bold;">If you have firefox installed ,open it with firefox to get better experience</i></h1>
 			
 	</div>
 	<div id="d2">
 		<button class="w3-btn w3-large w3-circle w3-red w3-text-black" id="c1" title="Back" onclick="back();" style="position:fixed;top:0;right:50%;z-index:2"><--</button>
-		<div id="vid_tools" class="non-crop-v" >
+		<div id="vid_tools" class="non-crop-v w3-animate-opacity w3-animate-bottom" >
 			 <img src="images/brightness.jpeg" style="border-radius: 50%" title="Brightness(100)"  class="im" id="iv1"><span id="sv1" style='background: rgba(0,0,1,0.5);color:red;'></span>
 			<input type="range" min="10" max="200" id="v1" value="100" onchange="x1()">
 			<img src="images/contrast.jpeg" style="border-radius: 50%;" title="contrast(100)"  class="im" id="iv2"><span id="sv2" style='background: rgba(0,0,1,0.5);color:red;'></span>
@@ -90,7 +112,7 @@
 
 
 		</div>
-		<div id="img_tools" class="non-crop" >
+		<div id="img_tools" class="non-crop w3-animate-opacity w3-animate-bottom" >
 			<img src="images/brightness.jpeg" style="border-radius: 50%" title="Brightness(100)"  class="im" id="ii1"><span id="s1" style='background: rgba(0,0,1,0.5);color:red;'></span>
 			<input type="range" min="10" max="200" id="i1" value="100" onchange="f1()">
 			<img src="images/contrast.jpeg" style="border-radius: 50%;" title="contrast(100)"  class="im" id="ii2"><span id="s2" style='background: rgba(0,0,1,0.5);color:red;'></span>
@@ -109,13 +131,13 @@
 			<input type="range" min="0" max="100" id="i8" value="0" onchange="f8()">
 
 		</div>
-		 <div class="non-crop" id="advanced_img_tools" style="position:fixed;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
-		 	<button class="w3-btn w3-circle w3-red w3-text-black w3-large" title="Advanced feature" onclick="modify_bg()" style="z-index:1">+</button> 
-		 	<i class="fa fa-crop" title="clip the image" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="clip()" ></i>
-		 	<i id="mb" class="fa fa-download" title="Download image" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload()"></i>
+		 <div class="non-crop w3-animate-zoom" id="advanced_img_tools" style="position:fixed;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
+		 	<button class="w3-btn w3-circle w3-red w3-text-black w3-large w3-animate-zoom " title="Advanced feature" onclick="modify_bg()" style="z-index:1">+</button> 
+		 	<i class="fa fa-crop w3-animate-zoom" title="clip the image" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="clip()" ></i>
+		 	<i id="mb" class="fa fa-download w3-animate-zoom" title="Download image" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload()"></i>
 		 	
 		 </div>
-		 	<div id="adv" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop" style="overflow:auto;">
+		 	<div id="adv" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop w3-animate-zoom" style="overflow:auto;">
 		 		<span onclick="this.parentElement.style.display='none'" class="w3-large w3-right w3-red" style="position:absolute;right:0%;cursor:pointer">X</span>
 		 		
 		 			<div style="overflow-y:auto;">
@@ -309,7 +331,7 @@
 		 	</div>
 		 </div>
 		     
-		 	<div id="adv2" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop-v " style="overflow:auto;">
+		 	<div id="adv2" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop-v w3-animate-zoom" style="overflow:auto;">
 		 		<span onclick="this.parentElement.style.display='none'" class="w3-xlarge w3-right w3-red" style="position:absolute;right:0%;cursor:pointer">X</span>
 		 			<div class="w3-container  w3-center" style="font-weight:bold;background:teal;">Important video effect<br>
 		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='normal'">
@@ -450,49 +472,50 @@
 		 		</div>
 		 	
 		<div id="ask" style="z-index:1;width:100%;">
-		<div  id="img" style="cursor:pointer" onclick="T_img()"><img src="images/up_video.jpeg" style="border-radius: 50%;z-index:1" ><br><i style="background:white;"><span class="w3-xxlarge" style="font-family:'Tangerine';background:white;position:relative;">Upload video</span><br>Tap here to select a video to style it</i></div>
-		<div  id="vdo" style="cursor:pointer" onclick="T_vdo()"><img src="images/up_image.jpeg" style="border-radius: 50%" ><br><i style="background:white;"><span class="w3-xxlarge w3-center" style="font-family:'Tangerine';background:white;position:relative;">Upload Image</span><br>Tap here to select a photo to style it</i></div></div>
-		<div id="original_image" class="non-crop">
+		<div  id="img" style="cursor:pointer" class="w3-animate-zoom" onclick="T_img()"><img src="images/up_video.jpeg" style="border-radius: 50%;z-index:1" ><br><i style="background:white;"><span class="w3-xxlarge w3-animate-zoom" style="font-family:'Tangerine';background:white;position:relative;">Upload video</span><br>Tap here to select a video to style it</i></div>
+		<div  id="vdo" style="cursor:pointer" class="w3-animate-zoom" onclick="T_vdo()"><img src="images/up_image.jpeg" style="border-radius: 50%" ><br><i style="background:white;"><span class="w3-xxlarge w3-center w3-animate-zoom" style="font-family:'Tangerine';background:white;position:relative;">Upload Image</span><br>Tap here to select a photo to style it</i></div></div>
+		<div id="original_image" class="non-crop w3-animate-zoom">
 			
 			<img style="width:100%;height:100%;z-index:1" id="outImage" src="images/pic.png">
 			<input type="file" name="picField" id="picField"  onchange="preview()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;z-index:1;padding: 12px 1px;cursor:pointer;left:0%;"/></div>
-		<div id="modified_video" style="position:fixed;"><span id='text11' title="click to change text" style="position:absolute;top:6%;border:1px dotted red; text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-1</span><span id='text21' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><video id="result_vid" style="width:100%;position:absolute;" autoplay loop ><source src="images/pic.mp4"></video><button id="ho-gelo-v">Done</button><br><button id="ho-gelo2-v">Reset</button></div>
-		<div id="original_video" class="non-crop-v"><video id="outVideo" style="width:100%;z-index:1;" loop controls><source src="images/pic2.mp4"></video><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
+		<div id="modified_video"class="w3-animate-zoom" style="position:fixed;"><span id='text11' title="click to change text" style="position:absolute;top:6%;border:1px dotted red; text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-1</span><span id='text21' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><video id="result_vid" style="width:100%;position:absolute;cursor: -webkit-grab;cursor: grab;" autoplay loop ><source src="images/pic.mp4"></video><button id="ho-gelo-v">Done</button><br><button id="ho-gelo2-v">Reset</button></div>
+		<div id="original_video" class="non-crop-v w3-animate-zoom"><video id="outVideo" style="width:100%;z-index:1;" loop controls><source src="images/pic2.mp4"></video><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
 			
-			<div id="modified_image" style="background-repeat:no-repeat;background-size: 100% 100%;position:fixed;">
-				<span id='text1' title="click to change text" style="position:absolute;top:6%;text-align:center;border:1px dotted red;" onclick="var l = prompt('Write something...'); if(l)this.innerHTML = l;">Text-1</span><span id='text2' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;"><button id="ho-gelo">Done</button><br><button id="ho-gelo2">Reset</button></div>
+			<div id="modified_image" class="w3-animate-zoom" style="background-repeat:no-repeat;background-size: 100% 100%;position:fixed;">
+				<span id='text1' title="click to change text" style="position:absolute;top:6%;text-align:center;border:1px dotted red;" onclick="var l = prompt('Write something...'); if(l)this.innerHTML = l;">Text-1</span><span id='text2' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;cursor: -webkit-grab;cursor: grab;"><button id="ho-gelo">Done</button><br><button id="ho-gelo2">Reset</button></div>
 		</div>
-		<div id="advanced_vid_tools" class="non-crop-v" style="position:fixed;display:none;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
-		 	<button class="w3-btn w3-circle w3-red w3-text-black w3-large" title="Advanced feature" onclick="document.getElementById('adv2').style.display='flex';s_kk_p_e();" style="z-index:1">+</button>
-		 	<i class="fa fa-pause" id="play" title="play/pause the video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="if(document.getElementById('result_vid').paused){document.getElementById('result_vid').play();this.className='fa fa-pause';}else {document.getElementById('result_vid').pause();this.className ='fa fa-play';}" ></i>
-		 	<i class="fa fa-crop" title="clip the video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="clip2()" ></i>
-		 	<i id="mb1" class="fa fa-download" title="Download video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload2()"></i>
+		<div id="advanced_vid_tools" class="non-crop-v w3-animate-zoom" style="position:fixed;display:none;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
+		 	<button class="w3-btn w3-circle w3-red w3-text-black w3-large w3-animate-zoom" title="Advanced feature" onclick="document.getElementById('adv2').style.display='flex';s_kk_p_e();" style="z-index:1">+</button>
+		 	<i class="fa fa-pause w3-animate-zoom" id="play" title="play/pause the video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="if(document.getElementById('result_vid').paused){document.getElementById('result_vid').play();this.className='fa fa-pause';}else {document.getElementById('result_vid').pause();this.className ='fa fa-play';}" ></i>
+		 	<i class="fa fa-crop w3-animate-zoom" title="clip the video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="clip2()" ></i>
+		 	<i id="mb1" class="fa fa-download w3-animate-zoom" title="Download video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload2()"></i>
 		 	
 		 </div>
-		 <div id="ins_crop" class="w3-panel w3-center w3-left w3-text-red">
-		 	<p class=" w3-text-yellow" style="font-weight: bold;text-decoration:underline;font-size:1.5em;">Instruction for cropping</p>
-		 	<i class="w3-text-green " style="font-size:1em;">1.Using this cropper ,you can crop your image/video even into zig-zag shape</i><br><br>
-		 	<i class="w3-text-green " style="font-size:1em;">2.To use this cropping feature,move your mouse to the image/video and start drawing the map of dots over your image/video of whatever area you want to crop-out by clicking.These dots are meant for the boundary of the part of image/video that will be finally cropped out ,so be careful in putting dots.</i><br><br>
-		 	<i class="w3-text-green " style="font-size:1em;">3.on each clicking ,a small dot will appear at the clicked position,continue on drawing your map</i><br><br>
-		 	<i class="w3-text-red " style="font-weight: bold;color:green;text-decoration:underline;font-size:1em;">onclicking the "Done" button,the part of the image/video entrapped between the dots will be cropped off.</i><br><br>
-		 	<i class="w3-text-green " style="font-size:1em;">4.After finishing your map,click the button "Done".<br>If you think you have commited some mistake in previous step,click reset button,this will clear-out one dot.<br>The minimum number of dots is always 3</i><br><br>
-		 	<p class="w3-text-yellow " style="font-size:1em;">5.You can readjust your cropped-image(or video) even after finishing.<br>To do this ,you need to click cropping button again<br><i class="w3-red w3-center" style="text-decoration:underline;">Press the crop button in full screen mode only,otherwise image/video may not be loaded completely.</i><br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></p><br><br>
-		 	<i class="w3-text-green " style="font-size:1em;">🙂️That's all for using this feature!!🙂️</i><br><br>
+		 <div id="ins_crop" class="w3-panel w3-center w3-left w3-text-red" style="font-family: Tangerine;text-align:justify;font-size:2.6em;">
+		 	<p class=" w3-text-yellow w3-animate-zoom" style="font-weight: bold;text-decoration:underline;">Instruction for cropping</p>
+		 	<i class="w3-text-green w3-animate-right" >1.Using this cropper ,you can crop your image/video even into zig-zag shape</i><br><br>
+		 	<i class="w3-text-green w3-animate-left" >2.To use this cropping feature,move your mouse to the image/video and start drawing the map of dots over your image/video of whatever area you want to crop-out by clicking.These dots are meant for the boundary of the part of image/video that will be finally cropped out ,so be careful in putting dots.</i><br><br>
+		 	<i class="w3-text-green w3-animate-right" >3.on each clicking ,a small dot will appear at the clicked position,continue on drawing your map</i><br><br>
+		 	<i class="w3-text-red w3-animate-left" style="font-weight: bold;color:green;text-decoration:underline;">onclicking the "Done" button,the part of the image/video entrapped between the dots will be cropped off.</i><br><br>
+		 	<i class="w3-text-green w3-animate-right" >4.After finishing your map,click the button "Done".<br>If you think you have commited some mistake in previous step,click reset button,this will clear-out one dot.<br>The minimum number of dots is always 3</i><br><br>
+		 	<p class="w3-text-yellow w3-animate-left " >5.You can readjust your cropped-image(or video) even after finishing.<br>To do this ,you need to click cropping button again<br><i class="w3-red w3-center" style="text-decoration:underline;">Press the crop button in full screen mode only,otherwise image/video may not be loaded completely.</i><br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></p><br><br>
+		 	<i class="w3-text-green w3-animate-zoom " >🙂️That's all for using this feature!!🙂️</i><br><br>
 		 During cropping ,dragging image is not allowed<br>However,you can adjust this using the following tools<br>
-		 1.Image-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.Image-position:left<br><input type="range"  onchange="document.getElementById('result_img').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_img').style.left = (this.value-50)+'%';" value="0" max="200" min="0" step="2">
+		 1.Image-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.Image-position:left<br><input type="range"  onchange="document.getElementById('result_img').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_img').style.left = (this.value-50)+'%';" value="0" max="200" min="0" step="2"><br><div class="w3-container w3-animate-zoom w3-text-blue">:History of clipping:<br>No.of times you have clipped:<i id="clip_hi2" style="font-weight:bold;"></i><br>
+		 		<button onclick="clip_h(this)" class="clip_button1">Previous clip</button><button onclick="clip_h(this)" class="clip_button2">Next clip</button></div>
 		 			</div>
-		 			<div id="ins_crop-v" class="w3-panel w3-center w3-left w3-text-red">
-		 	<p class=" w3-text-yellow" style="font-weight: bold;text-decoration:underline;font-size:1.5em;">Instruction for cropping</p>
-		 	<i class="w3-text-green " style="font-size:1em;">1.Using this cropper ,you can crop your image/video even into zig-zag shape</i><br><br>
-		 	<i class="w3-text-green " style="font-size:1em;">2.To use this cropping feature,move your mouse to the image/video and start drawing the map of dots over your image/video of whatever area you want to crop-out by clicking.These dots are meant for the boundary of the part of image/video that will be finally cropped out ,so be careful in putting dots.</i><br><br>
-		 	<i class="w3-text-green " style="font-size:1em;">3.on each clicking ,a small dot will appear at the clicked position,continue on drawing your map</i><br><br>
-		 	<i class="w3-text-red " style="font-weight: bold;color:green;text-decoration:underline;font-size:1em;">onclicking the "Done" button,the part of the image/video entrapped between the dots will be cropped off.</i><br><br>
-		 	<i class="w3-text-green " style="font-size:1em;">4.After finishing your map,click the button "Done".<br>If you think you have commited some mistake in previous step,click reset button,this will clear-out one dot.<br>The minimum number of dots is always 3</i><br><br>
-		 	<p class="w3-text-yellow " style="font-size:1em;">5.You can readjust your cropped-image(or video) even after finishing.<br>To do this ,you need to click cropping button again<br><i class="w3-red w3-center" style="text-decoration:underline;">Press the crop button in full screen mode only,otherwise image/video may not be loaded completely.</i><br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></p><br><br>
-		 	<i class="w3-text-green " style="font-size:1em;">🙂️That's all for using this feature!!🙂️</i><br><br>
+		 			<div id="ins_crop-v" class="w3-panel w3-center w3-left w3-text-red " style="font-family: Tangerine;text-align:justify;font-size:2.6em;">
+		 	<p class=" w3-text-yellow w3-animate-zoom" style="font-weight: bold;text-decoration:underline;">Instruction for cropping</p>
+		 	<i class="w3-text-green w3-animate-left" >1.Using this cropper ,you can crop your image/video even into zig-zag shape</i><br><br>
+		 	<i class="w3-text-green w3-animate-right" >2.To use this cropping feature,move your mouse to the image/video and start drawing the map of dots over your image/video of whatever area you want to crop-out by clicking.These dots are meant for the boundary of the part of image/video that will be finally cropped out ,so be careful in putting dots.</i><br><br>
+		 	<i class="w3-text-green w3-animate-left" >3.on each clicking ,a small dot will appear at the clicked position,continue on drawing your map</i><br><br>
+		 	<i class="w3-text-red w3-animate-right" style="font-weight: bold;color:green;text-decoration:underline;font-size:1em;">onclicking the "Done" button,the part of the image/video entrapped between the dots will be cropped off.</i><br><br>
+		 	<i class="w3-text-green w3-animate-zoom" >4.After finishing your map,click the button "Done".<br>If you think you have commited some mistake in previous step,click reset button,this will clear-out one dot.<br>The minimum number of dots is always 3</i><br><br>
+		 	<p class="w3-text-yellow w3-animate-zoom" >5.You can readjust your cropped-image(or video) even after finishing.<br>To do this ,you need to click cropping button again<br><i class="w3-red w3-center" style="text-decoration:underline;">Press the crop button in full screen mode only,otherwise image/video may not be loaded completely.</i><br><span style="margin-left:auto;margin-right:auto;position:absolute;" class="w3-center">Rest is alright😉️😉️</span></p><br><br>
+		 	<i class="w3-text-green w3-animate-zoom" >🙂️That's all for using this feature!!🙂️</i><br><br>
 		 During cropping ,dragging image/video is not allowed<br>However,you can adjust this using the following tools<br>
-		 1.video-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.video-position:left<br><input type="range"  onchange="document.getElementById('result_vid').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_vid').style.left = (this.value-100)+'%';" value="0" max="200" min="0" step="2">
-		 			</div>
+		 1.video-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.video-position:left<br><input type="range"  onchange="document.getElementById('result_vid').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_vid').style.left = (this.value-100)+'%';" value="0" max="200" min="0" step="2"><br><div class="w3-container w3-animate-zoom w3-text-blue">:History of clipping:<br>No.of times you have clipped:<i id="clip_hi" style="font-weight:bold;"></i><br>
+		 		<button onclick="clip_h(this)" class="clip_button1">Previous clip</button><button onclick="clip_h(this)" class="clip_button2">Next clip</button>	</div></div>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
@@ -500,6 +523,9 @@
 		var m = document.getElementById("modified_image");
 		var vid ;
 		alert("Never block dialogue else you will miss instruction guide on how to use it");
+		    var clip_his=[];
+		    var clip_index=0;
+		    var index_store = clip_index;
     		var i1 = document.getElementById('i1');	
     		var v1 = document.getElementById('v1');					
     		var g1 = 100 ,g11=100;
@@ -542,6 +568,7 @@
     		var v14 = document.getElementById('v14');
     		var v15 = document.getElementById('v15');
     		var g19 = 100;
+    		var do_not_change = false;
     		document.getElementById('ti').checked= false;
 		  	document.getElementById('ti2').checked= false;
     		document.getElementById('result_img').style.transform="none";
@@ -555,7 +582,7 @@
 		  	document.getElementById('modified_image').style.display="none";
 		  	document.getElementById('original_image').style.display="none";
 		  	document.getElementById('modified_video').style.display="none";
-		  	document.getElementById('result_img').style.clipPath = "polygon(0px 0px,480px 0px,480px 600px, 0px 600px)";
+		  	document.getElementById('result_img').style.clipPath = "polygon(0px 0px,480px 0px,480px 640px, 0px 640px)";
 		  	document.getElementById('result_vid').style.clipPath = "polygon(0px 0px,480px 0px,480px 600px, 0px 600px)";
 		  	document.getElementById('original_video').style.display="none";
 		  	document.getElementById('ins_crop').style.display="none";
@@ -601,9 +628,9 @@
 			document.getElementById("ho-gelo-v").style.display="none";
 			document.getElementById("ho-gelo2-v").style.display="none";
 			$(".dots").remove();
-			
-			factor = 1;
-			factor2 = 1;
+			clip_his = [];
+			clip_index = 0;
+			index_store = 0;
 		    }
 		  }
     		  $( function() {
@@ -620,20 +647,70 @@
 		function load(){
 			 document.body.style.overflow = "hidden";
 			 let c = document.getElementById("h");
-
+			 if(navigator.userAgent.includes('Firefox')){
+			 	$("#msg").text("Welcome!It's firefox\nYou will have better experience now provided your machine works smoothly");
+			 }
 			 c.innerHTML = "";
 			 setInterval (function(){
 			 c.innerHTML += '.' ;
 			 if(c.innerHTML =='....')
 				c.innerHTML = '.';} ,1000);
-			 setTimeout(s_kk_p_e ,1000);
+			 setTimeout(s_kk_p_e ,4000);
 		}
-		var factor = 1;
+		var factor = 0;
+		var factor2 = 0;
+		function clip_h(e){
+			s_kk_p_e();
+			if(e.innerText.toString().indexOf("Previous clip")>-1){
+				if(clip_his.length>0){
+					if(clip_index>0){
+				clip_index-- ;
+				$(".dots").remove();
+				do_not_change = true;
+				clip_str = "";
+				clip_str2 = "";
+				document.getElementById("result_img").style.clipPath ='polygon('+clip_his[clip_index]+')';
+				document.getElementById("result_vid").style.clipPath ='polygon('+clip_his[clip_index]+')';
+				}
+				else{
+					alert("No more history!!");
+					do_not_change = true;
+					s_kk_p_e();
+				}				
+			}
+			else
+				alert("There is no former history for any clipping!");
+			    s_kk_p_e();
+			}
+			if(e.innerText.toString().indexOf("Next clip")>-1){
+				if(clip_index<clip_his.length-1){
+				clip_str = "";
+				clip_str2 = "";	
+				clip_index++ ;
+				$(".dots").remove();
+				do_not_change = true;
+				document.getElementById("result_img").style.clipPath ='polygon('+clip_his[clip_index]+')';
+				document.getElementById("result_vid").style.clipPath ='polygon('+clip_his[clip_index]+')';
+								
+			}
+			else{
+				alert("No more recent clips!");
+				s_kk_p_e();
+				clip_index = clip_his.length ;
+				do_not_change = false;
+				document.getElementById('result_img').style.clipPath = "polygon(0px 0px,480px 0px,480px 640px, 0px 640px)";
+		  		document.getElementById('result_vid').style.clipPath = "polygon(0px 0px,480px 0px,480px 600px, 0px 600px)";
+			}
+		}
+		}
 		function clip(){
 			let c = document.getElementsByClassName("non-crop");
+			factor++ ;
+			s_kk_p_e();
 			let btn = document.getElementById("ho-gelo");
 			let btn2 = document.getElementById("ho-gelo2");
 			document.getElementById("result_img").style.transform="scale(1,1)";
+			$("#clip_hi2").text(clip_his.length);
 			$(".dots").remove();
 			g.draggable = "false";
 			btn.style.display ="block";
@@ -663,6 +740,7 @@
       });
 			$('#result_img').click(function(e) {
     		let offset = $(this).offset();
+    		do_not_change = false;
     		l_x = (e.pageX - offset.left);
     		l_y = (e.pageY - offset.top);
     		clip_str += ""+(e.pageX - offset.left)+"px "+(e.pageY - offset.top)+"px,";
@@ -672,8 +750,6 @@
 			btn.onclick = function(){
 				this.style.display ="none";
 				btn2.style.display="none";
-				factor++ ;
-				
 				$( function() {
     			$( "#result_img" ).draggable();
     			$("#ins_crop").hide();
@@ -683,8 +759,18 @@
 				for(x of c)
 				x.style.display = "initial";
 			$("#adv").hide();
-			g.style.clipPath = "polygon("+clip_str.substr(0,clip_str.length-1)+")";
-			g.onclick= function(){}
+			g.onclick= function(){};
+			clip_index = index_store ;
+			if(clip_str.split(',').length>3)
+			clip_his[clip_index++] = clip_str.substr(0,clip_str.length-1);
+			index_store = clip_index ;
+			if((clip_str.split(',').length>3)&&(!do_not_change)){
+			g.style.clipPath = "polygon("+clip_str.substr(0,clip_str.length-1)+")";}
+			if(clip_str.split(',').length<=3&&(!do_not_change))
+		    	alert("you need to select atleast 3 dots");
+			if(do_not_change){do_not_change = false;}
+			s_kk_p_e();
+		   	$("#clip_hi2").text(clip_his.length);
 			$( "#result_img" ).draggable( "enable" );
 			g.style.cursor = "grab";
 			document.getElementById("advanced_img_tools").style.display="flex";
@@ -692,6 +778,8 @@
 			}
 			btn2.onclick = function(){
 				let k = $(".dots");
+				
+				clip_index = index_store ;
 				if(k.length/factor>3){
 					for(let i =0;i<factor;i++)
 						$(".dots:last").remove();
@@ -705,11 +793,14 @@
 				
 			}
 		}
-		 var factor2 = 1;
+		 
 		function clip2(){
+			factor2++ ;
+			s_kk_p_e();
 			let d = document.getElementsByClassName("non-crop-v");
 			let Btn = document.getElementById("ho-gelo-v");
 			let Btn2 = document.getElementById("ho-gelo2-v");
+			$("#clip_hi").text(clip_his.length);
 			$(".dots").remove();
 			//document.getElementById("result_vid").style.transform="scale(1,1)";
 			$( "#result_vid" ).draggable("disable");
@@ -721,12 +812,13 @@
 			for(x of d)
 				x.style.display = "none";
 			gv.style.cursor="cell";
-			gv.onclick = function(){}
+			gv.onclick = function(){};
+
 			//$( "#result_vid" ).draggable( "disable" );
 			$(document).ready(function() {
 			$("#ins_crop-v").show();
 			$("#result_vid").click(function (ev) {
-          		
+          		do_not_change = false;
           		let color = 'rgba(255,255,0,0.6)';
           		let size = '3.6px';
           		$("body").append(
@@ -749,7 +841,8 @@
 			Btn.onclick = function(){
 				this.style.display ="none";
 				Btn2.style.display="none";
-				factor2++ ;
+				
+
 				$( "#result_vid" ).draggable("enable");
 				
 				$( function() {
@@ -759,9 +852,19 @@
     			$(".dots").remove();
     		});
 				for(x of d)
-				x.style.display = "initial";
+				x.style.display = "block";
 			$("#adv2").hide();
+			clip_index =index_store;
+			if(clip_str2.split(',').length>3)
+			clip_his[clip_index++] = clip_str2.substr(0,clip_str2.length-1);
+			index_store = clip_index ;
+			if(clip_str2.split(',').length>3&&(!do_not_change))
 			gv.style.clipPath = "polygon("+clip_str2.substr(0,clip_str2.length-1)+")";
+		    if(clip_str2.split(',').length<=3&&(!do_not_change))
+		    	alert("You need to select atleast 3 points");
+			if(do_not_change){do_not_change=false;}
+		    s_kk_p_e();		
+			$("#clip_hi").text(clip_his.length);
 			//$( "#result_vid" ).draggable( "enable" );
 			gv.style.cursor = "grab";
 			document.getElementById("advanced_vid_tools").style.display="flex";
@@ -769,6 +872,7 @@
 			}
 			Btn2.onclick = function(){
 				let k = $(".dots");
+				clip_index = index_store;
 				if(k.length/factor2>3){
 					for(let i =0;i<factor2;i++)
 						$(".dots:last").remove();
@@ -814,12 +918,13 @@
 			fReader.onloadend = function(e){
 			   let s = (e.target.result.split(';')[0]).split('/');
 				let ext = s[s.length-1].toLowerCase();
-				
+				s_kk_p_e();
 				if(ext=='jpg'||ext=='jpeg'||ext=='png'||ext=='gif')
 					document.getElementById('modified_image').style.backgroundImage ="url("+fReader.result+")";
 				
   		       else
   			        alert("Invalid file type!Can't be set as background-image");
+  			    s_kk_p_e();
   		
   	}
   }
@@ -830,14 +935,14 @@
 			fReader.onloadend = function(e2){
 			   let s = (e2.target.result.split(';')[0]).split('/');
 				let ext = s[s.length-1].toLowerCase();
-				
+				s_kk_p_e();
 				if(ext=='jpg'||ext=='jpeg'||ext=='png'||ext=='gif')
 					document.getElementById('modified_video').style.backgroundImage ="url("+fReader.result+")";
 					
 
   				else
   			alert("Invalid file type!Can't be set as background-image");
-  		
+  		    s_kk_p_e();
   	}
   }
 		function T_img(){
@@ -872,6 +977,7 @@
     		let input = document.getElementById("picField");
 			let fReader = new FileReader();
 			fReader.readAsDataURL(input.files[0]);
+			s_kk_p_e();
 			fReader.onloadend = function(event){
 			   let s = (event.target.result.split(';')[0]).split('/');
 				let ext = s[s.length-1].toLowerCase();
@@ -885,6 +991,7 @@
     		}
     		else
     			alert("invalid file-type!");
+    		s_kk_p_e();
 		
     }}
     function preview_2() {
@@ -892,7 +999,7 @@
 			let fReader2 = new FileReader();
 			fReader2.readAsDataURL(input2.files[0]);
 			fReader2.onloadend = function(event2){
-				
+				s_kk_p_e();
 				let s2 = (event2.target.result.split(';')[0]).split('/');
 				let ext2 = s2[s2.length-1].toLowerCase();
 				v_type = ext2;
@@ -905,7 +1012,7 @@
 	   	}
 	   	else
 	   		alert("Invalid file-type!");
-		
+		s_kk_p_e();
     }}
     
     
@@ -1172,10 +1279,11 @@
   }
      function Dwnload(){
      	alert("currently! Downloading is not supported!\nstay tuned for update!\nFor image,you can also take screenshot.\nPress win+shift+s in window\nPress shift+prtsc in linux(ubuntu)\nPress command+shift+4 in mac ");
-     	
+     	s_kk_p_e();
  }
   function Dwnload2(){
      alert("currently! Downloading is not supported!\nstay tuned for update!");
+     s_kk_p_e();
   }
   </script>
 </body>
@@ -1183,6 +1291,6 @@
 <!-- Remaining work://
 	1.Making download button to work
 	5.Allowing user to perform another action when initial action has been downloaded
-	6.Dynamic video editing
+	6.dynamic video-edit
     	
 -->
