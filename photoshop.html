@@ -32,7 +32,7 @@
 			90%{background-image:radial-gradient(red 20%,yellow 40%,  black 80%);}
 
 		}
-		  #d2,#original_video,#original_image,#modified_image,#modified_video,#vid_tools,#img_tools,#advanced_img_tools,#advanced_vid_tools#adv,#c1{
+		  #d2,#original_video,#original_image,#modified_image,#modified_video,#vid_tools,#img_tools,#advanced_img_tools,#advanced_vid_tools#adv,#c1,#ins_crop-v,#ins_crop{
 		  	display:none;
 		  }
 		#d1{
@@ -131,10 +131,28 @@
 			<input type="range" min="0" max="100" id="i8" value="0" onchange="f8()">
 
 		</div>
-		 <div class="non-crop w3-animate-zoom" id="advanced_img_tools" style="position:fixed;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
-		 	<button class="w3-btn w3-circle w3-red w3-text-black w3-large w3-animate-zoom " title="Advanced feature" onclick="modify_bg()" style="z-index:1">+</button> 
-		 	<i class="fa fa-crop w3-animate-zoom" title="clip the image" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="clip()" ></i>
-		 	<i id="mb" class="fa fa-download w3-animate-zoom" title="Download image" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload()"></i>
+		 <div class="non-crop w3-animate-zoom" id="advanced_img_tools" style="position:fixed;flex-wrap:wrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
+		 	<div class="w3-dropdown-hover" title="custom filter" style="width:120px;cursor:pointer;background:transparent;">
+    			<i class="w3-xlarge w3-text-red fa fa-filter"></i>
+    				<div class="w3-dropdown-content w3-bar-block w3-border">
+     					 <i onclick="document.getElementById('result_img').style.filter='none'" class="w3-bar-item w3-button">Normal</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(137%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(51deg)'" class="w3-bar-item w3-button">cool(B&W)</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(123%) contrast(117%)'" class="w3-bar-item w3-button">Bright(B&W)</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(112%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(144deg) invert(6%) sepia(71%)'" class="w3-bar-item w3-button">Normal(B&W)</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(127%) contrast(101%) saturate(142%)  hue-rotate(38deg)'" class="w3-bar-item w3-button">Summer</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(105%) contrast(160%) saturate(288%) grayscale(65%) hue-rotate(30deg) sepia(19%)'" class="w3-bar-item w3-button">clear</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(164%) contrast(148%) saturate(125%)'" class="w3-bar-item w3-button">21's hero</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(127%) contrast(117%) saturate(10%) grayscale(65%) hue-rotate(51deg)'" class="w3-bar-item w3-button">19's hero</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(104%) contrast(203%) saturate(77%) invert(7%) sepia(46%)'" class="w3-bar-item w3-button">Unique</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(104%) contrast(159%) saturate(118%) grayscale(73%) hue-rotate(174deg) invert(15%) sepia(78%)'" class="w3-bar-item w3-button">villian</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(77%) contrast(113%) saturate(239%) grayscale(22%) hue-rotate(9deg)'" class="w3-bar-item w3-button">Labour</i>
+    				</div>
+  			</div>
+		 	<i class="fa fa-plus w3-animate-zoom w3-text-red" title="Advanced feature" onclick="modify_bg()" style="font-size:30px;z-index:1;width:120px;cursor:pointer;"></i> 
+		 	
+		 	<i class="fa fa-crop w3-animate-zoom" title="clip the image" style="font-size:30px;z-index:1;color:red;cursor:pointer;width:120px;" onclick="clip()" ></i>
+		 	<i id="mb" class="fa fa-download w3-animate-zoom" title="Download image" style="font-size:30px;width:120px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload()"></i><br>
+		 	
 		 	
 		 </div>
 		 	<div id="adv" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop w3-animate-zoom" style="overflow:auto;">
@@ -484,11 +502,29 @@
 			<div id="modified_image" class="w3-animate-zoom" style="background-repeat:no-repeat;background-size: 100% 100%;position:fixed;">
 				<span id='text1' title="click to change text" style="position:absolute;top:6%;text-align:center;border:1px dotted red;" onclick="var l = prompt('Write something...'); if(l)this.innerHTML = l;">Text-1</span><span id='text2' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;cursor: -webkit-grab;cursor: grab;"><button id="ho-gelo">Done</button><br><button id="ho-gelo2">Reset</button></div>
 		</div>
-		<div id="advanced_vid_tools" class="non-crop-v w3-animate-zoom" style="position:fixed;display:none;flex-wrap:nowrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
-		 	<button class="w3-btn w3-circle w3-red w3-text-black w3-large w3-animate-zoom" title="Advanced feature" onclick="document.getElementById('adv2').style.display='flex';s_kk_p_e();" style="z-index:1">+</button>
-		 	<i class="fa fa-pause w3-animate-zoom" id="play" title="play/pause the video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="if(document.getElementById('result_vid').paused){document.getElementById('result_vid').play();this.className='fa fa-pause';}else {document.getElementById('result_vid').pause();this.className ='fa fa-play';}" ></i>
-		 	<i class="fa fa-crop w3-animate-zoom" title="clip the video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="clip2()" ></i>
-		 	<i id="mb1" class="fa fa-download w3-animate-zoom" title="Download video" style="font-size:30px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload2()"></i>
+		<div id="advanced_vid_tools" class="non-crop-v w3-animate-zoom" style="position:fixed;display:none;flex-wrap:wrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
+			<div class="w3-dropdown-hover" title="custom filter" style="width:96px;cursor:pointer;background:transparent;">
+    			<i class="w3-xlarge w3-text-red fa fa-filter"></i>
+    				<div class="w3-dropdown-content w3-bar-block w3-border">
+     					 <a onclick="document.getElementById('result_vid').style.filter='none'" class="w3-bar-item w3-button">Normal</a>
+      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(137%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(51deg) sepia(0%) invert(0%)'" class="w3-bar-item w3-button">cool(B&W)</a>
+      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(123%) contrast(117%)'" class="w3-bar-item w3-button">Bright(B&W)</a>
+      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(112%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(144deg) invert(6%) sepia(71%)'" class="w3-bar-item w3-button">Normal(B&W)</a>
+      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(127%) contrast(101%) saturate(142%)  hue-rotate(38deg)'" class="w3-bar-item w3-button">Summer</a>
+      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(105%) contrast(160%) saturate(288%) grayscale(65%) hue-rotate(30deg) sepia(19%)'" class="w3-bar-item w3-button">clear</a>
+      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(164%) contrast(148%) saturate(125%)'" class="w3-bar-item w3-button">21's hero</a>
+      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(127%) contrast(117%) saturate(10%) grayscale(65%) hue-rotate(51deg)'" class="w3-bar-item w3-button">19's hero</a>
+      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(104%) contrast(203%) saturate(77%) invert(7%) sepia(46%)'" class="w3-bar-item w3-button">Unique</a>
+      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(104%) contrast(159%) saturate(118%) grayscale(73%) hue-rotate(174deg) invert(15%) sepia(78%)'" class="w3-bar-item w3-button">villian</a>
+      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(77%) contrast(113%) saturate(239%) grayscale(22%) hue-rotate(9deg)'" class="w3-bar-item w3-button">Labour</a>
+    				</div>
+  			</div>
+		 	<i class="fa fa-plus w3-text-red w3-animate-zoom" title="Advanced feature" onclick="document.getElementById('adv2').style.display='flex';s_kk_p_e();" style="font-size:30px;z-index:1;width:96px;cursor:pointer;"></i>
+		 	
+		 	<i class="fa fa-pause w3-animate-zoom" id="play" title="play/pause the video" style="font-size:30px;z-index:1;width:96px;color:red;cursor:pointer;" onclick="if(document.getElementById('result_vid').paused){document.getElementById('result_vid').play();this.className='fa fa-pause';}else {document.getElementById('result_vid').pause();this.className ='fa fa-play';}" ></i>
+		 	<i class="fa fa-crop w3-animate-zoom" title="clip the video" style="font-size:30px;z-index:1;width:96px;color:red;cursor:pointer;" onclick="clip2()" ></i>
+		 	<i id="mb1" class="fa fa-download w3-animate-zoom" title="Download video" style="font-size:30px;width:96px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload2()"></i><br>
+		 	
 		 	
 		 </div>
 		 <div id="ins_crop" class="w3-panel w3-center w3-left w3-text-red" style="font-family: Tangerine;text-align:justify;font-size:2.6em;">
@@ -645,6 +681,13 @@
 
   
 		function load(){
+			if(screen.availWidth < 1000){
+				document.getElementById('d2').style.display="none";
+				document.getElementById('d1').style.display="none";
+				alert("Incompatible device-error!\nTry in your laptop!This is not supported in smaller devices");
+				document.getElementById('aud').play();
+			document.write("<img src='images/oops.jpeg' style='width:100%;height:100%'><p style='font-weight:bold;text-align:center;position:fixed;top:0%;right:30%;color:red;width:200px;'>Your current device is not adjustable to deal with all equipments.<br>This is for laptop only<br>Use it in laptop only</p>");}
+			else{ 
 			 document.body.style.overflow = "hidden";
 			 let c = document.getElementById("h");
 			 if(navigator.userAgent.includes('Firefox')){
@@ -656,7 +699,7 @@
 			 if(c.innerHTML =='....')
 				c.innerHTML = '.';} ,1000);
 			 setTimeout(s_kk_p_e ,4000);
-		}
+		}}
 		var factor = 0;
 		var factor2 = 0;
 		function clip_h(e){
@@ -887,13 +930,6 @@
 			}
 		}
 		function s_kk_p_e(){
-			if(screen.availWidth < 1000){
-				document.getElementById('d2').style.display="none";
-				document.getElementById('d1').style.display="none";
-				alert("Incompatible device-error!\nTry in your laptop");
-				document.getElementById('aud').play();
-			document.write("<img src='images/oops.jpeg' style='width:100%;height:100%'><p style='font-weight:bold;text-align:center;position:fixed;top:0%;right:30%;color:red;width:200px;'>Your current device is not adjustable to deal with all equipments.<br>This is for laptop only<br>Use it in laptop only</p>");}
-			else{
 			document.getElementById("d1").style.display="none";
 			document.getElementById("d2").style.display="block";
 			let elem = document.documentElement;
@@ -906,9 +942,9 @@
             else if (elem.msRequestFullscreen) 
     			  elem.msRequestFullscreen();}
     			catch(e){
-    				//No-problem dude!!
+    				//No-problem dude!!It will ofcourse support in most browsers except few obsolete-ones
     			};
-  }}
+  }
     
 		
   		function change_bg() {
