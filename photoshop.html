@@ -7,9 +7,8 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<meta name="keywords" content="design,beautiful creation,attractive web-design image creation ,with love by kk">
 	<meta name="twitter:site" content="@kk_photoshop">
-	
 	<link rel="stylesheet" type="text/css" media="screen and (min-device-width: 250px) and (max-device-width: 500px)" href="css/mobile.css">
-	
+	<link rel='preload' href='#early' as='script'>
 	<link rel="stylesheet" type="text/css" media="screen and (min-device-width: 500px) and (max-device-width: 1000px)" href="css/tablet.css">
 	<link rel="stylesheet" type="text/css" media="screen and (min-device-width: 1000px)" href="css/laptop.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -37,11 +36,11 @@
 		  }
 		#d1{
 			
-			background-image: url('images/photoshop.jpg');
+			background-image: url(images/photoshop.jpg);
 			background-repeat: no-repeat;
 			text-align:center;
 			text-shadow:  10px 7px 4px rgba(250,1,90,0.9);
-			background-size: cover;
+			background-size: 100% 100%;
 			
 		}
 		img{
@@ -79,17 +78,15 @@
 			
 		}
 	</style>
-
+ 
 </head>
 <body onload='load()' onbeforeunload="return 'Sure to leave?'">
 	<div id='d1' style='width:100%;height:100%;' class="w3-animate-zoom">
-		<audio id="aud" style="visibility:hidden;">
-			<source src="https://kanhaiya-2000.github.io/Guessenger/gameover.mp3">
-			</audio>
-		<h1 id="h2" class="w3-xxxlarge" style="padding-top:20%;font-size:2em;padding-bottom:40%;color:red;margin:auto;font-family:'Tangerine'">Welcome <br><span id="h" style='margin-top:2px;position:relative;'>Loading...</span><br>#kk_photoshop<br><i id='msg' style="width:300px;text-align:center;background:black;position:absolute;color:green;font-size:0.7em;font-weight:bold;">If you have firefox installed ,open it with firefox to get better experience</i></h1>
+		<h1 id="h2" class="w3-xxxlarge" style="padding-top:20%;font-size:2em;padding-bottom:40%;color:red;margin:auto;font-family:'Tangerine'">Welcome <br><span id="h" style='margin-top:2px;position:relative;'>Loading...</span><br>#kk_photoshop<br><i id='msg' style="width:300px;margin:auto;text-align:center;background:black;position:absolute;color:green;font-size:0.7em;font-weight:bold;">If you have firefox installed ,open it with firefox to get better experience</i></h1>
 			
 	</div>
 	<div id="d2">
+		<i id='top' style='top:0%'></i>
 		<button class="w3-btn w3-large w3-circle w3-red w3-text-black" id="c1" title="Back" onclick="back();" style="position:fixed;top:0;right:50%;z-index:2"><--</button>
 		<div id="vid_tools" class="non-crop-v w3-animate-opacity w3-animate-bottom" >
 			 <img src="images/brightness.jpeg" style="border-radius: 50%" title="Brightness(100)"  class="im" id="iv1"><span id="sv1" style='background: rgba(0,0,1,0.5);color:red;'></span>
@@ -103,7 +100,7 @@
 			<img src="images/blur.jpeg" style="border-radius: 50%;" title="Blur(0)"  class="im" id="iv5"><span id="sv5" style='background: rgba(0,0,1,0.5);color:red;'></span>
 			<input type="range" min="0" max="12" id="v5" value="0" onchange="x5()">
 			<img src="images/hue.png" style="border-radius: 50%;" title="hue(0)"  class="im" id="iv6"><span id="sv6" style='background: rgba(0,0,1,0.5);color:red;'></span>
-			<input type="range" min="0" max="300" id="v6" value="0" onchange="x6()">
+			<input type="range" min="-180" max="180" id="v6" value="0" onchange="x6()">
 			<img src="images/invert.png" style="border-radius: 50%;" title="invert(0)"  class="im" id="iv7"><span id="sv7" style='background: rgba(0,0,1,0.5);color:red;'></span>
 			<input type="range" min="0" max="100" id="v7" value="0" onchange="x7()">
 			<img src="images/sepia.jpeg" style="border-radius: 50%;" title="sepia(0)"  class="im" id="iv8"><span id="sv8" style='background: rgba(0,0,1,0.5);color:red;'></span>
@@ -123,29 +120,39 @@
 			<input type="range" min="0" max="100" id="i4" value="0" onchange="f4()">
 			<img src="images/blur.jpeg" style="border-radius: 50%;" title="Blur(0)"  class="im" id="ii5"><span id="s5" style='background: rgba(0,0,1,0.5);color:red;'></span>
 			<input type="range" min="0" max="12" id="i5" value="0" onchange="f5()">
-			<img src="images/hue.png" style="border-radius: 50%;" title="hue(0)"  class="im" id="ii6"><span id="s6" style='background: rgba(0,0,1,0.5);color:red;'></span>
-			<input type="range" min="0" max="300" id="i6" value="0" onchange="f6()">
+			<img src="images/hue.png" style="border-radius: 50%;" title="hue(0)*"  class="im" id="ii6"><span id="s6" style='background: rgba(0,0,1,0.5);color:red;'></span>
+			<input type="range" min="-180" max="180" id="i6" value="0" onchange="f6()">
 			<img src="images/invert.png" style="border-radius: 50%;" title="invert(0)"  class="im" id="ii7"><span id="s7" style='background: rgba(0,0,1,0.5);color:red;'></span>
 			<input type="range" min="0" max="100" id="i7" value="0" onchange="f7()">
 			<img src="images/sepia.jpeg" style="border-radius: 50%;" title="sepia(0)"  class="im" id="ii8"><span id="s8" style='background: rgba(0,0,1,0.5);color:red;'></span>
 			<input type="range" min="0" max="100" id="i8" value="0" onchange="f8()">
 
 		</div>
-		 <div class="non-crop w3-animate-zoom" id="advanced_img_tools" style="position:fixed;flex-wrap:wrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
+		 <div class="non-crop w3-animate-zoom" id="advanced_img_tools" style="position:absolute;flex-wrap:wrap;right:0%;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
 		 	<div class="w3-dropdown-hover" title="custom filter" style="width:120px;cursor:pointer;background:transparent;">
     			<i class="w3-xlarge w3-text-red fa fa-filter"></i>
-    				<div class="w3-dropdown-content w3-bar-block w3-border">
-     					 <i onclick="document.getElementById('result_img').style.filter='none'" class="w3-bar-item w3-button">Normal</i>
-      					 <i onclick="document.getElementById('result_img').style.filter='brightness(137%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(51deg)'" class="w3-bar-item w3-button">cool(B&W)</i>
-      					 <i onclick="document.getElementById('result_img').style.filter='brightness(123%) contrast(117%)'" class="w3-bar-item w3-button">Bright(B&W)</i>
-      					 <i onclick="document.getElementById('result_img').style.filter='brightness(112%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(144deg) invert(6%) sepia(71%)'" class="w3-bar-item w3-button">Normal(B&W)</i>
-      					 <i onclick="document.getElementById('result_img').style.filter='brightness(127%) contrast(101%) saturate(142%)  hue-rotate(38deg)'" class="w3-bar-item w3-button">Summer</i>
-      					 <i onclick="document.getElementById('result_img').style.filter='brightness(105%) contrast(160%) saturate(288%) grayscale(65%) hue-rotate(30deg) sepia(19%)'" class="w3-bar-item w3-button">clear</i>
-      					 <i onclick="document.getElementById('result_img').style.filter='brightness(164%) contrast(148%) saturate(125%)'" class="w3-bar-item w3-button">21's hero</i>
-      					 <i onclick="document.getElementById('result_img').style.filter='brightness(127%) contrast(117%) saturate(10%) grayscale(65%) hue-rotate(51deg)'" class="w3-bar-item w3-button">19's hero</i>
-      					 <i onclick="document.getElementById('result_img').style.filter='brightness(104%) contrast(203%) saturate(77%) invert(7%) sepia(46%)'" class="w3-bar-item w3-button">Unique</i>
-      					 <i onclick="document.getElementById('result_img').style.filter='brightness(104%) contrast(159%) saturate(118%) grayscale(73%) hue-rotate(174deg) invert(15%) sepia(78%)'" class="w3-bar-item w3-button">villian</i>
-      					 <i onclick="document.getElementById('result_img').style.filter='brightness(77%) contrast(113%) saturate(239%) grayscale(22%) hue-rotate(9deg)'" class="w3-bar-item w3-button">Labour</i>
+    				<div class="w3-dropdown-content w3-bar-block w3-border w3-scroll" style="overflow:auto;">
+     					 <i onclick="document.getElementById('result_img').style.filter='none';updateSliderv(100,100,100,0,0,0,0,0,100);" class="w3-bar-item w3-button">Normal</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(137%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(51deg)';updateSliderv(137,101,146,83,0,51,0,0,100);" class="w3-bar-item w3-button">cool(B&W)</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(123%) contrast(117%)';updateSliderv(123,117,100,0,0,0,0,0,100);" class="w3-bar-item w3-button">Bright</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(112%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(144deg) invert(6%) sepia(71%)';updateSliderv(112,101,146,83,0,144,6,71,100);" class="w3-bar-item w3-button">Normal(B&W)</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(127%) contrast(101%) saturate(142%)  hue-rotate(38deg)';updateSliderv(127,101,142,0,0,38,0,0,100);" class="w3-bar-item w3-button">Summer</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(105%) contrast(160%) saturate(288%) grayscale(65%) hue-rotate(30deg) sepia(19%)';updateSliderv(105,160,288,65,0,30,0,19,100);" class="w3-bar-item w3-button">clear</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='sepia(50%) hue-rotate(-30deg) saturate(140%)';updateSliderv(100,100,140,0,0,-30,0,50,100);" class="w3-bar-item w3-button">21's hero</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(127%) contrast(117%) saturate(10%) grayscale(65%) hue-rotate(51deg)';updateSliderv(127,117,10,65,0,51,0,0,100);" class="w3-bar-item w3-button">19's hero</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(104%) contrast(203%) saturate(77%) invert(7%) sepia(46%)';updateSliderv(104,203,77,0,0,0,0,46,100);" class="w3-bar-item w3-button">Unique</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(104%) contrast(159%) saturate(118%) grayscale(73%) hue-rotate(174deg) invert(15%) sepia(78%)';updateSliderv(104,159,118,73,0,174,15,78,100);" class="w3-bar-item w3-button">villian</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='brightness(77%) contrast(113%) saturate(239%) grayscale(22%) hue-rotate(9deg)';updateSliderv(77,113,239,22,0,9,0,0,100);" class="w3-bar-item w3-button">Labour</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='sepia(.2) brightness(1.15) saturate(1.4)';$('#result_vid').css('mixBlendMode','multiply');updateSliderv(115,100,140,0,0,0,0,20,100);" class="w3-bar-item w3-button">Aden</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='sepia(.35) contrast(1.1) brightness(1.2) saturate(1.3)';$('#result_img').css('mixBlendMode','overlay');updateSliderv(120,110,130,0,0,0,0,35,100);" class="w3-bar-item w3-button">Amaro</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='sepia(.35) contrast(1.15) brightness(1.15) saturate(1.8)';$('#result_img').css('mixBlendMode','overlay');updateSliderv(115,115,180,0,0,0,0,35,100);" class="w3-bar-item w3-button">Junotic</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='sepia(.45) contrast(1.25) brightness(1.75) saturate(1.3) hue-rotate(-5deg)';$('#result_vid').css('mixBlendMode','multiply');updateSliderv(175,125,130,0,0,-5,0,45,100);" class="w3-bar-item w3-button">pro</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='contrast(1.1) brightness(1.25) saturate(1.1)';$('#result_vid').css('mixBlendMode','multiply');updateSliderv(125,110,110,0,0,0,0,0,100);" class="w3-bar-item w3-button">perpetua</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='sepia(.35) contrast(1.05) brightness(1.05) saturate(1.75)';$('#result_img').css('mixBlendMode','darken').css('background','rgba(158, 175, 30, .25)');updateSliderv(105,105,175,0,0,0,0,35,100);" class="w3-bar-item w3-button">Maven</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='sepia(.4) contrast(1.5) brightness(1.2) saturate(1.4) hue-rotate(-10deg)';$('#result_vid').css('mixBlendMode','multiply').css('background','radial-gradient(circle closest-corner, transparent 0, rgba(0, 0, 0, .25) 100%)');updateSliderv(120,150,140,0,0,-10,0,40,100);" class="w3-bar-item w3-button">Hefe</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='sepia(.5) contrast(1.25) brightness(1.15) saturate(.9) hue-rotate(-2deg)';$('#result_vid').css('mixBlendMode','multiply').css('background','rgba(125, 105, 24, .2)');updateSliderv(115,125,90,0,0,-2,0,50,100);" class="w3-bar-item w3-button">Crema</i>
+      					 <i onclick="document.getElementById('result_img').style.filter='sepia(.35) saturate(1.1) contrast(1.5)';updateSliderv(100,150,110,0,0,0,0,35,100);" class="w3-bar-item w3-button">Patch</i>
+      					 
     				</div>
   			</div>
 		 	<i class="fa fa-plus w3-animate-zoom w3-text-red" title="Advanced feature" onclick="modify_bg()" style="font-size:30px;z-index:1;width:120px;cursor:pointer;"></i> 
@@ -156,7 +163,9 @@
 		 	
 		 </div>
 		 	<div id="adv" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop w3-animate-zoom" style="overflow:auto;">
-		 		<span onclick="this.parentElement.style.display='none'" class="w3-large w3-right w3-red" style="position:absolute;right:0%;cursor:pointer">X</span>
+		 		<span onclick="this.parentElement.style.display='none';$('html,body').animate({
+        scrollTop: $('#top').offset().top},
+        'slow');" class="w3-xlarge w3-right w3-red" style="position:fixed;left:460px;top:2%;cursor:pointer">X</span>
 		 		
 		 			<div style="overflow-y:auto;">
 		 				<div class="w3-container w3-center">Important visual effect<br>1. Opacity:&nbsp;&nbsp;&nbsp;2.Image-width:&nbsp;&nbsp;3.Image-height:<br><span id="s9" class="w3-left" ></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s10" class="w3-center"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s11" class="w3-right"></span><br><input type="range" id="i9" onchange="f9()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;<input type="range" id="i10" onchange="f10()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="i11" onchange="f11()" value="100" max="100" min="2" step="2"><br><br>you can also drag to change position<br>
@@ -246,8 +255,7 @@
 		 			<img src='images/b49.jpg' class="l1" onclick="document.getElementById('modified_image').style.backgroundImage='url(images/b49.jpg)'">
 		 			<img src='images/v1.gif' class="l1" onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v1.gif)'">
 		 			<img src='images/v2.gif' class="l1" onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v2.gif)'">
-		 			<img src='images/v3.gif' class="l1" onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v3.gif)'">
-		 			
+		 			<img src='images/v3.gif' class="l1" onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v3.gif)'">		 			
 		 			<img src='images/v5.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v5.gif)'">
 		 			<img src='images/v6.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v6.gif)'">
 		 			<img src='images/v7.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/v7.gif)'">
@@ -350,7 +358,9 @@
 		 </div>
 		     
 		 	<div id="adv2" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop-v w3-animate-zoom" style="overflow:auto;">
-		 		<span onclick="this.parentElement.style.display='none'" class="w3-xlarge w3-right w3-red" style="position:absolute;right:0%;cursor:pointer">X</span>
+		 		<span onclick="this.parentElement.style.display='none';$('html,body').animate({
+        scrollTop: $('#top').offset().top},
+        'slow');" class="w3-xlarge w3-right w3-red" style="position:fixed;left:460px;top:2%;cursor:pointer">X</span>
 		 			<div class="w3-container  w3-center" style="font-weight:bold;background:teal;">Important video effect<br>
 		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='normal'">
 		 				<img src="images/blend.jpeg" title="Multiply" class="w3-border-red" style="mix-blend-mode: multiply;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='multiply'">
@@ -382,6 +392,9 @@
 		 			4.video-position-top:&nbsp;&nbsp;&nbsp;5.video-position:left<br><span id="sv12"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv13" ></span><br><input type="range" id="v12" onchange="x12()" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v13" onchange="x13()" value="0" max="200" min="0" step="2"><br><br>Background-fold<br>
 		 			Along -x &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Along-y<br>
 		 			<input type="range" id="v14" onchange="x14()" value="1" max="4" min="1" step="1">&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="v15" onchange="x14()" value="1" max="4" min="1" step="1"><br>
+		 			Zoom :<br> horizon &nbsp;&nbsp;&nbsp;&nbsp;Vertic&nbsp;&nbsp;&nbsp;&nbsp;<br>
+		 			<input type="range" id="v16" onchange="x15()" value="1" max="3" min="-3" step="0.1">&nbsp;&nbsp;<input type="range" id="v17" onchange="x15()" value="1" max="3" min="-3" step="0.1">&nbsp;&nbsp;&nbsp;&nbsp;<br>
+		 			<span id="sv14"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="sv15"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
 		 				Background change<br>
 		 				<img src='images/v1.gif' class="l1" onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v1.gif)'">
 		 			<img src='images/v2.gif' class="l1" onclick="document.getElementById('modified_video').style.backgroundImage='url(images/v2.gif)'">
@@ -496,27 +509,37 @@
 			
 			<img style="width:100%;height:100%;z-index:1" id="outImage" src="images/pic.png">
 			<input type="file" name="picField" id="picField"  onchange="preview()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;z-index:1;padding: 12px 1px;cursor:pointer;left:0%;"/></div>
-		<div id="modified_video"class="w3-animate-zoom" style="position:fixed;"><span id='text11' title="click to change text" style="position:absolute;top:6%;border:1px dotted red; text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-1</span><span id='text21' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><video id="result_vid" style="width:100%;position:absolute;cursor: -webkit-grab;cursor: grab;" autoplay loop ><source src="images/pic.mp4"></video><button id="ho-gelo-v">Done</button><br><button id="ho-gelo2-v">Reset</button></div>
+		<div id="modified_video" class="w3-animate-zoom" style="position:fixed;right:0%;"><span id='text11' title="click to change text" style="position:absolute;top:6%;border:1px dotted red; text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-1</span><span id='text21' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><video id="result_vid" style="width:100%;position:absolute;cursor: -webkit-grab;cursor: grab;" autoplay loop ><source src="images/pic.mp4"></video><button id="ho-gelo-v" style="position:fixed;bottom:5px;">Done</button><br><button id="ho-gelo2-v" style="position:fixed;bottom:5px;">Reset</button></div>
 		<div id="original_video" class="non-crop-v w3-animate-zoom"><video id="outVideo" style="width:100%;z-index:1;" loop controls><source src="images/pic2.mp4"></video><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
 			
-			<div id="modified_image" class="w3-animate-zoom" style="background-repeat:no-repeat;background-size: 100% 100%;position:fixed;">
-				<span id='text1' title="click to change text" style="position:absolute;top:6%;text-align:center;border:1px dotted red;" onclick="var l = prompt('Write something...'); if(l)this.innerHTML = l;">Text-1</span><span id='text2' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;cursor: -webkit-grab;cursor: grab;"><button id="ho-gelo">Done</button><br><button id="ho-gelo2">Reset</button></div>
+			<div id="modified_image" class="w3-animate-zoom" style="background-repeat:no-repeat;background-size: 100% 100%;position:fixed;top:4.7%;">
+				<span id='text1' title="click to change text" style="position:absolute;top:6%;text-align:center;border:1px dotted red;" onclick="var l = prompt('Write something...'); if(l)this.innerHTML = l;">Text-1</span><span id='text2' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;cursor: -webkit-grab;cursor: grab;"><button id="ho-gelo" style="position:fixed;bottom:5px;">Done</button><br><button id="ho-gelo2" style="position:fixed;bottom:5px;">Reset</button></div>
 		</div>
-		<div id="advanced_vid_tools" class="non-crop-v w3-animate-zoom" style="position:fixed;display:none;flex-wrap:wrap;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
-			<div class="w3-dropdown-hover" title="custom filter" style="width:96px;cursor:pointer;background:transparent;">
+		<div class="non-crop w3-animate-zoom" id="advanced_vid_tools" style="position:absolute;display:none;flex-wrap:wrap;right:0%;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
+		 	<div class="w3-dropdown-hover" title="custom filter" style="width:96px;cursor:pointer;background:transparent;">
     			<i class="w3-xlarge w3-text-red fa fa-filter"></i>
-    				<div class="w3-dropdown-content w3-bar-block w3-border">
-     					 <a onclick="document.getElementById('result_vid').style.filter='none'" class="w3-bar-item w3-button">Normal</a>
-      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(137%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(51deg) sepia(0%) invert(0%)'" class="w3-bar-item w3-button">cool(B&W)</a>
-      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(123%) contrast(117%)'" class="w3-bar-item w3-button">Bright(B&W)</a>
-      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(112%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(144deg) invert(6%) sepia(71%)'" class="w3-bar-item w3-button">Normal(B&W)</a>
-      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(127%) contrast(101%) saturate(142%)  hue-rotate(38deg)'" class="w3-bar-item w3-button">Summer</a>
-      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(105%) contrast(160%) saturate(288%) grayscale(65%) hue-rotate(30deg) sepia(19%)'" class="w3-bar-item w3-button">clear</a>
-      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(164%) contrast(148%) saturate(125%)'" class="w3-bar-item w3-button">21's hero</a>
-      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(127%) contrast(117%) saturate(10%) grayscale(65%) hue-rotate(51deg)'" class="w3-bar-item w3-button">19's hero</a>
-      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(104%) contrast(203%) saturate(77%) invert(7%) sepia(46%)'" class="w3-bar-item w3-button">Unique</a>
-      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(104%) contrast(159%) saturate(118%) grayscale(73%) hue-rotate(174deg) invert(15%) sepia(78%)'" class="w3-bar-item w3-button">villian</a>
-      					 <a onclick="document.getElementById('result_vid').style.filter='brightness(77%) contrast(113%) saturate(239%) grayscale(22%) hue-rotate(9deg)'" class="w3-bar-item w3-button">Labour</a>
+    				<div class="w3-dropdown-content w3-bar-block w3-border w3-scroll" style="overflow:auto;">
+     					 <i onclick="document.getElementById('result_vid').style.filter='none';updateSliderv(100,100,100,0,0,0,0,0,100);" class="w3-bar-item w3-button">Normal</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='brightness(137%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(51deg)';updateSliderv(137,101,146,83,0,51,0,0,100);" class="w3-bar-item w3-button">cool(B&W)</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='brightness(123%) contrast(117%)';updateSliderv(123,117,100,0,0,0,0,0,100);" class="w3-bar-item w3-button">Bright</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='brightness(112%) contrast(101%) saturate(146%) grayscale(83%) hue-rotate(144deg) invert(6%) sepia(71%)';updateSliderv(112,101,146,83,0,144,6,71,100);" class="w3-bar-item w3-button">Normal(B&W)</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='brightness(127%) contrast(101%) saturate(142%)  hue-rotate(38deg)';updateSliderv(127,101,142,0,0,38,0,0,100);" class="w3-bar-item w3-button">Summer</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='brightness(105%) contrast(160%) saturate(288%) grayscale(65%) hue-rotate(30deg) sepia(19%)';updateSliderv(105,160,288,65,0,30,0,19,100);" class="w3-bar-item w3-button">clear</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='sepia(50%) hue-rotate(-30deg) saturate(140%)';updateSliderv(100,100,140,0,0,-30,0,50,100);" class="w3-bar-item w3-button">21's hero</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='brightness(127%) contrast(117%) saturate(10%) grayscale(65%) hue-rotate(51deg)';updateSliderv(127,117,10,65,0,51,0,0,100);" class="w3-bar-item w3-button">19's hero</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='brightness(104%) contrast(203%) saturate(77%) invert(7%) sepia(46%)';updateSliderv(104,203,77,0,0,0,0,46,100);" class="w3-bar-item w3-button">Unique</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='brightness(104%) contrast(159%) saturate(118%) grayscale(73%) hue-rotate(174deg) invert(15%) sepia(78%)';updateSliderv(104,159,118,73,0,174,15,78,100);" class="w3-bar-item w3-button">villian</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='brightness(77%) contrast(113%) saturate(239%) grayscale(22%) hue-rotate(9deg)';updateSliderv(77,113,239,22,0,9,0,0,100);" class="w3-bar-item w3-button">Labour</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='sepia(.2) brightness(1.15) saturate(1.4)';$('#result_vid').css('mixBlendMode','multiply');updateSliderv(115,100,140,0,0,0,0,20,100);" class="w3-bar-item w3-button">Aden</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='sepia(.35) contrast(1.1) brightness(1.2) saturate(1.3)';$('#result_vid').css('mixBlendMode','overlay');updateSliderv(120,110,130,0,0,0,0,35,100);" class="w3-bar-item w3-button">Amaro</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='sepia(.35) contrast(1.15) brightness(1.15) saturate(1.8)';$('#result_vid').css('mixBlendMode','overlay');updateSliderv(115,115,180,0,0,0,0,35,100);" class="w3-bar-item w3-button">Junotic</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='sepia(.45) contrast(1.25) brightness(1.75) saturate(1.3) hue-rotate(-5deg)';$('#result_vid').css('mixBlendMode','multiply');updateSliderv(175,125,130,0,0,-5,0,45,100);" class="w3-bar-item w3-button">pro</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='contrast(1.1) brightness(1.25) saturate(1.1)';$('#result_vid').css('mixBlendMode','multiply');updateSliderv(125,110,110,0,0,0,0,0,100);" class="w3-bar-item w3-button">perpetua</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='sepia(.35) contrast(1.05) brightness(1.05) saturate(1.75)';$('#result_vid').css('mixBlendMode','darken').css('background','rgba(158, 175, 30, .25)');updateSliderv(105,105,175,0,0,0,0,35,100);" class="w3-bar-item w3-button">Maven</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='sepia(.4) contrast(1.5) brightness(1.2) saturate(1.4) hue-rotate(-10deg)';$('#result_vid').css('mixBlendMode','multiply').css('background','radial-gradient(circle closest-corner, transparent 0, rgba(0, 0, 0, .25) 100%)');updateSliderv(120,150,140,0,0,-10,0,40,100);" class="w3-bar-item w3-button">Hefe</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='sepia(.5) contrast(1.25) brightness(1.15) saturate(.9) hue-rotate(-2deg)';$('#result_vid').css('mixBlendMode','multiply').css('background','rgba(125, 105, 24, .2)');updateSliderv(115,125,90,0,0,-2,0,50,100);" class="w3-bar-item w3-button">Crema</i>
+      					 <i onclick="document.getElementById('result_vid').style.filter='sepia(.35) saturate(1.1) contrast(1.5)';updateSliderv(100,150,110,0,0,0,0,35,100);" class="w3-bar-item w3-button">Patch</i>
+      					 
     				</div>
   			</div>
 		 	<i class="fa fa-plus w3-text-red w3-animate-zoom" title="Advanced feature" onclick="document.getElementById('adv2').style.display='flex';s_kk_p_e();" style="font-size:30px;z-index:1;width:96px;cursor:pointer;"></i>
@@ -527,6 +550,7 @@
 		 	
 		 	
 		 </div>
+		<!-- <button onclick="$('#advanced_img_tools').css('display','none');" ondblclick="$('#advanced_img_tools').css('display','flex');" style="position:fixed;top:100px;left:300px;">X</button>-->
 		 <div id="ins_crop" class="w3-panel w3-center w3-left w3-text-red" style="font-family: Tangerine;text-align:justify;font-size:2.6em;">
 		 	<p class=" w3-text-yellow w3-animate-zoom" style="font-weight: bold;text-decoration:underline;">Instruction for cropping</p>
 		 	<i class="w3-text-green w3-animate-right" >1.Using this cropper ,you can crop your image/video even into zig-zag shape</i><br><br>
@@ -552,7 +576,35 @@
 		 During cropping ,dragging image/video is not allowed<br>However,you can adjust this using the following tools<br>
 		 1.video-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.video-position:left<br><input type="range"  onchange="document.getElementById('result_vid').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_vid').style.left = (this.value-100)+'%';" value="0" max="200" min="0" step="2"><br><div class="w3-container w3-animate-zoom w3-text-blue">:History of clipping:<br>No.of times you have clipped:<i id="clip_hi" style="font-weight:bold;"></i><br>
 		 		<button onclick="clip_h(this)" class="clip_button1">Previous clip</button><button onclick="clip_h(this)" class="clip_button2">Next clip</button>	</div></div>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script type="text/javascript" id="early">
+ 				function load(){
+					if(screen.availWidth < 1000){
+					document.getElementById('d2').style.display="none";
+					document.getElementById('d1').style.display="none";
+					alert("Incompatible device-error!\nTry in your laptop!This is not supported in smaller devices");
+					document.write("<body><details style='text-align:center;display:block;margin:auto;margin-top:50px;padding:4px;background:green;border-radius:8px;color:black;width:200px;'><summary>Know Reason...</summary><p style='font-weight:bold;'>Your current device is not adjustable to deal with all equipments.<br>This is for laptop only<br>Use it in laptop only<br>This is because minimum 1000px width device is required at minimum to render all its contents neatly.For mobile(smaller devices),editing with a preinstalled app is much more convenient.</p></details><audio id='aud' style='visibility:hidden;'><source src='https://kanhaiya-2000.github.io/Guessenger/gameover.mp3'></audio></body>");
+					$('body').css('background-image','url(images/oops.jpeg)');
+					 $('details').click(function(){
+					 	$('#aud').load();
+					 	document.getElementById('aud').play();
+					 });
+					}
+					else{ 
+			 		document.body.style.overflow = "hidden";
+			 		let c = document.getElementById("h");
+			 		if(navigator.userAgent.includes('Firefox')){
+			 		$("#msg").text("Welcome!It's firefox\nYou will have better experience now provided your machine works smoothly");
+				 }
+
+					 c.innerHTML = "";
+			 		 setInterval (function(){
+					 c.innerHTML += '.' ;
+					 if(c.innerHTML =='....')
+					 c.innerHTML = '.';} ,1000);
+			 		setTimeout(s_kk_p_e ,4000);
+				}}
+ 		</script>
+ 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
 		var d = document.getElementById('bg_setter');
@@ -603,6 +655,8 @@
     		var v13 = document.getElementById('v13');
     		var v14 = document.getElementById('v14');
     		var v15 = document.getElementById('v15');
+    		var v16 = document.getElementById('v16');
+    		var v17 = document.getElementById('v17');
     		var g19 = 100;
     		var do_not_change = false;
     		document.getElementById('ti').checked= false;
@@ -643,6 +697,7 @@
 		  	document.getElementById('result_vid').style.filter ="none";
 		  	document.getElementById('result_vid').style.mixBlendMode ="normal";
 		  	document.getElementById('result_img').style.transform = "none";
+		  	document.getElementById('result_vid').style.transform = "none";
 		  	document.getElementById('ti').checked= false;
 		  	document.getElementById('ti2').checked= false;
 		  	document.getElementById('text2').style.display="none";
@@ -663,10 +718,17 @@
 			document.getElementById("ho-gelo2").style.display="none";
 			document.getElementById("ho-gelo-v").style.display="none";
 			document.getElementById("ho-gelo2-v").style.display="none";
+			updateSliderv(100,100,100,0,0,0,0,0,100);
+			gv.style.cursor= "-webkit-grab" ;
+			gv.style.cursor= "grab";
+			g.style.cursor= "-webkit-grab";
+			g.style.cursor= "grab";
 			$(".dots").remove();
 			clip_his = [];
 			clip_index = 0;
 			index_store = 0;
+			
+
 		    }
 		  }
     		  $( function() {
@@ -680,26 +742,7 @@
  				 } );
 
   
-		function load(){
-			if(screen.availWidth < 1000){
-				document.getElementById('d2').style.display="none";
-				document.getElementById('d1').style.display="none";
-				alert("Incompatible device-error!\nTry in your laptop!This is not supported in smaller devices");
-				document.getElementById('aud').play();
-			document.write("<img src='images/oops.jpeg' style='width:100%;height:100%'><p style='font-weight:bold;text-align:center;position:fixed;top:0%;right:30%;color:red;width:200px;'>Your current device is not adjustable to deal with all equipments.<br>This is for laptop only<br>Use it in laptop only</p>");}
-			else{ 
-			 document.body.style.overflow = "hidden";
-			 let c = document.getElementById("h");
-			 if(navigator.userAgent.includes('Firefox')){
-			 	$("#msg").text("Welcome!It's firefox\nYou will have better experience now provided your machine works smoothly");
-			 }
-			 c.innerHTML = "";
-			 setInterval (function(){
-			 c.innerHTML += '.' ;
-			 if(c.innerHTML =='....')
-				c.innerHTML = '.';} ,1000);
-			 setTimeout(s_kk_p_e ,4000);
-		}}
+		
 		var factor = 0;
 		var factor2 = 0;
 		function clip_h(e){
@@ -763,7 +806,7 @@
 			g.style.clipPath = "polygon(0px 0px,"+g.width+"px 0px,"+g.width+"px "+g.height+"px, 0px "+g.height+"px)";
 			for(x of c)
 				x.style.display = "none";
-			g.style.cursor="cell";
+			g.style.cursor="crosshair";
 			
 			$(document).ready(function() {
 			$("#ins_crop").show();
@@ -775,8 +818,8 @@
           		$("body").append(
           		$('<div class="dots"></div>')
               		.css('position', 'fixed')
-              		.css('top', ev.clientY + 'px')
-              		.css('left', ev.clientX + 'px')
+              		.css('top', (ev.clientY-1.8) + 'px')
+              		.css('left', (ev.clientX-1.8) + 'px')
               		.css('width', size)
               		.css('height', size)
               		.css('background-color', color));
@@ -793,16 +836,19 @@
 			btn.onclick = function(){
 				this.style.display ="none";
 				btn2.style.display="none";
+				$('html,body').animate({
+        		scrollTop: $('#top').offset().top},
+        		'slow');
 				$( function() {
     			$( "#result_img" ).draggable();
     			$("#ins_crop").hide();
     			$(".dots").hide();
     			$(".dots").remove();
     		});
+				
 				for(x of c)
 				x.style.display = "initial";
 			$("#adv").hide();
-			g.onclick= function(){};
 			clip_index = index_store ;
 			if(clip_str.split(',').length>3)
 			clip_his[clip_index++] = clip_str.substr(0,clip_str.length-1);
@@ -815,13 +861,13 @@
 			s_kk_p_e();
 		   	$("#clip_hi2").text(clip_his.length);
 			$( "#result_img" ).draggable( "enable" );
+			g.style.cursor ="-webkit-grab";
 			g.style.cursor = "grab";
 			document.getElementById("advanced_img_tools").style.display="flex";
-
+			document.getElementById("advanced_vid_tools").style.display="none";
 			}
 			btn2.onclick = function(){
 				let k = $(".dots");
-				
 				clip_index = index_store ;
 				if(k.length/factor>3){
 					for(let i =0;i<factor;i++)
@@ -843,7 +889,21 @@
 			let d = document.getElementsByClassName("non-crop-v");
 			let Btn = document.getElementById("ho-gelo-v");
 			let Btn2 = document.getElementById("ho-gelo2-v");
+			document.getElementById("result_vid").style.transform="scale(1,1)";
 			$("#clip_hi").text(clip_his.length);
+			$("#result_vid").click(function (ev) {
+          		do_not_change = false;
+          		let color = 'rgba(255,255,0,0.6)';
+          		let size = '3.6px';
+          		$("body").append(
+          		$('<div class="dots"></div>')
+              		.css('position', 'fixed')
+              		.css('top', (ev.clientY-1.8) + 'px')
+              		.css('left', (ev.clientX-1.8) + 'px')
+              		.css('width', size)
+              		.css('height', size)
+              		.css('background-color', color));
+      });
 			$(".dots").remove();
 			//document.getElementById("result_vid").style.transform="scale(1,1)";
 			$( "#result_vid" ).draggable("disable");
@@ -854,25 +914,12 @@
 			gv.style.clipPath = "polygon(0px 0px,480px 0px,480px 500px, 0px 500px)";
 			for(x of d)
 				x.style.display = "none";
-			gv.style.cursor="cell";
+			gv.style.cursor="crosshair";
 			gv.onclick = function(){};
 
 			//$( "#result_vid" ).draggable( "disable" );
 			$(document).ready(function() {
 			$("#ins_crop-v").show();
-			$("#result_vid").click(function (ev) {
-          		do_not_change = false;
-          		let color = 'rgba(255,255,0,0.6)';
-          		let size = '3.6px';
-          		$("body").append(
-          		$('<div class="dots"></div>')
-              		.css('position', 'fixed')
-              		.css('top', ev.clientY + 'px')
-              		.css('left', ev.clientX + 'px')
-              		.css('width', size)
-              		.css('height', size)
-              		.css('background-color', color));
-      });
 			$('#result_vid').click(function(e) {
     		let offset = $(this).offset();
     		l_xv = (e.pageX - offset.left);
@@ -884,10 +931,10 @@
 			Btn.onclick = function(){
 				this.style.display ="none";
 				Btn2.style.display="none";
-				
-
+				$('html,body').animate({
+        		scrollTop: $('#top').offset().top},
+        		'slow');
 				$( "#result_vid" ).draggable("enable");
-				
 				$( function() {
     			
     			$("#ins_crop-v").hide();
@@ -896,6 +943,7 @@
     		});
 				for(x of d)
 				x.style.display = "block";
+			$('#original_video').css('display','flex').css('align-items','center').css('height','90%');
 			$("#adv2").hide();
 			clip_index =index_store;
 			if(clip_str2.split(',').length>3)
@@ -909,9 +957,10 @@
 		    s_kk_p_e();		
 			$("#clip_hi").text(clip_his.length);
 			//$( "#result_vid" ).draggable( "enable" );
+			gv.style.cursor = "-webkit-grab";
 			gv.style.cursor = "grab";
 			document.getElementById("advanced_vid_tools").style.display="flex";
-
+			document.getElementById("advanced_img_tools").style.display="none";
 			}
 			Btn2.onclick = function(){
 				let k = $(".dots");
@@ -930,6 +979,13 @@
 			}
 		}
 		function s_kk_p_e(){
+			if(screen.availWidth < 1000){
+				document.getElementById('d2').style.display="none";
+				document.getElementById('d1').style.display="none";
+				alert("Incompatible device-error!\nTry in your laptop");
+				document.getElementById('aud').play();
+			document.write("<img src='images/oops.jpeg' style='width:100%;height:100%'><p style='font-weight:bold;text-align:center;position:fixed;top:0%;right:30%;color:red;width:200px;'>Your current device is not adjustable to deal with all equipments.<br>This is for laptop only<br>Use it in laptop only</p>");}
+			else{
 			document.getElementById("d1").style.display="none";
 			document.getElementById("d2").style.display="block";
 			let elem = document.documentElement;
@@ -942,9 +998,9 @@
             else if (elem.msRequestFullscreen) 
     			  elem.msRequestFullscreen();}
     			catch(e){
-    				//No-problem dude!!It will ofcourse support in most browsers except few obsolete-ones
+    				//No-problem dude!!
     			};
-  }
+  }}
     
 		
   		function change_bg() {
@@ -983,6 +1039,7 @@
   }
 		function T_img(){
 			alert("Tap the browse button to select a video from your device");
+			$( "#result_vid" ).draggable("enable");
 			document.getElementById('c1').style.display="block";
 			document.getElementById("ask").style.display="none";
 			document.getElementById("ho-gelo-v").style.display="none";
@@ -997,6 +1054,7 @@
 		}
 		function T_vdo(){
 			alert("Tap the browse button to select a photo from your device");
+			$( "#result_img" ).draggable("enable");
 			document.getElementById("ask").style.display="none";
 			document.getElementById('c1').style.display="block";
 			document.getElementById("ho-gelo").style.display="none";
@@ -1024,6 +1082,9 @@
     				document.getElementById("result_img").src = img1.src;
 	   				document.getElementById("advanced_img_tools").style.display="flex";
 	   				document.getElementById("img_tools").style.display="block";
+	   				$('html,body').animate({
+                     scrollTop: $("#top").offset().top},
+                      'slow');
     		}
     		else
     			alert("invalid file-type!");
@@ -1044,6 +1105,9 @@
     		vid.setAttribute('src', event2.target.result) ;
     		gv.setAttribute('src',event2.target.result);
 	   		document.getElementById("advanced_vid_tools").style.display="flex";
+	   		$('html,body').animate({
+        	scrollTop: $("#top").offset().top},
+        	'slow');
 	   		document.getElementById("vid_tools").style.display="block";
 	   	}
 	   	else
@@ -1244,6 +1308,11 @@
     	document.getElementById('modified_video').style.backgroundSize =  (100/v14.value)+"% "+(100/v15.value)+"%";
     	
     }
+    function x15(){
+    	document.getElementById('result_vid').style.transform =  'scale('+v16.value+','+v17.value+')';
+    	document.getElementById('sv14').innerHTML = v16.value;
+    	document.getElementById('sv15').innerHTML = v17.value;
+    }
     function update2(){
     	gv.style.filter = "brightness("+g11+"%) contrast("+g12+"%) saturate("+g13+"%) grayscale("+g14+"%) blur("+g15+"px) hue-rotate("+g16+"deg) invert("+g17+"%) sepia("+g18+"%) opacity("+g19+"%)" ;
     	
@@ -1300,7 +1369,53 @@
     	document.getElementById('text21').style.color = document.getElementById('text-color2').value;
     	
     }
-
+ function updateSliderv(a1,a2,a3,a4,a5,a6,a7,a8,a9){
+   i1.value = a1;
+   v1.value = a1;
+   g1 = g11 = a1;
+   $('#s1').text(a1+'/100');
+   $('#sv1').text(a1+'/100');
+   i2.value = a2;
+   v2.value = a2;
+   g2 = g12 = a2;
+   $('#s2').text(a2+'/100');
+   $('#sv2').text(a2+'/100');
+   i3.value = a3;
+   v3.value = a3;
+   g3 = g13 = a3;
+   $('#s3').text(a3+'/100');
+   $('#sv3').text(a3+'/100');
+   i4.value = a4;
+   v4.value = a4;
+   g4 = g14 = a4;
+   $('#s4').text(a4+'/0');
+   $('#sv4').text(a4+'/0');
+   i5.value = a5;
+   v5.value = a5;
+   g5 = g15 = a5;
+   $('#s5').text(a5+'/0');
+   $('#sv5').text(a5+'/0');
+   i6.value = a6;
+   v6.value = a6;
+   g6 = g16 = a6;
+   $('#s6').text(a6+'/0');
+   $('#sv6').text(a6+'/0');
+   i7.value = a7;
+   v7.value = a7;
+   g7 = g17 = a7;
+   $('#s7').text(a7+'/0');
+   $('#sv7').text(a7+'/0');
+   i8.value = a8;
+   v8.value = a8;
+   g8 = g18 = a8;
+   $('#s8').text(a8+'/0');
+   $('#sv8').text(a8+'/0');
+   i9.value = a9;
+   v9.value = a9;
+   g9 = g19 = a9;
+   $('#s9').text(a9+'/100');
+   $('#sv9').text(a9+'/100');
+ }
   function change_b(e){
     if(e.checked){
     	document.getElementById("text1").style.backgroundColor="transparent";
