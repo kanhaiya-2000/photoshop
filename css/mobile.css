@@ -1,6 +1,8 @@
 #d2{
-	max-width:400px;
+	max-width:600px;
 	height:100%;
 	
 	position:relative;
 }
+#msg{
+width:120px;}
