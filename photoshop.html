@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -952,8 +953,9 @@
       			video.srcObject = stream; 
       			video.captureStream = video.captureStream || video.mozCaptureStream;
       			return new Promise(resolve => video.onplaying = resolve);
-      			}).then(() => startRecord(video.captureStream(), 30000)).then (chunks => {    			  
-    			stops(video.srcObject,chunks);  	
+      			}).then(() => startRecord(video.captureStream(), 30000)).then (chunks => {    			
+    			let recordedBlob = new Blob(chunks, { type: "video/webm" });
+    			video2.src = URL.createObjectURL(recordedBlob);   	
     			video.style.display = 'none';
     			video2.style.display = 'block';
     			if(audio_confirm){
@@ -985,9 +987,7 @@
 			}, false);
     		
     		function stops(streams,chunks){    			
-    			streams.getTracks().forEach(track => track.stop());    			   			
-    			recorder.stop();
-    			let recordedBlob = new Blob(chunks, { type: "video/webm" });    			
+    			streams.getTracks().forEach(track => track.stop());      			    			
     			video.style.display = 'block';
     			video2.style.display = 'none';
     			video.load();
@@ -995,10 +995,8 @@
     			video.poster = 'images/wait.gif';
     			songs[sn].play();
     			startStop.className = "fa fa-pause w3-btn w3-circle";
-    			$('#div2').attr('title','Stop song');
-    			video2.src = URL.createObjectURL(recordedBlob);    			
-    			$('#recorder-tools').hide();
-		  	 
+    			$('#div2').attr('title','Stop song');    			   			
+    			$('#recorder-tools').hide();		  	 
     		}
     		stop.onclick = function(){
     			if(recorder.state=='recording'){
@@ -1046,11 +1044,12 @@
                       'slow');
     		}
     		download.onclick = function(){ 
-    		    let a = document.createElement('a') ;   		    
+    		    let a = document.createElement('a') ;
+    		    a.id = 'dwn';   		    
     			a.href = video2.src;
-    			a.download = 'video.webm';
+    			a.download = 'kk_p_vd'+Math.floor(Math.random()*(1000000))+'.webm';
     			a.click();
-    			
+    			$('#dwn').remove();
     		}
     		$('#quit2').click(function(){
     			$('#d3').hide();				 
@@ -1092,6 +1091,9 @@
   					image_format: 'jpeg',
   					jpeg_quality: 90
  			});
+		  		Webcam.set("constraints", {
+  					optional: [{ minWidth: 600 }]
+			});
  			Webcam.attach( '#preview' ); 
  			var sound = new Audio();
  			sound.autoplay = false;
@@ -1142,11 +1144,12 @@
 			});
 			$('#downloadimg').click(function(){
 				let a = document.createElement('a');
+				a.id = 'vah';
 				document.body.appendChild(a);
 				a.href = source_gen;
-				a.download = 'photo.jpeg';
+				a.download = 'kk_p_ph'+Math.floor(Math.random()*(1000000))+'.jpeg';
 				a.click();
-				document.body.removeChild(a);
+				$('#vah').remove();
 			})
 			$('#quit').click(function(){
 				$('#d3').hide();
