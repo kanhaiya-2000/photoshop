@@ -39,12 +39,20 @@
 	left:0%;
 	margin-left:0;
 }
+#original_image,#original_video{
+	position:fixed;
+	width:400px;
+	height:600px;
+	box-shadow:none;
+	left:0%;
+	top:4.7%;	
+	background-blend-mode: normal;
+}
 #modified_image,#modified_video,#bg_setter{
 	position:fixed;
-	height:400px;
-	width:600px;
+	width:400px;
+	height:600px;
 	right:4%;
-	top:2%;
 	box-shadow:none;
 	margin-right:0;
 	background-blend-mode: normal;
