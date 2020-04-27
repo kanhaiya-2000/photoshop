@@ -22,6 +22,15 @@
 			animation: f 10s infinite alternate;
 			overflow:hidden;
 		}
+		#opearator{
+			animation: a 4s infinite alternate;
+		}
+		@keyframes a{
+			0%{background:green;font-size:1.54em;color:white;}
+			25%{background:red;font-size:1.74em;color:black;}
+			50%{background:yellow;font-size:2em;color:red;}
+			75%{background:white;font-size:1.74em;color:yellow;}
+		}
 		@keyframes f {
 			0%{background-image:radial-gradient(black 10%,red 20%,blue 40%,green 80%);}
 			20%{background-image:radial-gradient(red 10%,yellow 20%,black 40%,violet 80%);}
@@ -43,6 +52,7 @@
 			background-size: 100% 100%;
 			
 		}
+		
 		img{
 			box-shadow: 4px 4px 4px black;
 		}
@@ -76,6 +86,43 @@
 			z-index:200;
 			padding:3px;
 			
+		}
+		input[type='file']{
+			display:none;
+		}
+		label{
+			position:relative;
+			
+			cursor:pointer;			
+			background:green;
+			font-weight:bold;
+		}
+		.uploader{
+			position:fixed;
+			top:2%;
+			left:2%;
+			width:450px;
+			display:flex;
+			flex-wrap:nowrap;
+			justify-content:space-around;
+		}
+		#result_img,#result_vid{
+			box-shadow: none;
+		}
+		#original_image{
+			height:670px;
+			margin-top:20px;
+		}
+		#upload,#upload2,#preview,#preview2{
+			display:none;
+			width:600px;
+			height:550px;
+			margin:auto;
+			top:200px;
+		
+		}
+		#d4 audio{
+			display:none;
 		}
 	</style>
  
@@ -299,6 +346,7 @@
 		 			<img src='images/ex14.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex14.gif)'">
 		 			<img src='images/ex15.gif' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex15.gif)'">
 		 			<img src='images/ex16.webp' class="l2"  onclick="document.getElementById('modified_image').style.backgroundImage='url(images/ex16.webp)'"><br>
+		 			<label for='u1'class='w3-button w3-green' title="Upload your own background"><i class="fa fa-cloud-upload"></i>Upload</label>
 		 			<input type="file" class="w3-button w3-circle w3-green w3-text-red w3-display-top" title="Upload your own background" id="u1" onchange="change_bg()"><button class="w3-button w3-circle w3-green w3-text-red w3-display-top" title="Remove background" onclick="document.getElementById('modified_image').style.backgroundImage='none'">X</button><br>
 		 			<div class="w3-container w3-indigo w3-center" style="font-weight:bold;">Background-style:<br>Try these effects in background<br>This effect has total 2 steps...Use both<br>Step-1:select theme:<br>
 		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('modified_image').style.backgroundBlendMode ='normal';document.getElementById('modified_image').style.backgroundColor='#3db6b8';">
@@ -443,7 +491,8 @@
 		 			<img src='images/ex14.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex14.gif)'">
 		 			<img src='images/ex15.gif' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex15.gif)'">
 		 			<img src='images/ex16.webp' class="l2"  onclick="document.getElementById('modified_video').style.backgroundImage='url(images/ex16.webp)'"><br>
-		 			<input type="file" class="w3-button w3-green w3-text-red w3-display-top" title="Upload your own background" id="u2" onchange="change_bg2()"><button class="w3-button w3-circle w3-green  w3-display-top" title="Remove background" onclick="document.getElementById('modified_video').style.backgroundImage='none'">X</button><br>
+		 			<label for='u2' class='w3-button w3-green' title="Upload your own background"><i class="fa fa-cloud-upload"></i>Upload</label>
+		 			<input type="file" class="w3-button w3-green w3-text-red w3-display-top"  id="u2" onchange="change_bg2()"><button class="w3-button w3-circle w3-green  w3-display-top" title="Remove background" onclick="document.getElementById('modified_video').style.backgroundImage='none'">X</button><br>
 		 			<div class="w3-container w3-indigo w3-center" style="font-weight:bold;">Background-style:<br>Try these effects in background<br>This effect has total 2 steps...Use both<br>Step-1:select theme:<br>
 		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='normal';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
 		 				<img src="images/blend.jpeg" title="Multiply" class="w3-border-red" style="mix-blend-mode: multiply;background:blue;" onclick="document.getElementById('modified_video').style.backgroundBlendMode ='multiply';document.getElementById('modified_video').style.backgroundColor='#3db6b8';">
@@ -505,18 +554,18 @@
 		<div id="ask" style="z-index:1;width:100%;">
 		<div  id="img" style="cursor:pointer" class="w3-animate-zoom" onclick="T_img()"><img src="images/up_video.jpeg" style="border-radius: 50%;z-index:1" ><br><i style="background:white;"><span class="w3-xxlarge w3-animate-zoom" style="font-family:'Tangerine';background:white;position:relative;">Upload video</span><br>Tap here to select a video to style it</i></div>
 		<div  id="vdo" style="cursor:pointer" class="w3-animate-zoom" onclick="T_vdo()"><img src="images/up_image.jpeg" style="border-radius: 50%" ><br><i style="background:white;"><span class="w3-xxlarge w3-center w3-animate-zoom" style="font-family:'Tangerine';background:white;position:relative;">Upload Image</span><br>Tap here to select a photo to style it</i></div></div>
-		<div id="original_image" class="non-crop w3-animate-zoom">
-			
+		<div id="original_image" class="non-crop w3-animate-zoom" style='position:fixed;'>			
 			<img style="width:100%;height:100%;z-index:1" id="outImage" src="images/pic.png">
+			<div class='uploader'><label for='picField' class='w3-button w3-green w3-hover-blue' title="Upload image"><i class="fa fa-cloud-upload"></i>Upload photo</label><button class='w3-button w3-green w3-hover-blue' onclick='Record("photo")'>Take photo<i class='fa fa-camera'></i></button></div>
 			<input type="file" name="picField" id="picField"  onchange="preview()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;z-index:1;padding: 12px 1px;cursor:pointer;left:0%;"/></div>
-		<div id="modified_video" class="w3-animate-zoom" style="position:fixed;right:0%;"><span id='text11' title="click to change text" style="position:absolute;top:6%;border:1px dotted red; text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-1</span><span id='text21' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><video id="result_vid" style="width:100%;position:absolute;cursor: -webkit-grab;cursor: grab;" autoplay loop ><source src="images/pic.mp4"></video><button id="ho-gelo-v" style="position:fixed;bottom:5px;">Done</button><br><button id="ho-gelo2-v" style="position:fixed;bottom:5px;">Reset</button></div>
-		<div id="original_video" class="non-crop-v w3-animate-zoom"><video id="outVideo" style="width:100%;z-index:1;" loop controls><source src="images/pic2.mp4"></video><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
+		<div id="modified_video" class="w3-animate-zoom" style="position:fixed;right:4%;"><span id='text11' title="click to change text" style="position:absolute;top:6%;border:1px dotted red; text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-1</span><span id='text21' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><video id="result_vid" style="width:480px;position:absolute;cursor: -webkit-grab;cursor: grab;" autoplay loop ><source src="images/pic.mp4"></video><button id="ho-gelo-v" style="position:fixed;bottom:5px;">Done</button><br><button id="ho-gelo2-v" style="position:fixed;bottom:5px;">Reset</button></div>
+		<div id="original_video" class="non-crop-v w3-animate-zoom"><video id="outVideo" style="width:480px;z-index:-1;position:fixed;" loop controls><source src="images/pic2.mp4"></video><br><div class='uploader w3-animate-zoom'><label for='picField2' class='w3-button w3-green w3-hover-blue' title="Upload video"><i class="fa fa-cloud-upload"></i>Upload video</label><button class='w3-button w3-green w3-hover-blue' onclick='Record("video")'><i class='fa fa-video-camera'></i>&nbsp;Record video</button></div><input type="file" name="picField2" id="picField2"  onchange="preview_2()" alt="" style="width:100%;background:green;color:white;position:absolute;bottom:4%;left:0%;z-index:1;padding: 12px 1px;cursor:pointer;"/></div>
 			
 			<div id="modified_image" class="w3-animate-zoom" style="background-repeat:no-repeat;background-size: 100% 100%;position:fixed;top:4.7%;">
 				<span id='text1' title="click to change text" style="position:absolute;top:6%;text-align:center;border:1px dotted red;" onclick="var l = prompt('Write something...'); if(l)this.innerHTML = l;">Text-1</span><span id='text2' title="click to change text" style="position:absolute;top:90%;border:1px dotted red;text-align:center;" onclick="var l = prompt('Write something...');if(l)this.innerHTML = l;">Text-2</span><img id="result_img"  src="images/pic.gif" style="width:100%;height:100%;position:absolute;cursor: -webkit-grab;cursor: grab;"><button id="ho-gelo" style="position:fixed;bottom:5px;">Done</button><br><button id="ho-gelo2" style="position:fixed;bottom:5px;">Reset</button></div>
-		</div>
+		
 		<div class="non-crop w3-animate-zoom" id="advanced_vid_tools" style="position:absolute;display:none;flex-wrap:wrap;right:0%;justify-content:space-around;background:rgba(0,0,0,0.4);z-index:1;">
-		 	<div class="w3-dropdown-hover" title="custom filter" style="width:96px;cursor:pointer;background:transparent;">
+		 	<div class="w3-dropdown-hover" title="custom filter" style="width:80px;cursor:pointer;background:transparent;">
     			<i class="w3-xlarge w3-text-red fa fa-filter"></i>
     				<div class="w3-dropdown-content w3-bar-block w3-border w3-scroll" style="overflow:auto;">
      					 <i onclick="document.getElementById('result_vid').style.filter='none';updateSliderv(100,100,100,0,0,0,0,0,100);" class="w3-bar-item w3-button">Normal</i>
@@ -542,11 +591,11 @@
       					 
     				</div>
   			</div>
-		 	<i class="fa fa-plus w3-text-red w3-animate-zoom" title="Advanced feature" onclick="document.getElementById('adv2').style.display='flex';s_kk_p_e();" style="font-size:30px;z-index:1;width:96px;cursor:pointer;"></i>
-		 	
-		 	<i class="fa fa-pause w3-animate-zoom" id="play" title="play/pause the video" style="font-size:30px;z-index:1;width:96px;color:red;cursor:pointer;" onclick="if(document.getElementById('result_vid').paused){document.getElementById('result_vid').play();this.className='fa fa-pause';}else {document.getElementById('result_vid').pause();this.className ='fa fa-play';}" ></i>
-		 	<i class="fa fa-crop w3-animate-zoom" title="clip the video" style="font-size:30px;z-index:1;width:96px;color:red;cursor:pointer;" onclick="clip2()" ></i>
-		 	<i id="mb1" class="fa fa-download w3-animate-zoom" title="Download video" style="font-size:30px;width:96px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload2()"></i><br>
+		 	<i class="fa fa-plus w3-text-red w3-animate-zoom" title="Advanced feature" onclick="document.getElementById('adv2').style.display='flex';s_kk_p_e();" style="font-size:30px;z-index:1;width:80px;cursor:pointer;"></i>
+		 	<i class="fa fa-volume-up w3-text-red w3-animate-zoom" title="mute video" onclick="document.getElementById('result_vid').muted = true;$(this).attr('title','Double click to unmute video');s_kk_p_e();this.className = 'fa fa-volume-off w3-text-red w3-animate-zoom';" ondblclick="document.getElementById('result_vid').muted = false;s_kk_p_e();$(this).attr('title','mute video');this.className = 'fa fa-volume-up w3-text-red w3-animate-zoom';" style="font-size:30px;z-index:1;width:80px;cursor:pointer;"></i>
+		 	<i class="fa fa-pause w3-animate-zoom" id="play" title="play/pause the video" style="font-size:30px;z-index:1;width:80px;color:red;cursor:pointer;" onclick="if(document.getElementById('result_vid').paused){document.getElementById('result_vid').play();this.className='fa fa-pause';}else {document.getElementById('result_vid').pause();this.className ='fa fa-play';}" ></i>
+		 	<i class="fa fa-crop w3-animate-zoom" title="clip the video" style="font-size:30px;z-index:1;width:80px;color:red;cursor:pointer;" onclick="clip2()" ></i>
+		 	<i id="mb1" class="fa fa-download w3-animate-zoom" title="Download video" style="font-size:30px;width:80px;z-index:1;color:red;cursor:pointer;" onclick="Dwnload2()"></i><br>
 		 	
 		 	
 		 </div>
@@ -575,8 +624,39 @@
 		 	<i class="w3-text-green w3-animate-zoom" >🙂️That's all for using this feature!!🙂️</i><br><br>
 		 During cropping ,dragging image/video is not allowed<br>However,you can adjust this using the following tools<br>
 		 1.video-position-top:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.video-position:left<br><input type="range"  onchange="document.getElementById('result_vid').style.top = (this.value-100)+'%';" value="0" max="200" min="0" step="2">&nbsp;&nbsp;&nbsp;<input type="range" onchange="document.getElementById('result_vid').style.left = (this.value-100)+'%';" value="0" max="200" min="0" step="2"><br><div class="w3-container w3-animate-zoom w3-text-blue">:History of clipping:<br>No.of times you have clipped:<i id="clip_hi" style="font-weight:bold;"></i><br>
-		 		<button onclick="clip_h(this)" class="clip_button1">Previous clip</button><button onclick="clip_h(this)" class="clip_button2">Next clip</button>	</div></div>
-		<script type="text/javascript" id="early">
+		 		<button onclick="clip_h(this)" class="clip_button1">Previous clip</button><button onclick="clip_h(this)" class="clip_button2">Next clip</button>	</div> </div> </div>
+
+
+		 		<div id='d3'><center><video id='upload' autoplay></video><video id='upload2' autoplay controls></video></center>
+		 			<center><div id='preview' style='width:600px;'></div><div id='preview2' style='width:600px;'></div></center>
+		 		<center><div id='camera-tools' style='display:none;margin:auto;top:10%;width:600px;flex-wrap:nowrap;justify-content: space-around;'><button class='w3-button w3-grey bt-show-i' id='takesnapshot'>Capture photo&nbsp;<i class='fa fa-camera'></i></button><button class='bt-hide-i w3-button w3-grey' id='upload_photo' style='display:none;'>Upload<i class='fa fa-cloud-upload'></i></button><button class='bt-hide-i w3-button w3-grey' id='downloadimg'>Download&nbsp;<i class='fa fa-download'></i></button><button class='bt-hide-i w3-button w3-grey' id='recapture' style='display:none;'>Retake<i class='fa fa-repeat'></i></button><button class='w3-button w3-grey' id='quit'>Exit&nbsp;<i class='fa fa-times'></i></button></div></center>
+		 		<div id='recorder-tools' style='display:none;margin:auto;top:10%;width:600px;flex-wrap:nowrap;justify-content: space-around;'><button class='bt-show w3-button w3-green' id='startrecord'>Start Recording<i class='fa fa-camera-retro'></i></button><button class='bt-show w3-button w3-green' id='uploadvdo'>Upload<i class='fa fa-cloud-upload'></i></button><button class='w3-button w3-green' id='downloadvdo'>Download&nbsp;<i class='fa fa-download'></i></button><button class='bt-show w3-button w3-green' id='stoprecord'>Pause Recording<i class='fa fa-stop'></i></button><button class='w3-button bt-hide w3-green' id='finishrecord'>Finish Recording<i class='fa fa-repeat'></i></button><button class='w3-button bt-show w3-green' id='rerecord'>Rerecord<i class='fa fa-flag-o'></i></button><button class='w3-button w3-green' id='quit2'>Exit&nbsp;<i class='fa fa-times'></i></button></div></div>
+		 		<center><div id='d4' style='position:fixed;bottom:4%;left:20px;background:green;color:white;font-size:1.54em;display:flex;flex-wrap:nowrap;justify-content:center;' onmouseleave="$('#musictools').hide();$('#opearator').show();">
+		 			<i class='fa fa-music' id='opearator' onmouseover='$(this).hide();$("#musictools").show();' onclick='$(this).hide();$("#musictools").show();'></i>
+		 			<div id='musictools' class='w3-animate-zoom' style='display:none;'>
+		 			<i class='fa fa-backward w3-btn w3-circle' title='' id='div1' onclick='z1()' title='previous song'></i>
+		 			<i class='fa fa-pause w3-btn w3-circle' id='div2' onclick='z2(this)'></i>
+		 			<i class='fa fa-forward w3-btn w3-circle' id='div3' onclick='z3()' title='next song'></i>
+		 			<label for='audio-upload'><i class='fa fa-cloud-upload w3-btn w3-circle' id='div4' title='Listen your own favourite song...just upload your favourite song and listen' ></i></label><input type='file' onchange='z4(this)' id='audio-upload' name='audio-upload'></div>
+		 			<audio style='display:none;' loop>
+		 				<source src='sounds/a1.mp3' >
+		 			</audio >
+		 			<audio style='display:none;' loop>
+		 				<source src='sounds/a2.mp3'>
+		 			</audio>
+		 			<audio style='display:none;' loop>
+		 				<source src='sounds/a3.mp3'>
+		 			</audio>
+		 			<audio style='display:none;' loop>
+		 				<source src='sounds/a4.mp3'>
+		 			</audio>
+		 			<audio style='display:none;' loop>
+		 				<source src='sounds/a5.mp3'>
+		 			</audio>
+		 		</div></center>
+
+		 	<script src='script/webcam.js'></script>
+		 	<script type="text/javascript" id="early">
  				function load(){
 					if(screen.availWidth < 1000){
 					document.getElementById('d2').style.display="none";
@@ -589,7 +669,7 @@
 					 	document.getElementById('aud').play();
 					 });
 					}
-					else{ 
+					else{ 				
 			 		document.body.style.overflow = "hidden";
 			 		let c = document.getElementById("h");
 			 		if(navigator.userAgent.includes('Firefox')){
@@ -601,7 +681,7 @@
 					 c.innerHTML += '.' ;
 					 if(c.innerHTML =='....')
 					 c.innerHTML = '.';} ,1000);
-			 		setTimeout(s_kk_p_e ,4000);
+			 		setTimeout(s_kk_p_e ,5000);
 				}}
  		</script>
  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -667,6 +747,73 @@
     		var i_type, v_type;
     		var g = document.getElementById('result_img');
 		  var gv = document.getElementById('result_vid');
+		  var sn = 0;
+		  var songs = document.querySelectorAll('#d4 audio');		  		  
+		  if(confirm('Enable background song?\nLater,you can also control whether to play or not?')){		  			
+		  			songs[sn].load();
+		  			songs[sn].play();								
+				}
+				else{
+					//kuch ny
+				}
+				let startStop = document.getElementById('div2');
+				if(songs[sn].paused){
+		  				startStop.className = 'fa fa-play w3-btn w3-circle';
+		  				$('#div2').attr('title','Play song');
+		  			}
+		  			else{
+		  				$('#div2').attr('title','stop song');
+		  			}
+		  			$('#div1').attr('title','Previous song');
+				function z2(e){
+						if(songs[sn].paused){
+							songs[sn].play();							
+							e.className = 'fa fa-pause w3-btn w3-circle';
+							$('#div2').attr('title','Stop song');
+						}
+						else{
+							songs[sn].pause();							
+							e.className = 'fa fa-play w3-btn w3-circle';
+							$('#div2').attr('title','Play song');
+						}
+					}
+					function z1(){
+						songs[sn].pause();
+						sn = (sn==0)?songs.length-1:sn-1 ;
+						startStop.className = 'fa fa-pause w3-btn w3-circle';
+		  				$('#div2').attr('title','stop song');
+						songs[sn].load();
+						songs[sn].play();
+					}
+					function z3(){
+						songs[sn].pause();
+						sn = (sn==songs.length-1)?0:sn+1 ;
+						startStop.className = 'fa fa-pause w3-btn w3-circle';
+		  				$('#div2').attr('title','stop song');
+						songs[sn].load();
+						songs[sn].play();
+					}
+					function z4(input){						
+						//let divs = $('#d4');
+						let fReader = new FileReader();
+						fReader.readAsDataURL(input.files[0]);
+						fReader.onloadend = function(e){
+			   			let s = (e.target.result.split(';')[0]).split('/');
+						let ext = s[s.length-1].toLowerCase();						
+						s_kk_p_e();
+						if(ext=='mpeg'||ext=='x-wav'||ext=='ogg'){							
+							$('#d4').append($("<audio loop autoplay><source src='"+e.target.result+"'></audio>").css('display','none'));
+							songs[sn].pause();							
+							songs = document.querySelectorAll('#d4 audio');
+							sn = songs.length - 1;												
+				}				
+  		       			else
+  			        		alert("Invalid file type!\nSelect an audio file(.mp3 or .ogg or.wav extension only)");
+  			    			s_kk_p_e();
+  		
+  	}
+  }
+					
 		  function back(){
 		  	if(confirm('You are about to lose all saved changes!\nSure to quit?')){
 		  	document.getElementById('modified_image').style.display="none";
@@ -727,10 +874,297 @@
 			clip_his = [];
 			clip_index = 0;
 			index_store = 0;
-			
-
 		    }
 		  }
+		  function Record(st){
+		  	$('#d2').hide();
+		  	$('#recorder-tools').hide();
+		  	$('#upload').hide();
+		  	$('#upload2').hide();		  	
+		  	document.getElementById('result_vid').pause();
+		  	document.getElementById('outVideo').pause();
+		  	var source_gen;
+		  	if(st=='video'){
+		  		var audio_confirm = confirm('Do u want to include audio recording as well?');
+		  		if(audio_confirm){
+		  			songs[sn].pause();
+		  			startStop.className = 'fa fa-play w3-btn w3-circle';
+					$('#div2').attr('title','play song');
+		  		}
+		  		var video = document.querySelector('#upload');
+		  		var video2 = document.querySelector('#upload2');
+		  		video.controls = false;
+		  		video.style.display = 'block';
+		  		video.poster = 'images/welcome.gif';
+		  		let chunks = [];
+		  		var recorder;
+    			let upload = document.querySelector('#uploadvdo');
+    			let download = document.querySelector('#downloadvdo');
+    			let start = document.querySelector('#startrecord');
+    			let stop = document.querySelector('#stoprecord');
+    			let finish= document.querySelector('#finishrecord');
+    			let again= document.querySelector('#rerecord');
+		  		$('#recorder-tools').css('display','flex');
+		  		$('#d3').show();
+		  		$('#uploadvdo').hide();
+		  		$('#downloadvdo').hide();
+		  		$('#stoprecord').hide();
+		  		$('#startrecord').show();
+		  		$('#finishrecord').hide();
+		  		$('#rerecord').hide();   		
+    		function startRecord(stream,time){
+    			recorder = new MediaRecorder(stream);    			
+    			alert("Recording-limit:30 sec"); 
+    			chunks = [];   			
+    			recorder.ondataavailable = event => chunks.push(event.data);
+  				recorder.start();
+  				let stopped = new Promise((resolve, reject) => {
+    			recorder.onstop = resolve;
+    			recorder.onerror = event => reject(event.name);
+ 				 });
+
+  				let recorded = wait(time).then(
+    			() => recorder.state == "recording" && recorder.stop()
+  				);
+ 
+  				return Promise.all([
+    			stopped,
+    			recorded
+  				])
+  				.then(() => chunks);
+			}
+    		function wait(time) {
+  				return new Promise(resolve => setTimeout(resolve, time));
+			}
+ 
+    		start.onclick = function(){
+    			$('#uploadvdo').hide();
+    			$('#downloadvdo').hide();
+		  		$('#stoprecord').show();
+		  		$('#startrecord').hide();
+		  		$('#finishrecord').show();
+		  		$('#rerecord').hide();
+    			if (navigator.mediaDevices.getUserMedia) {		  		
+		  		$('#upload').show();
+		  		video.controls = true;		  				  		
+		  		 navigator.mediaDevices.getUserMedia({ video: true,audio:audio_confirm})
+    			.then(function (stream) {    			
+      			video.srcObject = stream; 
+      			video.captureStream = video.captureStream || video.mozCaptureStream;
+      			return new Promise(resolve => video.onplaying = resolve);
+      			}).then(() => startRecord(video.captureStream(), 30000)).then (chunks => {    			  
+    			stops(video.srcObject,chunks);  	
+    			video.style.display = 'none';
+    			video2.style.display = 'block';
+    			if(audio_confirm){
+    			songs[sn].pause();
+    			startStop.className = "fa fa-play w3-btn w3-circle";
+    			$('#div2').attr('title','play song');}
+    			$('#recorder-tools').show();
+    			$('#uploadvdo').show();
+    			$('#downloadvdo').show();
+		  		$('#stoprecord').hide();
+		  		$('#startrecord').hide();
+		  		$('#finishrecord').hide();
+		  		$('#rerecord').show();		  		
+    			 })    			
+    		.catch(function (err0r) {
+      		alert(err0r.message+"\nRefresh the page and Retry");
+      		$('#d2').show();
+      		$('#upload').hide();
+      		stops(video.srcObject,chunks);
+      		$('#d3').hide();
+      		return;
+    });
+    	
+    		}
+    		finish.addEventListener("click", function() {
+  			stops(video.srcObject,chunks);
+  			
+
+			}, false);
+    		
+    		function stops(streams,chunks){    			
+    			streams.getTracks().forEach(track => track.stop());    			   			
+    			recorder.stop();
+    			let recordedBlob = new Blob(chunks, { type: "video/webm" });    			
+    			video.style.display = 'block';
+    			video2.style.display = 'none';
+    			video.load();
+    			video.controls = false;
+    			video.poster = 'images/wait.gif';
+    			songs[sn].play();
+    			startStop.className = "fa fa-pause w3-btn w3-circle";
+    			$('#div2').attr('title','Stop song');
+    			video2.src = URL.createObjectURL(recordedBlob);    			
+    			$('#recorder-tools').hide();
+		  	 
+    		}
+    		stop.onclick = function(){
+    			if(recorder.state=='recording'){
+    				recorder.pause();
+    				video.pause();
+    				stop.innerHTML = "Play Recording <i class='fa fa-play'></i>";
+    			}
+    			else if(recorder.state=='paused'){
+    				recorder.resume();
+    				video.play();
+    				stop.innerHTML = "Pause Recording <i class='fa fa-stop'></i>";
+    			}
+    		}
+    		again.onclick = function(){
+    			recorder.stop();
+    			$('#upload2').hide();
+    			video2.muted = true;
+    			video.controls = false;
+    			video2.pause();
+    			video.poster = 'images/welcome.gif';
+    			$('#upload').show();
+    			alert("Click the start button to start recording again");    			
+    			$('#uploadvdo').hide();
+    			$('#downloadvdo').hide();
+		  		$('#stoprecord').hide();
+		  		$('#startrecord').show();
+		  		$('#finishrecord').hide();
+		  		$('#rerecord').hide();
+    		}
+    		upload.onclick = function(){
+    			$('#d3').hide();				 
+				$('#recorder-tools').hide();
+				$('#upload2').hide();
+    			$('#upload').hide();
+    			video2.pause();
+				video.pause();
+    			document.getElementById('outVideo').setAttribute('src',video2.src);
+    			document.getElementById('result_vid').setAttribute('src',video2.src);    						
+    			$('#vid_tools').show();
+    			$('#advanced_vid_tools').css('display','flex');							
+				$('#d2').show();				
+				s_kk_p_e();
+				$('html,body').animate({
+                     scrollTop: $("#top").offset().top},
+                      'slow');
+    		}
+    		download.onclick = function(){ 
+    		    let a = document.createElement('a') ;   		    
+    			a.href = video2.src;
+    			a.download = 'video.webm';
+    			a.click();
+    			
+    		}
+    		$('#quit2').click(function(){
+    			$('#d3').hide();				 
+				$('#recorder-tools').hide();				
+				video2.style.display = "none";				
+				video2.pause();
+				video.pause();
+				stops(video.srcObject,chunks);				
+    			$('#upload').hide();
+    			document.getElementById('result_vid').play();    			
+    			video2.muted = true;					
+				$('#d2').show();				
+				s_kk_p_e();
+				$('html,body').animate({
+                     scrollTop: $("#top").offset().top},
+                      'slow');
+			});
+    		
+
+}
+		  	
+		  }
+		  
+		  	if(st=='photo'){
+		  		$('#preview').show();
+		  		$('#recorder-tools').hide();
+		  		$('#upload').hide();
+		  		$('#upload2').hide();
+		  		$('#d3').show();			  		
+		  		$('#camera-tools').css('display','flex');		  		
+		  		$('.bt-show-i').show();
+		  		$('.bt-hide-i').hide();
+		  		try{
+		  		Webcam.set({
+  					width: 600,
+  					height: 550,
+  					dest_width: 600,
+    				dest_height: 550,
+  					image_format: 'jpeg',
+  					jpeg_quality: 90
+ 			});
+ 			Webcam.attach( '#preview' ); 
+ 			var sound = new Audio();
+ 			sound.autoplay = false;
+ 			sound.src = 'sounds/shutter.mp3';}
+ 			catch(e){
+ 				alert(e.message+"\nRefresh the page and try again");
+ 			}
+			$('#takesnapshot').click(function(){ 
+ 			sound.play();
+ 			$('.bt-hide-i').show(); 
+ 			$('.bt-show-i').hide();
+ 			Webcam.snap( function(data_uri) { 
+ 				source_gen = data_uri;
+ 				$('#preview').hide();
+ 				$('#preview2').show();
+ 			document.getElementById('preview2').innerHTML = 
+  		   '<img src="'+data_uri+'"width="600" height="550"/>';
+ 		} );
+		  });
+			Webcam.on( 'error', function(err) {
+    		alert("\nSomething went wrong!\nDetails:"+err);
+    		Webcam.reset();
+    		$('#d2').show();      		
+      		$('#d3').hide();
+} );
+			$('#recapture').click(function(){
+				$('#takesnapshot').show();
+				$('.bt-hide-i').hide();
+				$('#preview2').hide();
+ 				$('#preview').show();
+			});
+			$('#upload_photo').click(function(){
+				$('#d3').hide();
+				Webcam.reset();
+				$('html,body').animate({
+                     scrollTop: $("#top").offset().top},
+                      'slow');
+				$('.bt-hide-i').hide(); 
+ 				$('.bt-show-i').show();
+ 				$('#camera-tools').hide();
+ 				$('#preview2').hide();
+				$('#d2').show();
+				document.getElementById('result_img').setAttribute('src',source_gen);
+				document.getElementById('outImage').setAttribute('src',source_gen);
+				document.getElementById("img_tools").style.display="block";
+				$('#advanced_img_tools').css('display','flex');
+				s_kk_p_e();
+			});
+			$('#downloadimg').click(function(){
+				let a = document.createElement('a');
+				document.body.appendChild(a);
+				a.href = source_gen;
+				a.download = 'photo.jpeg';
+				a.click();
+				document.body.removeChild(a);
+			})
+			$('#quit').click(function(){
+				$('#d3').hide();
+				Webcam.reset();
+				$('#camera-tools').hide();
+				$('html,body').animate({
+                     scrollTop: $("#top").offset().top},
+                      'slow');
+    		
+				$('.bt-hide-i').hide(); 
+ 				$('.bt-show-i').show();
+ 				$('#preview2').hide();
+				$('#d2').show();				
+				s_kk_p_e();
+
+			});
+		}
+	}
     		  $( function() {
     			$( "#text1" ).draggable();
     			$( "#text21" ).draggable();
@@ -739,9 +1173,7 @@
     			$( "#result_img" ).draggable();
     			$( "#result_vid" ).draggable();
 
- 				 } );
-
-  
+ 				 } ); 
 		
 		var factor = 0;
 		var factor2 = 0;
@@ -1038,7 +1470,7 @@
   	}
   }
 		function T_img(){
-			alert("Tap the browse button to select a video from your device");
+			//alert("Tap the browse button to select a video from your device");
 			$( "#result_vid" ).draggable("enable");
 			document.getElementById('c1').style.display="block";
 			document.getElementById("ask").style.display="none";
@@ -1053,7 +1485,7 @@
 			
 		}
 		function T_vdo(){
-			alert("Tap the browse button to select a photo from your device");
+			//alert("Tap the browse button to select a photo from your device");
 			$( "#result_img" ).draggable("enable");
 			document.getElementById("ask").style.display="none";
 			document.getElementById('c1').style.display="block";
@@ -1100,10 +1532,14 @@
 				let s2 = (event2.target.result.split(';')[0]).split('/');
 				let ext2 = s2[s2.length-1].toLowerCase();
 				v_type = ext2;
-				if(ext2=='mp4'||ext2=='m4v'||ext2=='avi'||ext2=='mpg'){
+				alert(ext2);
+				if(ext2=='mp4'||ext2=='m4v'||ext2=='avi'||ext2=='mpg'||ext2=='webm'){
   			 vid = document.getElementById("outVideo");
     		vid.setAttribute('src', event2.target.result) ;
     		gv.setAttribute('src',event2.target.result);
+    		songs[sn].pause();
+    		startStop.className = 'fa fa-play w3-btn w3-circle';
+    		$('#div2').attr('title','play song');
 	   		document.getElementById("advanced_vid_tools").style.display="flex";
 	   		$('html,body').animate({
         	scrollTop: $("#top").offset().top},
@@ -1428,15 +1864,15 @@
     	updateText2();
     }
   }
-     function Dwnload(){
-     	alert("currently! Downloading is not supported!\nstay tuned for update!\nFor image,you can also take screenshot.\nPress win+shift+s in window\nPress shift+prtsc in linux(ubuntu)\nPress command+shift+4 in mac ");
-     	s_kk_p_e();
+     function Dwnload(){	 
+     alert("currently! Downloading is not supported!\nstay tuned for update!But you can take screenshots for your purpose\nLinux:press shift+prtSc\nWindow:Press win+shift+s\nMac:command+shift+4 ");
  }
   function Dwnload2(){
      alert("currently! Downloading is not supported!\nstay tuned for update!");
      s_kk_p_e();
   }
   </script>
+  
 </body>
 </html>
 <!-- Remaining work://
