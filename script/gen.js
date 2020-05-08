@@ -112,11 +112,15 @@ var d = document.getElementById('bg_setter');
 			   			let s = (e.target.result.split(';')[0]).split('/');
 						let ext = s[s.length-1].toLowerCase();						
 						s_kk_p_e();
-						if(ext=='mpeg'||ext=='x-wav'||ext=='ogg'){							
+						if(ext=='mpeg'||ext=='x-wav'||ext=='ogg'){
+						   if((input.files.item(0).size)/1024 > 25000)
+								alert("Ya mae la!Your file is too bigger,\nmax-limit:50 MB");
+						else{							
 							$('#d4').append($("<audio loop autoplay><source src='"+e.target.result+"'></audio>").css('display','none'));
 							songs[sn].pause();							
 							songs = document.querySelectorAll('#d4 audio');
-							sn = songs.length - 1;												
+							sn = songs.length - 1;
+						}												
 				}				
   		       			else
   			        		alert("Invalid file type!\nSelect an audio file(.mp3 or .ogg or.wav extension only)");
@@ -204,25 +208,49 @@ var d = document.getElementById('bg_setter');
 		  		var video2 = document.querySelector('#upload2');
 		  		video.controls = false;
 		  		video.style.display = 'block';
+		  		video2.style.display = 'none';
 		  		video.poster = 'images/welcome.gif';
-		  		let chunks = [];
+		  		let chunks = [];		  		
 		  		var recorder;
     			let upload = document.querySelector('#uploadvdo');
     			let download = document.querySelector('#downloadvdo');
     			let start = document.querySelector('#startrecord');
     			let stop = document.querySelector('#stoprecord');
-    			let finish= document.querySelector('#finishrecord');
+    			let finish= document.querySelector('#finishrecord');    			
     			let again= document.querySelector('#rerecord');
+    			let quitv = document.querySelector('#quit2');
+    			quitv.onclick = function(){
+    				$('#d3').hide();				 
+					$('#recorder-tools').hide();
+					$('#camera-tools').hide();				
+					video2.style.display = "none";
+					video.style.display = "none";					
+					video2.pause();
+					video.pause();								
+    				$('#upload').hide();
+    				document.getElementById('result_vid').play();      									
+					$('#d2').show();				
+					s_kk_p_e();
+					$('html,body').animate({
+                     	scrollTop: $("#top").offset().top},
+                      	'slow');
+			
+    		}
+    			
 		  		$('#recorder-tools').css('display','flex');
+		  		$('#camera-tools').hide();
 		  		$('#d3').show();
 		  		$('#uploadvdo').hide();
 		  		$('#downloadvdo').hide();
 		  		$('#stoprecord').hide();
+		  		$('#quit2').show();
+		  		$('#logmsg').hide();
 		  		$('#startrecord').show();
 		  		$('#finishrecord').hide();
 		  		$('#rerecord').hide();   		
     		function startRecord(stream,time){
-    			recorder = new MediaRecorder(stream);    			
+    			recorder = new MediaRecorder(stream);
+    			localstream = stream;    			
     			alert("Recording-limit:30 sec"); 
     			chunks = [];   			
     			recorder.ondataavailable = event => chunks.push(event.data);
@@ -232,7 +260,8 @@ var d = document.getElementById('bg_setter');
     			recorder.onerror = event => reject(event.name);
  				 });
   				let recorded = wait(time).then(
-    			() => recorder.state == "recording" && recorder.stop()
+    			() => 
+    			recorder.state == "recording" && recorder.stop() 
   				);
  
   				return Promise.all([
@@ -242,15 +271,18 @@ var d = document.getElementById('bg_setter');
   				.then(() => chunks);
 			}
     		function wait(time) {
+    			setTimeout(function(){$('#logmsg').hide()},time);
   				return new Promise(resolve => setTimeout(resolve, time));
 			} 
     		start.onclick = function(){
     			$('#uploadvdo').hide();
     			$('#downloadvdo').hide();
+    			$('#logmsg').hide();
 		  		$('#stoprecord').show();
 		  		$('#startrecord').hide();
 		  		$('#finishrecord').show();
 		  		$('#rerecord').hide();
+		  		$('#quit2').hide();
     			if (navigator.mediaDevices.getUserMedia) {		  		
 		  		$('#upload').show();
 		  		video.controls = true;		  				  		
@@ -269,8 +301,10 @@ var d = document.getElementById('bg_setter');
     			startStop.className = "fa fa-play w3-btn w3-circle";
     			$('#div2').attr('title','play song');}
     			$('#recorder-tools').show();
+    			$('#logmsg').hide();
     			$('#uploadvdo').show();
     			$('#downloadvdo').show();
+    			$('#quit2').show();
 		  		$('#stoprecord').hide();
 		  		$('#startrecord').hide();
 		  		$('#finishrecord').hide();
@@ -287,12 +321,15 @@ var d = document.getElementById('bg_setter');
     		}
     		finish.addEventListener("click", function() {
   			stops(video.srcObject,chunks);
-			}, false);
+  			$('#logmsg').show();  							
+  				$('#logmsg').html("Preparing your video...<br>Please wait").css('background','white').css('font-weight','bold').css('color','green');
+  			});
+			
     		
     		function stops(streams,chunks){    			
     			streams.getTracks().forEach(track => track.stop());      			    			
     			video.style.display = 'block';
-    			video2.style.display = 'none';
+    			video2.style.display = 'none';    			
     			video.load();
     			video.controls = false;
     			video.poster = 'images/wait.gif';
@@ -313,8 +350,7 @@ var d = document.getElementById('bg_setter');
     				stop.innerHTML = "Pause Recording <i class='fa fa-stop'></i>";
     			}
     		}
-    		again.onclick = function(){
-    			recorder.stop();
+    		again.onclick = function(){    			
     			$('#upload2').hide();
     			video2.muted = true;
     			video.controls = false;
@@ -323,8 +359,10 @@ var d = document.getElementById('bg_setter');
     			$('#upload').show();
     			alert("Click the start button to start recording again");    			
     			$('#uploadvdo').hide();
+    			$('#logmsg').hide();
     			$('#downloadvdo').hide();
 		  		$('#stoprecord').hide();
+		  		$('#quit2').show();
 		  		$('#startrecord').show();
 		  		$('#finishrecord').hide();
 		  		$('#rerecord').hide();
@@ -335,9 +373,12 @@ var d = document.getElementById('bg_setter');
 				$('#upload2').hide();
     			$('#upload').hide();
     			video2.pause();
-				video.pause();
+				video.pause();				
     			document.getElementById('outVideo').setAttribute('src',video2.src);
-    			document.getElementById('result_vid').setAttribute('src',video2.src);    						
+    			document.getElementById('result_vid').setAttribute('src',video2.src);
+    			stops(video.srcObject,chunks); 
+    			video.src = "";
+				video2.src = "";				 						
     			$('#vid_tools').show();
     			$('#advanced_vid_tools').css('display','flex');							
 				$('#d2').show();				
@@ -354,14 +395,17 @@ var d = document.getElementById('bg_setter');
     			a.click();
     			$('#dwn').remove();
     		}
-    		$('#quit2').click(function(){
+    		
+    		quitv.onclick = function(){
     			$('#d3').hide();				 
 				$('#recorder-tools').hide();				
 				video2.style.display = "none";				
 				video2.pause();
 				video.pause();
+				video.src = "";
+				video2.src = "";	
 				stops(video.srcObject,chunks);				
-    			$('#upload').hide();
+    			$('#upload').hide();    						
     			document.getElementById('result_vid').play();    			
     			video2.muted = true;					
 				$('#d2').show();				
@@ -369,7 +413,8 @@ var d = document.getElementById('bg_setter');
 				$('html,body').animate({
                      scrollTop: $("#top").offset().top},
                       'slow');
-			});
+			
+    	}
     }		  	
 	}		  
 		  	if(st=='photo'){
@@ -791,13 +836,16 @@ var d = document.getElementById('bg_setter');
     		let input = document.getElementById("picField");
 			let fReader = new FileReader();
 			fReader.readAsDataURL(input.files[0]);
-			s_kk_p_e();
+			s_kk_p_e();			
 			fReader.onloadend = function(event){
 			   let s = (event.target.result.split(';')[0]).split('/');
 				let ext = s[s.length-1].toLowerCase();
 				i_type = ext;
 				if(ext=='jpg'||ext=='jpeg'||ext=='png'||ext=='gif'){
   					var img1 = document.getElementById("outImage");
+  					if((input.files.item(0).size)/1024 > 50000)
+							alert("Ya mae la!Your file is too bigger,\nmax-limit:50 MB");
+					else{
     				img1.src = event.target.result;
     				document.getElementById("result_img").src = img1.src;
 	   				document.getElementById("advanced_img_tools").style.display="flex";
@@ -805,12 +853,14 @@ var d = document.getElementById('bg_setter');
 	   				$('html,body').animate({
                      scrollTop: $("#top").offset().top},
                       'slow');
+	   			}
     		}
     		else
     			alert("invalid file-type!");
     		s_kk_p_e();
 		
-    }}
+    }
+}
     function preview_2() {
     		let input2 = document.getElementById("picField2");
 			let fReader2 = new FileReader();
@@ -819,25 +869,29 @@ var d = document.getElementById('bg_setter');
 				s_kk_p_e();
 				let s2 = (event2.target.result.split(';')[0]).split('/');
 				let ext2 = s2[s2.length-1].toLowerCase();
-				v_type = ext2;
-				alert(ext2);
+				v_type = ext2;				
 				if(ext2=='mp4'||ext2=='m4v'||ext2=='avi'||ext2=='mpg'||ext2=='webm'){
-  			 vid = document.getElementById("outVideo");
-    		vid.setAttribute('src', event2.target.result) ;
-    		gv.setAttribute('src',event2.target.result);
-    		songs[sn].pause();
-    		startStop.className = 'fa fa-play w3-btn w3-circle';
-    		$('#div2').attr('title','play song');
-	   		document.getElementById("advanced_vid_tools").style.display="flex";
-	   		$('html,body').animate({
-        	scrollTop: $("#top").offset().top},
-        	'slow');
-	   		document.getElementById("vid_tools").style.display="block";
+					if((input2.files.item(0).size)/1024 > 50000)
+							alert("Ya mae la!Your file is too bigger,\nmax-limit:50 MB");
+					else{
+  			 	vid = document.getElementById("outVideo");
+    			vid.setAttribute('src', event2.target.result) ;
+    			gv.setAttribute('src',event2.target.result);
+    			songs[sn].pause();
+    			startStop.className = 'fa fa-play w3-btn w3-circle';
+    			$('#div2').attr('title','play song');
+	   			document.getElementById("advanced_vid_tools").style.display="flex";
+	   			$('html,body').animate({
+        		scrollTop: $("#top").offset().top},
+        		'slow');
+	   			document.getElementById("vid_tools").style.display="block";
 	   	}
+	   }
 	   	else
 	   		alert("Invalid file-type!");
 		s_kk_p_e();
-    }}
+    }
+}
     
     function f1(){    	
     	g1 = Number(i1.value);
