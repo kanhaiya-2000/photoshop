@@ -4,3 +4,6 @@
 	
 	position:relative;
 }
+#msg{
+ display:none;
+}
