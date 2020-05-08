@@ -60,6 +60,13 @@
 			margin:auto;
 			padding:15px;
 		}
+		img{
+			box-shadow:4px 4px 4px black;
+		}
+		
+		#adv,#adv2{
+			-webkit-scrollbar-width: thin;
+		}
 		.clip_button1{			
 			position:absolute;
 			text-overflow:ellipsis;			
@@ -68,8 +75,10 @@
 			z-index:200;
 			padding:3px;			
 		}
-		.clip_button2{
-			
+		#modified_image ,#modified_video{
+			overflow:hidden;
+		}
+		.clip_button2{			
 			position:absolute;
 			text-overflow:ellipsis;			
 			right:50px;
@@ -113,7 +122,12 @@
 			display:none;
 		}
 	</style>
- 
+   <script>
+   	$(document).ready(function(){
+   	 if(screen.availWidth < 1000)
+				    $('#msg').hide();
+				    });
+   </script>
 </head>
 <body onload='load()' onbeforeunload="return 'Sure to leave?'">
 	<div id='d1' style='width:100%;height:100%;' class="w3-animate-zoom">
@@ -193,7 +207,7 @@
 		 	<div id="adv" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop w3-animate-zoom" style="overflow:auto;">
 		 		<span onclick="this.parentElement.style.display='none';$('html,body').animate({
         scrollTop: $('#top').offset().top},
-        'slow');" class="w3-xlarge w3-right w3-red" style="position:fixed;left:460px;top:2%;cursor:pointer">X</span>
+        'slow');" class="w3-large w3-right w3-red w3-btn w3-circle" style="position:fixed;left:435px;top:2%;cursor:pointer;">X</span>
 		 		
 		 			<div style="overflow-y:auto;">
 		 				<div class="w3-container w3-center">Important visual effect<br>1. Opacity:&nbsp;&nbsp;&nbsp;2.Image-width:&nbsp;&nbsp;3.Image-height:<br><span id="s9" class="w3-left" ></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s10" class="w3-center"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="s11" class="w3-right"></span><br><input type="range" id="i9" onchange="f9()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;<input type="range" id="i10" onchange="f10()" value="100" max="100" min="2" step="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="range" id="i11" onchange="f11()" value="100" max="100" min="2" step="2"><br><br>you can also drag to change position<br>
@@ -385,10 +399,10 @@
 		 		   </div>
 			</div>
 		 </div>		     
-		 	<div id="adv2" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop-v w3-animate-zoom" style="overflow:auto;">
+		 	<div id="adv2" style="display:none;background:teal;padding-bottom:100px;" class="w3-panel w3-center non-crop-v w3-animate-zoom " style="overflow:auto;">
 		 		<span onclick="this.parentElement.style.display='none';$('html,body').animate({
         scrollTop: $('#top').offset().top},
-        'slow');" class="w3-xlarge w3-right w3-red" style="position:fixed;left:460px;top:2%;cursor:pointer">X</span>
+        'slow');" class="w3-large w3-right w3-red w3-btn w3-circle" style="position:fixed;left:435px;top:2%;cursor:pointer">X</span>
 		 			<div class="w3-container  w3-center" style="font-weight:bold;background:teal;">Important video effect<br>
 		 				<img src="images/blend.jpeg" title="Normal" class="w3-border-red" style="mix-blend-mode: normal;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='normal'">
 		 				<img src="images/blend.jpeg" title="Multiply" class="w3-border-red" style="mix-blend-mode: multiply;background:blue;" onclick="document.getElementById('result_vid').style.mixBlendMode ='multiply'">
@@ -611,7 +625,7 @@
 		 		<div id='d3'><center><video id='upload' autoplay></video><video id='upload2' autoplay controls></video></center>
 		 			<center><div id='preview' style='width:600px;'></div><div id='preview2' style='width:600px;'></div></center>
 		 		<center><div id='camera-tools' style='display:none;margin:auto;top:10%;width:600px;flex-wrap:nowrap;justify-content: space-around;'><button class='w3-button w3-grey bt-show-i' id='takesnapshot'>Capture photo&nbsp;<i class='fa fa-camera'></i></button><button class='bt-hide-i w3-button w3-grey' id='upload_photo' style='display:none;'>Upload<i class='fa fa-cloud-upload'></i></button><button class='bt-hide-i w3-button w3-grey' id='downloadimg'>Download&nbsp;<i class='fa fa-download'></i></button><button class='bt-hide-i w3-button w3-grey' id='recapture' style='display:none;'>Retake<i class='fa fa-repeat'></i></button><button class='w3-button w3-grey' id='quit'>Exit&nbsp;<i class='fa fa-times'></i></button></div></center>
-		 		<div id='recorder-tools' style='display:none;margin:auto;top:10%;width:600px;flex-wrap:nowrap;justify-content: space-around;'><button class='bt-show w3-button w3-green' id='startrecord'>Start Recording<i class='fa fa-camera-retro'></i></button><button class='bt-show w3-button w3-green' id='uploadvdo'>Upload<i class='fa fa-cloud-upload'></i></button><button class='w3-button w3-green' id='downloadvdo'>Download&nbsp;<i class='fa fa-download'></i></button><button class='bt-show w3-button w3-green' id='stoprecord'>Pause Recording<i class='fa fa-stop'></i></button><button class='w3-button bt-hide w3-green' id='finishrecord'>Finish Recording<i class='fa fa-repeat'></i></button><button class='w3-button bt-show w3-green' id='rerecord'>Rerecord<i class='fa fa-flag-o'></i></button><button class='w3-button w3-green' id='quit2'>Exit&nbsp;<i class='fa fa-times'></i></button></div></div>
+		 		<div id='recorder-tools' style='display:none;margin:auto;top:10%;width:600px;flex-wrap:nowrap;justify-content: space-around;'><button class='bt-show w3-button w3-green' id='startrecord'>Start Recording<i class='fa fa-camera-retro'></i></button><button class='bt-show w3-button w3-green' id='uploadvdo'>Upload<i class='fa fa-cloud-upload'></i></button><button class='w3-button w3-green' id='downloadvdo'>Download&nbsp;<i class='fa fa-download'></i></button><button class='bt-show w3-button w3-green' id='stoprecord'>Pause Recording<i class='fa fa-stop'></i></button><button class='w3-button bt-hide w3-green' id='finishrecord'>Finish Recording<i class='fa fa-repeat'></i></button><button class='w3-button bt-show w3-green' id='rerecord'>Rerecord<i class='fa fa-flag-o'></i></button><button class='w3-button w3-green' id='quit2'>Exit&nbsp;<i class='fa fa-times'></i></button><span id="logmsg"></span></div></div>
 		 		<center><div id='d4' style='position:fixed;bottom:4%;left:20px;background:green;color:white;font-size:1.54em;display:flex;flex-wrap:nowrap;justify-content:center;' onmouseleave="$('#musictools').hide();$('#opearator').show();">
 		 			<i class='fa fa-music' id='opearator' onmouseover='$(this).hide();$("#musictools").show();' onclick='$(this).hide();$("#musictools").show();'></i>
 		 			<div id='musictools' class='w3-animate-zoom' style='display:none;'>
@@ -642,6 +656,7 @@
 		 	<script type="text/javascript" id="early">
  				function load(){
 					if(screen.availWidth < 1000){
+				    $('#msg').hide();
 					document.getElementById('d2').style.display="none";
 					document.getElementById('d1').style.display="none";
 					alert("Incompatible device-error!\nTry in your laptop!This is not supported in smaller devices");
